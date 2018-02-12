@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Title and other stuffs -->
+  <title>Dashboard - MacAdmin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+
+  <!-- Stylesheets -->
+  <link href="../mac_bootstrap/macadmin/theme/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font awesome icon -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/font-awesome.min.css">
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/jquery-ui.css">
+  <!-- Calendar -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/fullcalendar.css">
+  <!-- prettyPhoto -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/prettyPhoto.css">
+  <!-- Star rating -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/rateit.css">
+  <!-- Date picker -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/bootstrap-datetimepicker.min.css">
+  <!-- CLEditor -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/jquery.cleditor.css">
+  <!-- Data tables -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/jquery.dataTables.css">
+  <!-- Bootstrap toggle -->
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/jquery.onoff.css">
+  <!-- Main stylesheet -->
+  <link href="../mac_bootstrap/macadmin/theme/css/style.css" rel="stylesheet">
+  <!-- Widgets stylesheet -->
+  <link href="../mac_bootstrap/macadmin/theme/css/widgets.css" rel="stylesheet">
+  
+  <script src="../mac_bootstrap/macadmin/theme/js/respond.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../mac_bootstrap/macadmin/theme/js/html5shiv.js"></script>
+    <![endif]-->
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../mac_bootstrap/macadmin/theme/img/favicon/favicon.png">
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top bs-docs-nav" role="banner">
+  
+    <div class="conjtainer">
+      <!-- Menu button for smallar screens -->
+      <div class="navbar-header">
+		  <button class="navbar-toggle btn-navbar" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+			<span>Menu</span>
+		  </button>
+		  <!-- Site name for smallar screens -->
+		  <a href="../mac_bootstrap/macadmin/theme/index.html" class="navbar-brand hidden-lg">MacBeth</a>
+		</div>
+      
+      
+
+      <!-- Navigation starts -->
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">         
+
+        <ul class="nav navbar-nav">  
+
+          <!-- Upload to server link. Class "dropdown-big" creates big dropdown -->
+          <li class="dropdown dropdown-big">
+            <a href="../mac_bootstrap/macadmin/theme#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success"><i class="fa fa-cloud-upload"></i></span> Upload to Cloud</a>
+            <!-- Dropdown -->
+            <ul class="dropdown-menu">
+              <li>
+                <!-- Progress bar -->
+                <p>Photo Upload in Progress</p>
+                <!-- Bootstrap progress bar -->
+                <div class="progress progress-striped active">
+					<div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+						<span class="sr-only">40% Complete</span>
+					</div>
+			    </div>
+
+                <hr />
+
+                <!-- Progress bar -->
+                <p>Video Upload in Progress</p>
+                <!-- Bootstrap progress bar -->
+                <div class="progress progress-striped active">
+					<div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+						<span class="sr-only">80% Complete</span>
+					</div>
+			    </div> 
+
+                <hr />             
+
+                <!-- Dropdown menu footer -->
+                <div class="drop-foot">
+                  <a href="../mac_bootstrap/macadmin/theme#">View All</a>
+                </div>
+
+              </li>
+            </ul>
+          </li>
+
+          <!-- Sync to server link -->
+          <li class="dropdown dropdown-big">
+            <a href="../mac_bootstrap/macadmin/theme#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger"><i class="fa fa-refresh"></i></span> Sync with Server</a>
+            <!-- Dropdown -->
+            <ul class="dropdown-menu">
+              <li>
+                <!-- Using "icon-spin" class to rotate icon. -->
+                <p><span class="label label-info"><i class="fa fa-cloud"></i></span> Syncing Members Lists to Server</p>
+                <hr />
+                <p><span class="label label-warning"><i class="fa fa-cloud"></i></span> Syncing Bookmarks Lists to Cloud</p>
+
+                <hr />
+
+                <!-- Dropdown menu footer -->
+                <div class="drop-foot">
+                  <a href="../mac_bootstrap/macadmin/theme#">View All</a>
+                </div>
+
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+        <!-- Search form -->
+        <form class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+        <!-- Links -->
+        <ul class="nav navbar-nav pull-right">
+          <li class="dropdown pull-right">            
+            <a data-toggle="dropdown" class="dropdown-toggle" href="../mac_bootstrap/macadmin/theme#">
+              <i class="fa fa-user"></i> Admin <b class="caret"></b>              
+            </a>
+            
+            <!-- Dropdown menu -->
+            <ul class="dropdown-menu">
+              <li><a href="../mac_bootstrap/macadmin/theme#"><i class="fa fa-user"></i> Profile</a></li>
+              <li><a href="../mac_bootstrap/macadmin/theme#"><i class="fa fa-cogs"></i> Settings</a></li>
+              <li><a href="../mac_bootstrap/macadmin/theme/login.html"><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+
+<!-- Header starts -->
+  <header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Logo section -->
+        <div class="col-md-4">
+          <!-- Logo. -->
+          <div class="logo">
+            <h1><a href="../mac_bootstrap/macadmin/theme#">Mac<span class="bold">Admin</span></a></h1>
+            <p class="meta">something goes in meta area</p>
+          </div>
+          <!-- Logo ends -->
+        </div>
+
+        <!-- Button section -->
+
+
+        <!-- Data section -->
+
+
+
+      </div>
+    </div>
+  </header>
+
+<!-- Header ends -->
+
+<!-- Main content starts -->
+
+<div class="content">
+
+  	<!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-dropdown"><a href="../mac_bootstrap/macadmin/theme#">Navigation</a></div>
+
+        <!--- Sidebar navigation -->
+        <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+        <ul id="nav">
+          <!-- Main menu with font awesome icon -->
+          <li><a href="../mac_bootstrap/macadmin/theme/index.html"><i class="fa fa-home"></i> Dashboard</a>
+            <!-- Sub menu markup 
+            <ul>
+              <li><a href="mac_bootstrap/macadmin/theme/#">Submenu #1</a></li>
+              <li><a href="mac_bootstrap/macadmin/theme/#">Submenu #2</a></li>
+              <li><a href="mac_bootstrap/macadmin/theme/#">Submenu #3</a></li>
+            </ul>-->
+          </li>
+          <li class="has_sub">
+			<a href="../mac_bootstrap/macadmin/theme#"><i class="fa fa-list-alt"></i> Widgets  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+            <ul>
+              <li><a href="../mac_bootstrap/macadmin/theme/widgets1.html">Widgets #1</a></li>
+              <li><a href="../mac_bootstrap/macadmin/theme/widgets2.html">Widgets #2</a></li>
+              <li><a href="../mac_bootstrap/macadmin/theme/widgets3.html">Widgets #3</a></li>
+            </ul>
+          </li>
+        </ul>
+    </div>
+
+    <!-- Sidebar ends -->
+
+  	  	<!-- Main bar -->
+  	<div class="mainbar">
+      
+	    <!-- Page heading -->
+	    <div class="page-head">
+	      <h2 class="pull-left"><i class="fa fa-home"></i> Dashboard</h2>
+
+        <!-- Breadcrumb -->
+        <div class="bread-crumb pull-right">
+          <a href="../mac_bootstrap/macadmin/theme/index.html"><i class="fa fa-home"></i> Home</a>
+          <!-- Divider -->
+          <span class="divider">/</span> 
+          <a href="../mac_bootstrap/macadmin/theme#" class="bread-current">Dashboard</a>
+        </div>
+
+        <div class="clearfix"></div>
+
+	    </div>
+	    <!-- Page heading ends -->
+
+
+
+	    <!-- Matter -->
+
+	    <div class="matter">
+          <div class="container"></div>
+        </div>
+
+		<!-- Matter ends -->
+
+    </div>
+
+   <!-- Mainbar ends -->
+   <div class="clearfix"></div>
+
+</div>
+<!-- Content ends -->
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <!-- Copyright info -->
+            <p class="copy">Copyright &copy; 2012 | <a href="../mac_bootstrap/macadmin/theme#">Your Site</a> </p>
+      </div>
+    </div>
+  </div>
+</footer> 	
+
+<!-- Footer ends -->
+
+<!-- Scroll to top -->
+<span class="totop"><a href="../mac_bootstrap/macadmin/theme#"><i class="fa fa-chevron-up"></i></a></span>
+
+<!-- JS -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.js"></script> <!-- jQuery -->
+<script src="../mac_bootstrap/macadmin/theme/js/bootstrap.min.js"></script> <!-- Bootstrap -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+<script src="../mac_bootstrap/macadmin/theme/js/moment.min.js"></script> <!-- Moment js for full calendar -->
+<script src="../mac_bootstrap/macadmin/theme/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.slimscroll.min.js"></script> <!-- jQuery Slim Scroll -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.dataTables.min.js"></script> <!-- Data tables -->
+
+<!-- jQuery Flot -->
+<script src="../mac_bootstrap/macadmin/theme/js/excanvas.min.js"></script>
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.flot.js"></script>
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.flot.resize.js"></script>
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.flot.pie.js"></script>
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.flot.stack.js"></script>
+
+<!-- jQuery Notification - Noty -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.noty.js"></script> <!-- jQuery Notify -->
+<script src="../mac_bootstrap/macadmin/theme/js/themes/default.js"></script> <!-- jQuery Notify -->
+<script src="../mac_bootstrap/macadmin/theme/js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+<script src="../mac_bootstrap/macadmin/theme/js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+<script src="../mac_bootstrap/macadmin/theme/js/layouts/top.js"></script> <!-- jQuery Notify -->
+<!-- jQuery Notification ends -->
+
+<script src="../mac_bootstrap/macadmin/theme/js/sparklines.js"></script> <!-- Sparklines -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+<script src="../mac_bootstrap/macadmin/theme/js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.onoff.min.js"></script> <!-- Bootstrap Toggle -->
+<script src="../mac_bootstrap/macadmin/theme/js/filter.js"></script> <!-- Filter for support page -->
+<script src="../mac_bootstrap/macadmin/theme/js/custom.js"></script> <!-- Custom codes -->
+<script src="../mac_bootstrap/macadmin/theme/js/charts.js"></script> <!-- Charts & Graphs -->
+
+<!-- Script for this page -->
+<script type="text/javascript">
+$(function () {
+
+    /* Bar Chart starts */
+
+    var d1 = [];
+    for (var i = 0; i <= 20; i += 1)
+        d1.push([i, parseInt(Math.random() * 30)]);
+
+    var d2 = [];
+    for (var i = 0; i <= 20; i += 1)
+        d2.push([i, parseInt(Math.random() * 30)]);
+
+
+    var stack = 0, bars = true, lines = false, steps = false;
+    
+    function plotWithOptions() {
+        $.plot($("#bar-chart"), [ d1, d2 ], {
+            series: {
+                stack: stack,
+                lines: { show: lines, fill: true, steps: steps },
+                bars: { show: bars, barWidth: 0.8 }
+            },
+            grid: {
+                borderWidth: 0, hoverable: true, color: "#777"
+            },
+            colors: ["#ff6c24", "#ff2424"],
+            bars: {
+                  show: true,
+                  lineWidth: 0,
+                  fill: true,
+                  fillColor: { colors: [ { opacity: 0.9 }, { opacity: 0.8 } ] }
+            }
+        });
+    }
+
+    plotWithOptions();
+    
+    $(".stackControls input").click(function (e) {
+        e.preventDefault();
+        stack = $(this).val() == "With stacking" ? true : null;
+        plotWithOptions();
+    });
+    $(".graphControls input").click(function (e) {
+        e.preventDefault();
+        bars = $(this).val().indexOf("Bars") != -1;
+        lines = $(this).val().indexOf("Lines") != -1;
+        steps = $(this).val().indexOf("steps") != -1;
+        plotWithOptions();
+    });
+
+    /* Bar chart ends */
+
+});
+
+
+/* Curve chart starts */
+
+$(function () {
+    var sin = [], cos = [];
+    for (var i = 0; i < 14; i += 0.5) {
+        sin.push([i, Math.sin(i)]);
+        cos.push([i, Math.cos(i)]);
+    }
+
+    var plot = $.plot($("#curve-chart"),
+           [ { data: sin, label: "sin(x)"}, { data: cos, label: "cos(x)" } ], {
+               series: {
+                   lines: { show: true, fill: true},
+                   points: { show: true }
+               },
+               grid: { hoverable: true, clickable: true, borderWidth:0 },
+               yaxis: { min: -1.2, max: 1.2 },
+               colors: ["#1eafed", "#1eafed"]
+             });
+
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 5,
+            border: '1px solid #000',
+            padding: '2px 8px',
+            color: '#ccc',
+            'background-color': '#000',
+            opacity: 0.9
+        }).appendTo("body").fadeIn(200);
+    }
+
+    var previousPoint = null;
+    $("#curve-chart").bind("plothover", function (event, pos, item) {
+        $("#x").text(pos.x.toFixed(2));
+        $("#y").text(pos.y.toFixed(2));
+
+        if ($("#enableTooltip:checked").length > 0) {
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+                    
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(2),
+                        y = item.datapoint[1].toFixed(2);
+                    
+                    showTooltip(item.pageX, item.pageY, 
+                                item.series.label + " of " + x + " = " + y);
+                }
+            }
+            else {
+                $("#tooltip").remove();
+                previousPoint = null;            
+            }
+        }
+    }); 
+
+    $("#curve-chart").bind("plotclick", function (event, pos, item) {
+        if (item) {
+            $("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+            plot.highlight(item.series, item.datapoint);
+        }
+    });
+
+});
+
+/* Curve chart ends */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+'C:\wamp64\www\genis.cra\calculs\pedigFiles\ped_mari.csv'
+'C:\Users\TOSHIBA\Desktop\fichiers\Projet Genis\ResultatsPedig\prob_orig\contributions_ancetres_mari.csv'
+20
+1
+2000
+2017

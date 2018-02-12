@@ -1,0 +1,14 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11 sept. 2017, 22:18:32
+    Author     : cl2811
+*/
+
+label.error {
+    color: red;
+    font-style: italic;
+}

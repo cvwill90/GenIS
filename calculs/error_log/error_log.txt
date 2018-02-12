@@ -1,0 +1,335 @@
+[19-May-2016 21:15:55 UTC] PHP Warning:  fopen(C:\wamp64\www\genis.cra\calculs\pedigFiles\parente_pon_land.csv): failed to open stream: Permission denied in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 50
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fopen() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:50
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 52
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:52
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:15:55 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 114
+[19-May-2016 21:15:55 UTC] PHP Stack trace:
+[19-May-2016 21:15:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:15:55 UTC] PHP   2. fclose() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:114
+[19-May-2016 21:19:07 UTC] PHP Warning:  fopen(C:\wamp64\www\genis.cra\calculs\pedigFiles\parente_pon_land.csv): failed to open stream: Permission denied in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 50
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fopen() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:50
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 52
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:52
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:07 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 114
+[19-May-2016 21:19:07 UTC] PHP Stack trace:
+[19-May-2016 21:19:07 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:07 UTC] PHP   2. fclose() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:114
+[19-May-2016 21:19:45 UTC] PHP Warning:  fopen(C:\wamp64\www\genis.cra\calculs\pedigFiles\parente_pon_land.csv): failed to open stream: Permission denied in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 50
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fopen() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:50
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 52
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:52
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:19:45 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 114
+[19-May-2016 21:19:45 UTC] PHP Stack trace:
+[19-May-2016 21:19:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:19:45 UTC] PHP   2. fclose() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:114
+[19-May-2016 21:26:27 UTC] PHP Warning:  fopen(C:\wamp64\www\genis.cra\calculs\pedigFiles\parente_pon_land.csv): failed to open stream: Permission denied in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 50
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fopen() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:50
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 52
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:52
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 21:26:27 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 114
+[19-May-2016 21:26:27 UTC] PHP Stack trace:
+[19-May-2016 21:26:27 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 21:26:27 UTC] PHP   2. fclose() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:114
+[19-May-2016 22:07:18 UTC] PHP Warning:  fopen(C:\wamp64\www\genis.cra\calculs\pedigFiles\parente_pon_land.csv): failed to open stream: Permission denied in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 50
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fopen() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:50
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 52
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:52
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 22:07:18 UTC] PHP Warning:  fputs() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 111
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fputs() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:111
+[19-May-2016 22:07:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 114
+[19-May-2016 22:07:18 UTC] PHP Stack trace:
+[19-May-2016 22:07:18 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[19-May-2016 22:07:18 UTC] PHP   2. fclose() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:114
+[09-Jul-2017 23:18:42 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:18:42 UTC] PHP Stack trace:
+[09-Jul-2017 23:18:42 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:21:17 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:21:17 UTC] PHP Stack trace:
+[09-Jul-2017 23:21:17 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:24:22 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:24:22 UTC] PHP Stack trace:
+[09-Jul-2017 23:24:22 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:27:47 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:27:47 UTC] PHP Stack trace:
+[09-Jul-2017 23:27:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:28:57 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:28:57 UTC] PHP Stack trace:
+[09-Jul-2017 23:28:57 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:30:26 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:30:26 UTC] PHP Stack trace:
+[09-Jul-2017 23:30:26 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:30:46 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:30:46 UTC] PHP Stack trace:
+[09-Jul-2017 23:30:46 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:32:57 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:32:57 UTC] PHP Stack trace:
+[09-Jul-2017 23:32:57 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:34:13 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:34:13 UTC] PHP Stack trace:
+[09-Jul-2017 23:34:13 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:34:35 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:34:35 UTC] PHP Stack trace:
+[09-Jul-2017 23:34:35 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:34:47 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:34:47 UTC] PHP Stack trace:
+[09-Jul-2017 23:34:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:35:24 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:35:24 UTC] PHP Stack trace:
+[09-Jul-2017 23:35:24 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:37:39 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:37:39 UTC] PHP Stack trace:
+[09-Jul-2017 23:37:39 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:39:48 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:39:48 UTC] PHP Stack trace:
+[09-Jul-2017 23:39:48 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:39:52 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:39:52 UTC] PHP Stack trace:
+[09-Jul-2017 23:39:52 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:39:57 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:39:57 UTC] PHP Stack trace:
+[09-Jul-2017 23:39:57 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:41:00 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:41:00 UTC] PHP Stack trace:
+[09-Jul-2017 23:41:00 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:43:45 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:43:45 UTC] PHP Stack trace:
+[09-Jul-2017 23:43:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[09-Jul-2017 23:44:35 UTC] PHP Notice:  Use of undefined constant PEDIG_DUMP_FOLDER - assumed 'PEDIG_DUMP_FOLDER' in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 28
+[09-Jul-2017 23:44:35 UTC] PHP Stack trace:
+[09-Jul-2017 23:44:35 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:12:52 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 104
+[10-Jul-2017 00:12:52 UTC] PHP Stack trace:
+[10-Jul-2017 00:12:52 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:14:05 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:14:05 UTC] PHP Stack trace:
+[10-Jul-2017 00:14:05 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:15:45 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:15:45 UTC] PHP Stack trace:
+[10-Jul-2017 00:15:45 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:14 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:16:14 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:14 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 106
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:16:47 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:16:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:16:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:20:55 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 104
+[10-Jul-2017 00:20:55 UTC] PHP Stack trace:
+[10-Jul-2017 00:20:55 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:24:30 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 94
+[10-Jul-2017 00:24:30 UTC] PHP Stack trace:
+[10-Jul-2017 00:24:30 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:25:40 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 94
+[10-Jul-2017 00:25:40 UTC] PHP Stack trace:
+[10-Jul-2017 00:25:40 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:26:34 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 94
+[10-Jul-2017 00:26:34 UTC] PHP Stack trace:
+[10-Jul-2017 00:26:34 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:28:28 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 94
+[10-Jul-2017 00:28:28 UTC] PHP Stack trace:
+[10-Jul-2017 00:28:28 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:48:11 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 104
+[10-Jul-2017 00:48:11 UTC] PHP Stack trace:
+[10-Jul-2017 00:48:11 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Notice:  Array to string conversion in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 105
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:49:33 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 104
+[10-Jul-2017 00:49:33 UTC] PHP Stack trace:
+[10-Jul-2017 00:49:33 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0
+[10-Jul-2017 00:51:47 UTC] PHP Fatal error:  Cannot access empty property in C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php on line 104
+[10-Jul-2017 00:51:47 UTC] PHP Stack trace:
+[10-Jul-2017 00:51:47 UTC] PHP   1. {main}() C:\wamp64\www\genis.cra\libraries\ajax\ajaxparente.php:0

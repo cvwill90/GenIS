@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Title here -->
+		<title>Documentation</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">		
+		<!-- Custom CSS -->
+		<link href="css/style.css" rel="stylesheet">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	</head>
+	
+	<body>
+
+		
+		<div class="container">
+			<div class="main">
+				<div class="row">
+					<div class="col-md-2">
+					
+						<div class="sidebar">
+							<!-- Project name -->
+							<h3>MacAdmin</h3>
+							<ul>
+								<li><a href="#home">Home</a></li>
+								<li><a href="#files">File Structure</a></li>
+								<li><a href="#editing">Editing</a></li>
+								<li><a href="#fonts">Fonts & Icons</a></li>
+								<li><a href="#add-page">Add New Page</a></li>
+								<li><a href="#navigation">Navigation</a></li>
+								<li><a href="#logo">Logo</a></li>
+								<li><a href="#main">Main Content</a></li>
+								<li><a href="#footer">Footer</a></li>
+								<li><a href="#elements">Elements</a></li>
+								<li><a href="#plugins">Plugins</a></li>
+							</ul>
+						</div>
+						
+					</div>
+					<div class="col-md-10">
+					
+						<div class="mainbar">
+						
+						
+						
+							<!-- Home -->
+							<h3 id="home">Documentation Overview</h3>
+								
+								<p>To edit this theme, basic knowledge about HTML, CSS, JS & Bootstrap is required. You can learn HTML, CSS and JS from <a href="http://www.w3schools.com/">W3Schools</a>. You can learn Bootstrap by visiting <a href="http://getbootstrap.com/">official site</a>.</p>
+								
+								
+								<div class="alert alert-danger"><strong>Note:</strong> Before you make any changes, take a backup of all files and folders.</div>
+							
+								
+							<hr />
+							
+
+
+<!----------------------------------------------------------------------------------------------------------->														
+							
+							
+							
+							<!-- File structure -->
+							<h3 id="files">File Structure</h3>
+							
+								<p>Theme consists of 3 main folders namely <em>css, img & js</em>. <br />
+								Inside <em>css</em> folder you will find styles used in this theme. <em>style.css</em> is the main stylesheet. <br />
+								Inside <em>img</em> folder you will find all images used in the theme.<br />
+								Inside <em>js</em> folder you will find all Javascript files. <em>custom.js</em> is the main js file.
+								</p>
+							
+							<hr />
+							
+
+
+<!----------------------------------------------------------------------------------------------------------->							
+
+							
+							
+							<!-- Editing -->
+							<h3 id="editing">Editing</h3>
+							
+								<p>To edit files you need any code editor. I recommend using Notepad++.</p>
+								
+								<strong>Add Custom Styles</strong>
+								<p>To add custom styles, create new style sheet in <em>css</em> folder. Include the style file before the closing tag of <code>&lt;head&gt;</code>. Make sure that you are including this new file after <em>style.css</em></p>
+								<p>If you want to add any extra CSS files, copy the file to <em>css</em> folder and link it before <em>style.css</em>.</p>
+								
+								<pre>
+&lt;link href=&quot;css/FILE-NAME.css&quot; rel=&quot;stylesheet&quot;&gt;									
+								</pre>
+								
+								<hr />
+								
+								<strong>Add Custom JavaScript</strong>
+								<p>To add JS, just create a new java script file in <em>js</em> folder. Include the newly created js file before the closing tag of <code>&lt;body&gt;</code>. Make sure that you are including this new file after <em>custom.js</em>. Alternatively you can also include Javascript code directly to the html file by enclosing the code in <code>&lt;script&gt; ...your code... &lt;/script&gt;</code> and adding this above the closing tag of <code>&lt;body&gt;</code></p>
+								<p>If you want to add any extra JS files, copy the file to <em>js</em> folder and link it before <em>custom.js</em>.</p>
+
+								<pre>
+&lt;script src=&quot;js/FILE-NAME.js&quot;&gt;&lt;/script&gt;								
+								</pre>
+							
+								<hr />
+								
+								<strong>Editing HTML</strong>
+								<p>Almost all html codes in this theme are neatly commented. All you need to do is to read the comment and modify the content based on your need.</p>
+								
+								<hr />
+								
+<!----------------------------------------------------------------------------------------------------------->
+														
+			
+							<!-- Fonts -->
+							<h3 id="fonts">Fonts</h3>
+							
+								<p>This theme uses <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome Icons</a> for Icons and <a href="http://www.google.com/fonts">Google Web Fonts</a> for Fonts.</p>
+								
+								<!-- Icon font -->
+								<strong>Icon Font</strong>
+								<p>Refer <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome Icons</a> for list of fonts. To use any fonts in the theme, you need to use the following code.</p>
+								
+								<pre>
+/* Latest version */
+&lt;i class=&quot;fa fa-XXXX&quot;&gt;&lt;/i&gt;
+								</pre>
+								
+								
+								<hr />
+							
+							
+							
+<!----------------------------------------------------------------------------------------------------------->	
+
+
+
+							<!-- XXXXXXXXXXXXXXXXXXXX -->
+							<!-- If the theme is single page theme, then remove this. -->
+							<h3 id="add-page">Add New Page</h3>
+								<p>This theme comes with <em>0-base.html</em> file. This is the base file using which you can create you own page. Create a copy of the page, rename it and open in Text editor. Edit the title in <code>&lt;title&gt;</code> section. Change heading and add your content. Done.</p>
+								
+								<strong>Add Content</strong>
+								<pre>
+&lt;!-- Main bar --&gt;
+&lt;div class=&quot;mainbar&quot;&gt;
+
+      &lt;!-- Page heading --&gt;
+      &lt;div class=&quot;page-head&quot;&gt;
+        &lt;h2 class=&quot;pull-left&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; <b>Page Heading</b>&lt;/h2&gt;
+
+        &lt;!-- <b>Breadcrumb</b> --&gt;
+        &lt;div class=&quot;bread-crumb pull-right&quot;&gt;
+          &lt;a href=&quot;index.html&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; Home&lt;/a&gt; 
+          &lt;!-- Divider --&gt;
+          &lt;span class=&quot;divider&quot;&gt;/&lt;/span&gt; 
+          &lt;a href=&quot;#&quot; class=&quot;bread-current&quot;&gt;Dashboard&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Page heading ends --&gt;
+
+
+	    &lt;!-- Matter --&gt;
+
+	    &lt;div class=&quot;matter&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-12&quot;&gt;
+
+              &lt;div class=&quot;widget&quot;&gt;
+                &lt;div class=&quot;widget-head&quot;&gt;
+                  &lt;div class=&quot;pull-left&quot;&gt;Title&lt;/div&gt;
+                  &lt;div class=&quot;widget-icons pull-right&quot;&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;wminimize&quot;&gt;&lt;i class=&quot;fa fa-chevron-up&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+                    &lt;a href=&quot;#&quot; class=&quot;wclose&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;/div&gt;  
+                  &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;widget-content&quot;&gt;
+                  &lt;div class=&quot;padd&quot;&gt;
+                    <b>&lt;!-- Content goes here --&gt;</b>
+                  &lt;/div&gt;
+                  &lt;div class=&quot;widget-foot&quot;&gt;
+                    &lt;!-- Footer goes here --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;  
+              
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+&lt;/div&gt;								
+								</pre>
+								
+								<hr />
+							
+							
+<!----------------------------------------------------------------------------------------------------------->
+
+
+							<!-- Logo -->
+							<h3 id="logo">Logo</h3>
+								
+								<strong>Logo</strong>
+								<p>Below code shows the markup of <em>Logo</em> area. You can also use images for logo. Just play with HTML. I reommend using PNG images for logo.</p>
+								
+								<pre>
+&lt;!-- Logo. --&gt;
+&lt;div class=&quot;logo&quot;&gt;
+	&lt;h1&gt;&lt;a href=&quot;<b>#</b>&quot;&gt;<b>NAME</b>&lt;/a&gt;&lt;/h1&gt;
+	&lt;p class=&quot;meta&quot;&gt;<b>something goes in meta area</b>&lt;/p&gt;
+&lt;/div&gt;								
+								</pre>
+								
+								<hr />
+
+<!----------------------------------------------------------------------------------------------------------->
+
+
+							<!-- Navigation -->
+							<h3 id="navigation">Navigation</h3>
+								<p>Below code shows the markup of <em>Navigation</em> bar.</p>
+								
+								<pre>
+&lt;ul id=&quot;nav&quot;&gt;
+  &lt;!-- Main menu with font awesome icon --&gt;
+  &lt;li&gt;&lt;a href=&quot;<b>#</b>&quot;&gt;&lt;i class=&quot;fa fa-<b>ICON-NAME</b>&quot;&gt;&lt;/i&gt; <b>NAME</b>&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-ICON-NAME&quot;&gt;&lt;/i&gt; NAME&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-ICON-NAME&quot;&gt;&lt;/i&gt; NAME&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;								
+								</pre>
+								
+								<strong>Navigation Dropdown</strong>
+								<p>Below code shows the markup of Dropdown menu for navigation bar.</p>
+							
+								<pre>
+&lt;li class=&quot;has_sub&quot;&gt;&lt;a href=&quot;<b>#</b>&quot;&gt;&lt;i class=&quot;fa fa-<b>ICON-NAME</b>&quot;&gt;&lt;/i&gt; <b>NAME</b>  &lt;span class=&quot;pull-right&quot;&gt;&lt;i class=&quot;fa fa-chevron-right&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+	&lt;!-- Dropdown menu --&gt;
+	&lt;ul&gt;
+	  &lt;li&gt;&lt;a href=&quot;<b>#</b>&quot;&gt;<b>NAME</b>&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;NAME&lt;/a&gt;&lt;/li&gt;
+	  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;NAME&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/li&gt;								
+								</pre>
+								
+								<hr />
+
+
+
+<!----------------------------------------------------------------------------------------------------------->
+
+
+							<!-- Main content -->
+							<h3 id="main">Main Content</h3>
+								<p>Below code shows the markup of <em>Main Content</em> area.</p>
+								
+								<pre>
+&lt;!-- Main bar --&gt;
+&lt;div class=&quot;mainbar&quot;&gt;
+
+      &lt;!-- Page heading --&gt;
+      &lt;div class=&quot;page-head&quot;&gt;
+        &lt;h2 class=&quot;pull-left&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; <b>Page Heading</b>&lt;/h2&gt;
+
+        &lt;!-- <b>Breadcrumb</b> --&gt;
+        &lt;div class=&quot;bread-crumb pull-right&quot;&gt;
+          &lt;a href=&quot;index.html&quot;&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; Home&lt;/a&gt; 
+          &lt;!-- Divider --&gt;
+          &lt;span class=&quot;divider&quot;&gt;/&lt;/span&gt; 
+          &lt;a href=&quot;#&quot; class=&quot;bread-current&quot;&gt;Dashboard&lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;!-- Page heading ends --&gt;
+
+
+	    &lt;!-- Matter --&gt;
+
+	    &lt;div class=&quot;matter&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-md-12&quot;&gt;
+
+              &lt;div class=&quot;widget&quot;&gt;
+                &lt;div class=&quot;widget-head&quot;&gt;
+                  &lt;div class=&quot;pull-left&quot;&gt;Title&lt;/div&gt;
+                  &lt;div class=&quot;widget-icons pull-right&quot;&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;wminimize&quot;&gt;&lt;i class=&quot;fa fa-chevron-up&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+                    &lt;a href=&quot;#&quot; class=&quot;wclose&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                  &lt;/div&gt;  
+                  &lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;widget-content&quot;&gt;
+                  &lt;div class=&quot;padd&quot;&gt;
+                    <b>&lt;!-- Content goes here --&gt;</b>
+                  &lt;/div&gt;
+                  &lt;div class=&quot;widget-foot&quot;&gt;
+                    &lt;!-- Footer goes here --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;  
+              
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+&lt;/div&gt;								
+								</pre>
+								
+								<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+								<!-- Admin widgets. If the theme doesn't support Admin widgets remove this. -->
+								<strong>Widgets</strong>
+								<p>Below code shows the markup of <em>Widgets</em>.</p>
+								
+								<pre>
+&lt;div class=&quot;widget&quot;&gt;
+  &lt;div class=&quot;widget-head&quot;&gt;
+	&lt;div class=&quot;pull-left&quot;&gt;<b>Title</b>&lt;/div&gt;
+	&lt;div class=&quot;widget-icons pull-right&quot;&gt;
+	  &lt;a href=&quot;#&quot; class=&quot;wminimize&quot;&gt;&lt;i class=&quot;icon-chevron-up&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+	  &lt;a href=&quot;#&quot; class=&quot;wclose&quot;&gt;&lt;i class=&quot;icon-remove&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;/div&gt;  
+	&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;widget-content&quot;&gt;
+	&lt;div class=&quot;padd&quot;&gt;
+	  <b>&lt;!-- Content goes here --&gt;</b>
+	&lt;/div&gt;
+	&lt;div class=&quot;widget-foot&quot;&gt;
+	  <b>&lt;!-- Footer goes here --&gt;</b>
+	&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;  
+								
+								</pre>
+
+								<hr />
+
+<!----------------------------------------------------------------------------------------------------------->
+
+
+							<!-- Footer -->
+							<h3 id="footer">Footer</h3>
+								
+								<strong>Copyright</strong>
+								<p>Below code shows the markup of <em>Copyright</em> Section.<p>
+								
+								<pre>
+&lt;p class=&quot;copy&quot;&gt;<b>Copyright</b> &amp;copy; <b>2014</b> | &lt;a href=&quot;<b>#</b>&quot;&gt;<b>Your Site</b>&lt;/a&gt; &lt;/p&gt;
+								</pre>
+								
+								<hr />
+
+
+<!----------------------------------------------------------------------------------------------------------->
+
+
+							
+							<!-- XXXXXXXXXXXXXXXXXXXX -->
+							<!-- Remove the plugins which are not used in this theme -->
+							<!-- Plugins used -->
+							<h3 id="plugins">Plugins</h3>
+							
+								<p>This theme uses following plugins. To customize the plugins, you need to refer the official Plugin documentation found in below links.</p>
+								<ul>
+									<li><a href="http://getbootstrap.com">Bootstrap</a> - Whole theme is made using Bootstrap.</li>
+									
+									<li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesom Icon</a> - For Vector Icons.</li>
+									
+									<li><a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">PrettyPhoto</a> - Gallery & Portfolio section Photos lightbox.</li>
+									
+									<li><a href="http://www.flotcharts.org/">Flot Charts</a> - For Charts - Bar, Pie, Line, Real Time, Curve.</li>
+									
+									<li><a href="http://omnipotent.net/jquery.sparkline/">Sparklines</a> - For Mini Charts.</li>
+									
+									<li><a href="http://www.woothemes.com/flexslider/">Flex Slider</a> - Popular Slider plugin.</li>
+									
+									<li><a href="http://arshaw.com/fullcalendar/">Full Calendar</a> - Google Calendar Plugin.</li>
+									
+									<li><a href="http://rateit.codeplex.com/">RateIt</a> - jQuery Star Rating Plugin.</li>
+									
+									<li><a href="https://datatables.net/">DataTables</a> - Dynamic Table</li>
+									
+									<li><a href="http://rocha.la/jQuery-slimScroll">Slim Scroll</a> - Slim Scroll Bar</li>
+									
+									<li><a href="http://www.eyecon.ro/bootstrap-datepicker">Bootstrap Dat Time Picker</a> - Date & Time picker</li>
+									
+									<li><a href="http://premiumsoftware.net/CLEditor">CLEditor</a> - WYSIWYG Editor</li>
+									
+									<li><a href="http://needim.github.com/noty/">Noty</a> - Notification Plugin</li>
+									
+									<li><a href="https://github.com/timmywil/jquery.onoff">jQuery On Off</a> - Toggle Button</li>
+									
+									<li><a href="http://jqueryui.com">jQuery UI</a> - jQuery UI</li>
+								</ul>
+							
+							
+<!----------------------------------------------------------------------------------------------------------->														
+							
+							
+							<!-- Changelog 
+							<h3 id="changelog">Changelog</h3>
+							
+								<strong>Version 1.0:</strong>
+								<ul>
+									<li>Initial Release.</li>
+								</ul>
+							-->
+							
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="footer text-center">
+				Copyright 2013 - <a href="http://responsivewebinc.com">Responsive Web Inc</a>
+			</div>
+		</div>
+		
+		
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+		<!-- Custom JS -->
+		<script src="js/custom.js"></script>
+	</body>	
+</html>

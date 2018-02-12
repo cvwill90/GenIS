@@ -1,0 +1,629 @@
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- Title and other stuffs -->
+    <title>Forms - MacAdmin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font awesome icon -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!-- Calendar -->
+    <link rel="stylesheet" href="css/fullcalendar.css">
+    <!-- prettyPhoto -->
+    <link rel="stylesheet" href="css/prettyPhoto.css">
+    <!-- Star rating -->
+    <link rel="stylesheet" href="css/rateit.css">
+    <!-- Date picker -->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <!-- CLEditor -->
+    <link rel="stylesheet" href="css/jquery.cleditor.css">
+    <!-- Data tables -->
+    <link rel="stylesheet" href="css/jquery.dataTables.css">
+    <!-- Bootstrap toggle -->
+    <link rel="stylesheet" href="css/jquery.onoff.css">
+    <!-- Main stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Widgets stylesheet -->
+    <link href="css/widgets.css" rel="stylesheet">
+
+    <script src="js/respond.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon/favicon.png">
+    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+
+<body>
+
+<div class="navbar navbar-fixed-top bs-docs-nav" role="banner">
+
+    <div class="conjtainer">
+        <!-- Menu button for smallar screens -->
+        <div class="navbar-header">
+            <button class="navbar-toggle btn-navbar" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span>Menu</span>
+            </button>
+            <!-- Site name for smallar screens -->
+            <a href="index.html" class="navbar-brand hidden-lg">MacBeth</a>
+        </div>
+
+
+
+        <!-- Navigation starts -->
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+
+            <ul class="nav navbar-nav">
+
+                <!-- Upload to server link. Class "dropdown-big" creates big dropdown -->
+                <li class="dropdown dropdown-big">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-success"><i class="fa fa-cloud-upload"></i></span> Upload to Cloud</a>
+                    <!-- Dropdown -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            <!-- Progress bar -->
+                            <p>Photo Upload in Progress</p>
+                            <!-- Bootstrap progress bar -->
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                    <span class="sr-only">40% Complete</span>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Progress bar -->
+                            <p>Video Upload in Progress</p>
+                            <!-- Bootstrap progress bar -->
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <span class="sr-only">80% Complete</span>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Dropdown menu footer -->
+                            <div class="drop-foot">
+                                <a href="#">View All</a>
+                            </div>
+
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Sync to server link -->
+                <li class="dropdown dropdown-big">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger"><i class="fa fa-refresh"></i></span> Sync with Server</a>
+                    <!-- Dropdown -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            <!-- Using "icon-spin" class to rotate icon. -->
+                            <p><span class="label label-info"><i class="fa fa-cloud"></i></span> Syncing Members Lists to Server</p>
+                            <hr>
+                            <p><span class="label label-warning"><i class="fa fa-cloud"></i></span> Syncing Bookmarks Lists to Cloud</p>
+
+                            <hr>
+
+                            <!-- Dropdown menu footer -->
+                            <div class="drop-foot">
+                                <a href="#">View All</a>
+                            </div>
+
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <!-- Search form -->
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Search" type="text">
+                </div>
+            </form>
+            <!-- Links -->
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown pull-right">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-user"></i> Admin <b class="caret"></b>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cogs"></i> Settings</a></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+
+<!-- Header starts -->
+<header>
+    <div class="container">
+        <div class="row">
+
+            <!-- Logo section -->
+            <div class="col-md-4">
+                <!-- Logo. -->
+                <div class="logo">
+                    <h1><a href="#">Mac<span class="bold">Admin</span></a></h1>
+                    <p class="meta">something goes in meta area</p>
+                </div>
+                <!-- Logo ends -->
+            </div>
+
+            <!-- Button section -->
+            <div class="col-md-4">
+
+                <!-- Buttons -->
+                <ul class="nav nav-pills">
+
+                    <!-- Comment button with number of latest comments count -->
+                    <li class="dropdown dropdown-big">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="fa fa-comments"></i> Chats <span class="label label-info">6</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <!-- Heading - h5 -->
+                                <h5><i class="fa fa-comments"></i> Chats</h5>
+                                <!-- Use hr tag to add border -->
+                                <hr>
+                            </li>
+                            <li>
+                                <!-- List item heading h6 -->
+                                <h6><a href="#">Hi :)</a> <span class="label label-warning pull-right">10:42</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <h6><a href="#">How are you?</a> <span class="label label-warning pull-right">20:42</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <h6><a href="#">What are you doing?</a> <span class="label label-warning pull-right">14:42</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <div class="drop-foot">
+                                    <a href="#">View All</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Message button with number of latest messages count-->
+                    <li class="dropdown dropdown-big">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="fa fa-envelope"></i> Inbox <span class="label label-primary">6</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <!-- Heading - h5 -->
+                                <h5><i class="fa fa-envelope"></i> Messages</h5>
+                                <!-- Use hr tag to add border -->
+                                <hr>
+                            </li>
+                            <li>
+                                <!-- List item heading h6 -->
+                                <h6><a href="#">Hello how are you?</a></h6>
+                                <!-- List item para -->
+                                <p>Quisque eu consectetur erat eget  semper...</p>
+                                <hr>
+                            </li>
+                            <li>
+                                <h6><a href="#">Today is wonderful?</a></h6>
+                                <p>Quisque eu consectetur erat eget  semper...</p>
+                                <hr>
+                            </li>
+                            <li>
+                                <div class="drop-foot">
+                                    <a href="#">View All</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Members button with number of latest members count -->
+                    <li class="dropdown dropdown-big">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <i class="fa fa-user"></i> Users <span class="label label-success">6</span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <!-- Heading - h5 -->
+                                <h5><i class="fa fa-user"></i> Users</h5>
+                                <!-- Use hr tag to add border -->
+                                <hr>
+                            </li>
+                            <li>
+                                <!-- List item heading h6-->
+                                <h6><a href="#">Ravi Kumar</a> <span class="label label-warning pull-right">Free</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <h6><a href="#">Balaji</a> <span class="label label-important pull-right">Premium</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <h6><a href="#">Kumarasamy</a> <span class="label label-warning pull-right">Free</span></h6>
+                                <div class="clearfix"></div>
+                                <hr>
+                            </li>
+                            <li>
+                                <div class="drop-foot">
+                                    <a href="#">View All</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Data section -->
+
+            <div class="col-md-4">
+                <div class="header-data">
+
+                    <!-- Traffic data -->
+                    <div class="hdata">
+                        <div class="mcol-left">
+                            <!-- Icon with red background -->
+                            <i class="fa fa-signal bred"></i>
+                        </div>
+                        <div class="mcol-right">
+                            <!-- Number of visitors -->
+                            <p><a href="#">7000</a> <em>visits</em></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <!-- Members data -->
+                    <div class="hdata">
+                        <div class="mcol-left">
+                            <!-- Icon with blue background -->
+                            <i class="fa fa-user bblue"></i>
+                        </div>
+                        <div class="mcol-right">
+                            <!-- Number of visitors -->
+                            <p><a href="#">3000</a> <em>users</em></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <!-- revenue data -->
+                    <div class="hdata">
+                        <div class="mcol-left">
+                            <!-- Icon with green background -->
+                            <i class="fa fa-money bgreen"></i>
+                        </div>
+                        <div class="mcol-right">
+                            <!-- Number of visitors -->
+                            <p><a href="#">5000</a><em>orders</em></p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- Header ends -->
+
+<!-- Main content starts -->
+
+<div class="content">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
+
+        <!--- Sidebar navigation -->
+        <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+        <ul id="nav">
+            <!-- Main menu with font awesome icon -->
+            <li><a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+                <!-- Sub menu markup
+                <ul>
+                  <li><a href="#">Submenu #1</a></li>
+                  <li><a href="#">Submenu #2</a></li>
+                  <li><a href="#">Submenu #3</a></li>
+                </ul>-->
+            </li>
+            <li class="has_sub"><a href="#"><i class="fa fa-list-alt"></i> Widgets  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+                <ul>
+                    <li><a href="widgets1.html">Widgets #1</a></li>
+                    <li><a href="widgets2.html">Widgets #2</a></li>
+                    <li><a href="widgets3.html">Widgets #3</a></li>
+                </ul>
+            </li>
+            <li class="has_sub"><a href="#"><i class="fa fa-file-o"></i> Pages #1  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+                <ul>
+                    <li><a href="post.html">Post</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="invoice.html">Invoice</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </li>
+            <li class="has_sub"><a href="#"><i class="fa fa-file-o"></i> Pages #2  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+                <ul>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="statement.html">Statement</a></li>
+                    <li><a href="error.html">Error</a></li>
+                    <li><a href="error-log.html">Error Log</a></li>
+                    <li><a href="calendar.html">Calendar</a></li>
+                    <li><a href="grid.html">Grid</a></li>
+                </ul>
+            </li>
+            <li class="has_sub"><a href="#"><i class="fa fa-table"></i> Tables  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+                <ul>
+                    <li><a href="tables.html">Tables</a></li>
+                    <li><a href="dynamic-tables.html">Dynamic Tables</a></li>
+                </ul>
+            </li>
+            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li class="open"><a href="forms.html"><i class="fa fa-tasks"></i> Forms</a></li>
+            <li><a href="ui.html"><i class="fa fa-magic"></i> User Interface</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar ends -->
+
+    <!-- Main bar -->
+    <div class="mainbar">
+
+        <!-- Page heading -->
+        <div class="page-head">
+            <!-- Page heading -->
+            <h2 class="pull-left"><i class="fa fa-file-o"></i> Forms</h2>
+
+
+
+            <!-- Breadcrumb -->
+            <div class="bread-crumb pull-right">
+                <a href="index.html"><i class="fa fa-home"></i> Home</a>
+                <!-- Divider -->
+                <span class="divider">/</span>
+                <a href="#" class="bread-current">Forms</a>
+            </div>
+
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Page heading ends -->
+
+
+
+        <!-- Matter -->
+
+        <div class="matter">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+                        <div class="widget wgreen">
+
+                            <div class="widget-head">
+                                <div class="pull-left">Forms</div>
+                                <div class="widget-icons pull-right">
+                                    <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                                    <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget-content">
+                                <div class="padd">
+
+                                    <br>
+                                    <!-- Form starts.  -->
+                                    <form class="form-horizontal" role="form">
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Input Box</label>
+                                            <div class="col-lg-5">
+                                                <input class="form-control" placeholder="Input Box" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Password</label>
+                                            <div class="col-lg-5">
+                                                <input class="form-control" placeholder="Password Box" type="password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Textarea</label>
+                                            <div class="col-lg-5">
+                                                <textarea class="form-control" rows="5" placeholder="Textarea"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Checkbox</label>
+                                            <div class="col-lg-5">
+                                                <label class="checkbox-inline">
+                                                    <input id="inlineCheckbox1" value="option1" type="checkbox"> 1
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input id="inlineCheckbox2" value="option2" type="checkbox"> 2
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input id="inlineCheckbox3" value="option3" type="checkbox"> 3
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Radio Box</label>
+                                            <div class="col-lg-5">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="optionsRadios" id="optionsRadios1" value="option1" checked="" type="radio">
+                                                        Option one
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="optionsRadios" id="optionsRadios2" value="option2" type="radio">
+                                                        Option two
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Select Box</label>
+                                            <div class="col-lg-2">
+                                                <select class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Select Box</label>
+                                            <div class="col-lg-2">
+                                                <select multiple="" class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">CLEditor</label>
+                                            <div class="col-lg-6">
+                                                <div style="width: auto; height: auto;" class="cleditorMain"><div style="height: 53px;" class="cleditorToolbar"><div style="width: 145px;" class="cleditorGroup"><div title="Bold" class="cleditorButton"></div><div style="background-position: -24px center;" title="Italic" class="cleditorButton"></div><div style="background-position: -48px center;" title="Underline" class="cleditorButton"></div><div style="background-position: -72px center;" title="Strikethrough" class="cleditorButton"></div><div style="background-position: -96px center;" title="Subscript" class="cleditorButton"></div><div style="background-position: -120px center;" title="Superscript" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 73px;" class="cleditorGroup"><div style="background-position: -144px center;" title="Font" class="cleditorButton"></div><div style="background-position: -168px center;" title="Font Size" class="cleditorButton"></div><div style="background-position: -192px center;" title="Style" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 73px;" class="cleditorGroup"><div style="background-position: -216px center;" title="Font Color" class="cleditorButton"></div><div style="background-position: -240px center;" title="Text Highlight Color" class="cleditorButton"></div><div style="background-position: -264px center;" title="Remove Formatting" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 49px;" class="cleditorGroup"><div style="background-position: -288px center;" title="Bullets" class="cleditorButton"></div><div style="background-position: -312px center;" title="Numbering" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 49px;" class="cleditorGroup"><div style="background-position: -336px center;" title="Outdent" class="cleditorButton"></div><div style="background-position: -360px center;" title="Indent" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 97px;" class="cleditorGroup"><div style="background-position: -384px center;" title="Align Text Left" class="cleditorButton"></div><div style="background-position: -408px center;" title="Center" class="cleditorButton"></div><div style="background-position: -432px center;" title="Align Text Right" class="cleditorButton"></div><div style="background-position: -456px center;" title="Justify" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 49px;" class="cleditorGroup"><div disabled="disabled" style="background-position: -480px center;" title="Undo" class="cleditorButton cleditorDisabled"></div><div disabled="disabled" style="background-position: -504px center;" title="Redo" class="cleditorButton cleditorDisabled"></div><div class="cleditorDivider"></div></div><div style="width: 97px;" class="cleditorGroup"><div style="background-position: -528px center;" title="Insert Horizontal Rule" class="cleditorButton"></div><div style="background-position: -552px center;" title="Insert Image" class="cleditorButton"></div><div style="background-position: -576px center;" title="Insert Hyperlink" class="cleditorButton"></div><div style="background-position: -600px center;" title="Remove Hyperlink" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 97px;" class="cleditorGroup"><div disabled="disabled" style="background-position: -624px center;" title="Cut" class="cleditorButton cleditorDisabled"></div><div disabled="disabled" style="background-position: -648px center;" title="Copy" class="cleditorButton cleditorDisabled"></div><div disabled="disabled" style="background-position: -672px center;" title="Paste" class="cleditorButton cleditorDisabled"></div><div style="background-position: -696px center;" title="Paste as Text" class="cleditorButton"></div><div class="cleditorDivider"></div></div><div style="width: 49px;" class="cleditorGroup"><div style="background-position: -720px center;" title="Print" class="cleditorButton"></div><div style="background-position: -744px center;" title="Show Source" class="cleditorButton"></div></div></div><textarea style="border: medium none; margin: 0px; padding: 0px; display: none; width: 510px;" class="cleditor" name="input"></textarea><iframe style="width: 510px;" src="javascript:true;" frameborder="0"></iframe></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-6">
+                                                <button type="button" class="btn btn-sm btn-default">Default</button>
+                                                <button type="button" class="btn btn-sm btn-primary">Primary</button>
+                                                <button type="button" class="btn btn-sm btn-success">Success</button>
+                                                <button type="button" class="btn btn-sm btn-info">Info</button>
+                                                <button type="button" class="btn btn-sm btn-warning">Warning</button>
+                                                <button type="button" class="btn btn-sm btn-danger">Danger</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="widget-foot">
+                                <!-- Footer goes here -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Matter ends -->
+
+    </div>
+
+    <!-- Mainbar ends -->
+    <div class="clearfix"></div>
+
+</div>
+<!-- Content ends -->
+
+<!-- Footer starts -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Copyright info -->
+                <p class="copy">Copyright © 2012 | <a href="#">Your Site</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Footer ends -->
+
+<!-- Scroll to top -->
+<span style="display: none;" class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+
+<!-- JS -->
+<script src="js/jquery.js"></script> <!-- jQuery -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap -->
+<script src="js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+<script src="js/moment.min.js"></script> <!-- Moment js for full calendar -->
+<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+<script src="js/jquery.rateit.min.js"></script> <!-- RateIt - Star rating -->
+<script src="js/jquery.prettyPhoto.js"></script> <!-- prettyPhoto -->
+<script src="js/jquery.slimscroll.min.js"></script> <!-- jQuery Slim Scroll -->
+<script src="js/jquery.dataTables.min.js"></script> <!-- Data tables -->
+
+<!-- jQuery Flot -->
+<script src="js/excanvas.min.js"></script>
+<script src="js/jquery.flot.js"></script>
+<script src="js/jquery.flot.resize.js"></script>
+<script src="js/jquery.flot.pie.js"></script>
+<script src="js/jquery.flot.stack.js"></script>
+
+<!-- jQuery Notification - Noty -->
+<script src="js/jquery.noty.js"></script> <!-- jQuery Notify -->
+<script src="js/themes/default.js"></script> <!-- jQuery Notify -->
+<script src="js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+<script src="js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+<script src="js/layouts/top.js"></script> <!-- jQuery Notify -->
+<!-- jQuery Notification ends -->
+
+<script src="js/sparklines.js"></script> <!-- Sparklines -->
+<script src="js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+<script src="js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+<script src="js/jquery.onoff.min.js"></script> <!-- Bootstrap Toggle -->
+<script src="js/filter.js"></script> <!-- Filter for support page -->
+<script src="js/custom.js"></script><div class="cleditorPopup cleditorList" style="display: none;"><div style="font-family: Arial;">Arial</div><div style="font-family: Arial Black;">Arial Black</div><div style="font-family: Comic Sans MS;">Comic Sans MS</div><div style="font-family: Courier New;">Courier New</div><div style="font-family: Narrow;">Narrow</div><div style="font-family: Garamond;">Garamond</div><div style="font-family: Georgia;">Georgia</div><div style="font-family: Impact;">Impact</div><div style="font-family: Sans Serif;">Sans Serif</div><div style="font-family: serif;">Serif</div><div style="font-family: Tahoma;">Tahoma</div><div style="font-family: Trebuchet MS;">Trebuchet MS</div><div style="font-family: Verdana;">Verdana</div></div><div class="cleditorPopup cleditorList" style="display: none;"><div><font size="1">1</font></div><div><font size="2">2</font></div><div><font size="3">3</font></div><div><font size="4">4</font></div><div><font size="5">5</font></div><div><font size="6">6</font></div><div><font size="7">7</font></div></div><div class="cleditorPopup cleditorList" style="display: none;"><div><p>Paragraph</p></div><div><h1>Header 1</h1></div><div><h2>Header 2</h2></div><div><h3>Header 3</h3></div><div><h4>Header 4</h4></div><div><h5>Header 5</h5></div><div><h6>Header 6</h6></div></div><div class="cleditorPopup cleditorColor" style="display: none;"><div style="background-color: rgb(255, 255, 255);"></div><div style="background-color: rgb(255, 204, 204);"></div><div style="background-color: rgb(255, 204, 153);"></div><div style="background-color: rgb(255, 255, 153);"></div><div style="background-color: rgb(255, 255, 204);"></div><div style="background-color: rgb(153, 255, 153);"></div><div style="background-color: rgb(153, 255, 255);"></div><div style="background-color: rgb(204, 255, 255);"></div><div style="background-color: rgb(204, 204, 255);"></div><div style="background-color: rgb(255, 204, 255);"></div><div style="background-color: rgb(204, 204, 204);"></div><div style="background-color: rgb(255, 102, 102);"></div><div style="background-color: rgb(255, 153, 102);"></div><div style="background-color: rgb(255, 255, 102);"></div><div style="background-color: rgb(255, 255, 51);"></div><div style="background-color: rgb(102, 255, 153);"></div><div style="background-color: rgb(51, 255, 255);"></div><div style="background-color: rgb(102, 255, 255);"></div><div style="background-color: rgb(153, 153, 255);"></div><div style="background-color: rgb(255, 153, 255);"></div><div style="background-color: rgb(187, 187, 187);"></div><div style="background-color: rgb(255, 0, 0);"></div><div style="background-color: rgb(255, 153, 0);"></div><div style="background-color: rgb(255, 204, 102);"></div><div style="background-color: rgb(255, 255, 0);"></div><div style="background-color: rgb(51, 255, 51);"></div><div style="background-color: rgb(102, 204, 204);"></div><div style="background-color: rgb(51, 204, 255);"></div><div style="background-color: rgb(102, 102, 204);"></div><div style="background-color: rgb(204, 102, 204);"></div><div style="background-color: rgb(153, 153, 153);"></div><div style="background-color: rgb(204, 0, 0);"></div><div style="background-color: rgb(255, 102, 0);"></div><div style="background-color: rgb(255, 204, 51);"></div><div style="background-color: rgb(255, 204, 0);"></div><div style="background-color: rgb(51, 204, 0);"></div><div style="background-color: rgb(0, 204, 204);"></div><div style="background-color: rgb(51, 102, 255);"></div><div style="background-color: rgb(102, 51, 255);"></div><div style="background-color: rgb(204, 51, 204);"></div><div style="background-color: rgb(102, 102, 102);"></div><div style="background-color: rgb(153, 0, 0);"></div><div style="background-color: rgb(204, 102, 0);"></div><div style="background-color: rgb(204, 153, 51);"></div><div style="background-color: rgb(153, 153, 0);"></div><div style="background-color: rgb(0, 153, 0);"></div><div style="background-color: rgb(51, 153, 153);"></div><div style="background-color: rgb(51, 51, 255);"></div><div style="background-color: rgb(102, 0, 204);"></div><div style="background-color: rgb(153, 51, 153);"></div><div style="background-color: rgb(51, 51, 51);"></div><div style="background-color: rgb(102, 0, 0);"></div><div style="background-color: rgb(153, 51, 0);"></div><div style="background-color: rgb(153, 102, 51);"></div><div style="background-color: rgb(102, 102, 0);"></div><div style="background-color: rgb(0, 102, 0);"></div><div style="background-color: rgb(51, 102, 102);"></div><div style="background-color: rgb(0, 0, 153);"></div><div style="background-color: rgb(51, 51, 153);"></div><div style="background-color: rgb(102, 51, 102);"></div><div style="background-color: rgb(0, 0, 0);"></div><div style="background-color: rgb(51, 0, 0);"></div><div style="background-color: rgb(102, 51, 0);"></div><div style="background-color: rgb(102, 51, 51);"></div><div style="background-color: rgb(51, 51, 0);"></div><div style="background-color: rgb(0, 51, 0);"></div><div style="background-color: rgb(0, 51, 51);"></div><div style="background-color: rgb(0, 0, 102);"></div><div style="background-color: rgb(51, 0, 153);"></div><div style="background-color: rgb(51, 0, 51);"></div></div><div class="cleditorPopup cleditorPrompt" style="display: none;"><label>Enter URL:<br><input value="http://" style="width:200px" type="text"></label><br><input value="Submit" type="button"></div><div class="cleditorPopup cleditorPrompt" style="display: none;"><label>Paste your content here:<br><textarea rows="3" style="width:200px"></textarea></label><br><input value="Submit" type="button"></div> <!-- Custom codes -->
+<script src="js/charts.js"></script> <!-- Charts & Graphs -->
+
+
+</body></html>

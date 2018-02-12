@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Title and other stuffs -->
+  <title>Login - MacAdmin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <!-- Stylesheets -->
+  <link href="../mac_bootstrap/macadmin/theme/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../mac_bootstrap/macadmin/theme/css/font-awesome.min.css">
+  <link href="../mac_bootstrap/macadmin/theme/css/style.css" rel="stylesheet">
+  
+  <script src="../mac_bootstrap/macadmin/theme/js/respond.min.js"></script>
+  <!--[if lt IE 9]>
+  <script src="../mac_bootstrap/macadmin/theme/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../mac_bootstrap/macadmin/theme/img/favicon/favicon.png">
+</head>
+
+<body>
+
+<!-- Form area -->
+<div class="admin-form">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Widget starts -->
+            <div class="widget worange">
+              <!-- Widget head -->
+              <div class="widget-head">
+                <i class="fa fa-lock"></i> Login 
+              </div>
+
+              <div class="widget-content">
+                <div class="padd">
+                  <!-- Login form -->
+                  <form class="form-horizontal" action="connexion.php" method="post">
+                    <!-- Email -->
+                    <div class="form-group">
+                      <label class="control-label col-lg-3" for="user">Identifiant</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Identifiant">
+                      </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group">
+                      <label class="control-label col-lg-3" for="password">Mot de passe</label>
+                      <div class="col-lg-9">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+                      </div>
+                    </div>
+                    <!-- Remember me checkbox and sign in button -->
+                    <div class="form-group">
+					<div class="col-lg-9 col-lg-offset-3">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Se souvenir de moi
+                        </label>
+						</div>
+					</div>
+					</div>
+                        <div class="col-lg-9 col-lg-offset-3">
+							<button type="submit" class="btn btn-info btn-sm">Sign in</button>
+							<button type="reset" class="btn btn-default btn-sm">Reset</button>
+						</div>
+                    <br />
+                  </form>
+				  
+				</div>
+                </div>
+              
+                <div class="widget-foot">
+                  Not Registred? <a href="../mac_bootstrap/macadmin/theme/#">Register here</a>
+                </div>
+            </div>  
+      </div>
+    </div>
+  </div> 
+</div>
+	
+		
+
+<!-- JS -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.js"></script>
+<script src="../mac_bootstrap/macadmin/theme/js/bootstrap.min.js"></script>
+</body>
+</html>

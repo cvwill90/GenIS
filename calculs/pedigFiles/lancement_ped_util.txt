@@ -1,0 +1,6 @@
+C:\wamp64\www\genis.cra\calculs\pedigFiles\req_mari.txt
+C:\wamp64\www\genis.cra\calculs\pedigFiles\ref_mari.txt
+C:\wamp64\www\genis.cra\calculs\pedigFiles\ped_mari.csv
+100
+4
+y

@@ -1,0 +1,118 @@
+**Changelog:**
+
+**Version 4.2:**
+
+- Updated bootstrap css and js files from 3.3.4 to 3.3.50.
+- Updated jquery from 1.11.2 to 1.11.3.
+- Updated HTML5Shiv from 3.7.2 to 3.7.3.
+- Minor style update (style.css).
+- Updated excanvas and flot chart to version 0.8.3.
+- Updated full calendar to version 2.3.2. Added moment.min.js file along with full calendar. (all html files)
+- Updated data-tables to version 1.10.7.
+- Updated jQuery noty to version 2.3.5.
+- Updated prettyPhoto to version 3.1.6.
+- Updated jQuery UI to 1.11.4.
+
+**Version 4.1.1:**
+
+- Sidebar navigation bug fix (style.css, custom.js)
+
+**Version 4.1:**
+
+- Updated Bootstrap to version 3.3.2.
+- Updated jQuery to version 1.11.2.
+- Updated Font Awesome CSS to version 4.3.0.
+- Updated Fonts Folder to version 4.3.0.
+- Updated HTML5Shiv to version 3.7.2.
+- Updated JQuery CLEditor Plugin to version 1.4.5.
+- Updated Data-Tables JQuery Plugin to version 1.9.4.
+- Updated Noty JQuery Plugin to version 2.3.4.
+- Updated ON-OFF JQuery Plugin to version 0.4.0.
+- Updated RateIt JQuery Plugin to version 1.0.22.
+- Updated JQuery UI Plugin to version 1.11.3.
+- Minor design updates.(style.css)
+- Added "table-responsive" class in all tables. (index.html, invoice.html, media.html, statement.html, tables.html, widgets1.html, widgets2.html)
+- Updated data table ID name and data table bug fix (style.css, dynamic-tables.html, custom.js).
+
+**Version 4.0:**
+
+- Renamed base.html file to 0-base.html.
+- Updated - Bootstrao (js & css), jQuery, Font awesome icon. 
+- Included Minified version of Bootstrap JS, CSS and Font awesome CSS. (All HTML files).
+- Renamed - font folder to fonts.
+- Renamed - style folder to css. (updated in All html files).
+- Added respond.min.js file. (all html files).
+- Renamed jquery ui js file and updated in all html files.
+- Updated font awesome icon class name. (all html files and custom.js)
+- Updated plugins - Date & Time picker, Full calendar, jQuery UI, RateIt, jQuery Flot, jQuery Noty.
+- Removed Bootstrap switch plugin and added onoff plugin.
+- To Top button bug fix. (custom.js)
+- Lots of design updates (style.css, widget.css and custom.js)
+- Form page heading update (form.html)
+- Search box update in error-page.html.
+- Removed bootstrap-responsive.css file from rester, login and error-page.
+- Chat widget send box update. (index.html & widgets1.html)
+- Quick post widget form layout update (index.html & widgets2.html).
+- Quick settings widget layout update (widgets3.html).
+- Removed profile.html file.
+- Posts page layout update. 
+- Invoice page layout update.
+- Removed "Other stuff" section from post.html & layout update in post.html page.
+- Form page layout update (forms.html)
+- Porgress bar speed update (custom.js)
+- Support page buttons update. (support.html)
+- Removed unused notification section from UI.html page. 
+- Updated bootstrap date timer picker code. (ui.html)
+- Updated toggle switch code in ui.html.
+- Toggle switch update. (style.css, custom.js)
+- Removed tabbable section from ui.html.
+- Sidebar navigation update. (custom.js, style.css & All HTML files)
+- Added data-tables plugin and created new page dynamic tables. (style.css, custom.js)
+- Data tables plugin files included in all html pages and data table image folder added to "img" folder.
+
+**Version 3.4:**
+
+- Removed unlinked reference for uniform plugin.
+
+**Version 3.3:**
+
+- Date and Time picker update. (ui.html & style.css).
+
+**Version 3.2:**
+
+- Navbar brand color. (style.css)
+- Bootstrap toggle plugin updated to Bootstrap switch https://github.com/nostalgiaz/bootstrap-switch. (new js file, new css file, style.css, ui.html, custom.js)
+- Mainbar width update for large screens. (style.css)
+
+**Version 3.1:**
+
+- Sparkline tooltip fix.
+- Navbar Label Update. (all html files and style.css file)
+- Header nav pills update. (style.css file)
+
+**Version 3.0:**
+
+- Updated to Bootstrap 3.0.
+- Removed Uniform plugin.
+
+**Version 2.3:**
+
+- Widget title icons fix. (All html files with widget)
+
+**Version 2.2:**
+
+- Sidebar navigation in Tablets fix.
+
+**Version 2.0:**
+
+- Added New Widget (widgets.css). [*]
+- Add new pages (style.css). [*]
+- Added prettyPhoto lightbox. Included Plugin file in all HTML files. [*]
+- jQuery Wizard Plugin added in all HTML files to create Wizards. [*]
+- Sidebar dropdown menu fix. (custom.js) [*]
+- Progress bar design updated (style.css).
+- Widget design updated (style.css).
+
+**Version 1.0:**
+
+- Initial Release.
