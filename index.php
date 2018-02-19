@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 
-<?php require 'libraries/html_head1.php';?>
+<?php 
+require 'libraries/constants.php';
+require_once HEAD_START;
+?>
 
     <!--Optional sources start -->
 
@@ -16,15 +19,16 @@
 session_start();
 $_SESSION['current_page']='home';
 
-require 'libraries/html_bodystart1.php';
-require 'libraries/fonctions.php';
+require BODY_START;
 
 /*
  * Starting connection to database
  */
 
 $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
+
 ?>
+    
 <div class="row">
   <div class="col-md-12">
 
@@ -43,12 +47,6 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
           <?php
 
-          /*$sql = 'SELECT prenom,nom FROM contact WHERE id_contact='. $user;
-
-          $query = pdo_sql_query($con,$sql);
-
-          $result = pdo_query_fetch($query,['prenom','nom']);*/
-
           echo "Bonjour <b>$user</b>, bienvenue sur l'espace de gestion génétique GenIS du Conservatoire des Races d'Aquitaine !";
 
           ?>
@@ -63,7 +61,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
   </div>
 </div>
 
-<?php require 'libraries/html_bodyend1.php';?>
+<?php require BODY_END;?>
 
 <!--Optional scripts start -->
 

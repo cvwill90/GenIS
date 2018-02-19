@@ -4,7 +4,10 @@
 
   <title>GenIS</title>
 
-  <?php require '../libraries/html_head1.php';?>
+  <?php 
+  require_once '../libraries/constants.php';
+  require_once HEAD_START;
+  ?>
 
   <!--Optional sources start -->
 
@@ -19,9 +22,7 @@ session_start();
 
 $_SESSION['current_page']='mort';
 
-require '../libraries/html_bodystart1.php';
-
-include '../libraries/fonctions.php';
+require BODY_START;
 
 /*
  * Starting connection to database
@@ -117,7 +118,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
   </div>
 </div>
 
-<?php require '../libraries/html_bodyend1.php';?>
+<?php require BODY_END;?>
 
 <!--Optional scripts start -->
 

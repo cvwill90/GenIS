@@ -4,7 +4,10 @@
 
   <title>GenIS</title>
 
-  <?php require '../libraries/html_head1.php';?>
+<?php 
+require_once '../libraries/constants.php';
+require_once HEAD_START;
+?>
 
   <!--Optional sources start -->
 <script type="text/javascript" src="js/visu_anim.js"></script>
@@ -21,13 +24,11 @@
 session_start();
 $_SESSION['current_page']='visu_animal';
 
-require '../libraries/html_bodystart1.php';
+require BODY_START;
 
 /*
  * Starting connection to database
  */
-
-require_once '../libraries/fonctions.php';
 
 $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
@@ -338,7 +339,7 @@ autoload_classes();
   </div>
 </div>
 
-<?php require '../libraries/html_bodyend1.php';?>
+<?php require BODY_END;?>
 
 <!--Optional scripts start -->
 

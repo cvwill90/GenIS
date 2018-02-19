@@ -7,7 +7,8 @@
  */
 session_start();
 
-require '../libraries/fonctions.php';
+require_once '../libraries/constants.php';
+require_once PROJECT_ROOT . '/libraries/fonctions.php';
 
 $pw = $_POST['password'];
 $user = $_POST['user'];

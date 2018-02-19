@@ -91,9 +91,9 @@ for ($i=0; $i<$nb_arrays; $i++) {
     $list_anc_tab[$i][17] = "";
 }
 
-$fd = fopen(PROJECT_ROOT ."libraries\\pedigModules\\dict_ped_util.json", "r");
+$fd = fopen(PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json", "r");
 
-$animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries\\pedigModules\\dict_ped_util.json")));
+$animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries/pedigModules/dict_ped_util.json")));
 
     /*foreach ($tab2 as $t) {
      echo $t[0] .' '. $t[1] .'<br>';					// juste pour avoir un apercu
