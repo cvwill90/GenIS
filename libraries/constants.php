@@ -19,7 +19,7 @@ define('BODY_END', PROJECT_ROOT . '/libraries/html_bodyend1.php');
 define('IMPORT_RACES', '[0,5,6,2,19,20,21,9,10]');
 define('IMPORT_RACES_LABEL', '["- Choisissez une race -","Vache Bordelaise","Vache Marine","Poney Landais","Vache Béarnaise","Vache Maraîchine","Baudet du Poitou","Mouton Landais","Sasi Ardia"]');
 
-define('SESSION_MAX_LIFETIME', 1200);
+define('SESSION_MAX_LIFETIME', 1800);
 
 /*
  * Paramètres du conservatoire à rentrer ci-dessous
