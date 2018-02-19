@@ -10,30 +10,25 @@
 
 <!-- Require needed php pages -->
 <?php
-/*if (is_dir('libraries')){
-    require 'libraries/constants.php';
+require_once 'fonctions.php';
+
+/////// Session
+
+// Check if session expired
+invalidate_session_if_expired();
+
+if (isset($_SESSION['compte'])){
+    //$user = $_SESSION['contact'];
+    $user = $_SESSION['utilisateur'];
+    $account = $_SESSION['compte'];
+    $priv = $_SESSION['privilege'];
 } else {
-    require '../libraries/constants.php';
-}*/
+    $location = get_web_location('/connexion/login.html');
+    header('Location: ' . $location);
+    exit();
+}
 
 ?>
-
-<!-- Session -->
-<div>
-    <?php
-    
-    if (isset($_SESSION['compte'])){
-        //$user = $_SESSION['contact'];
-        $user = $_SESSION['utilisateur'];
-        $account = $_SESSION['compte'];
-        $priv = $_SESSION['privilege'];
-    } else {
-        header('Location: http://genis.cra/connexion/login.html');
-        exit();
-    }
-
-    ?>
-</div>
 
 <!-- Navbar starts -->
 <div class="navbar navbar-fixed-top bs-docs-nav" role="banner">

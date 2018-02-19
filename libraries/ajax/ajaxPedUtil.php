@@ -46,7 +46,7 @@ if ($error_pos){
 }
 
 function create_pedig_dict_files($sortie, $race){
-    $pedFile = fopen(PROJECT_ROOT . "calculs\\pedigFiles\\". $sortie,"r");
+    $pedFile = fopen(PROJECT_ROOT . "/calculs/pedigFiles/". $sortie,"r");
     //$pedFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\ped_animaux.csv","r");
 
     $no_ident_table = array();
