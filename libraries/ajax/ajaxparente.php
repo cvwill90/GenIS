@@ -229,8 +229,8 @@ function add_parente_to_self($table){
 }
 
 function get_animal_dict(){
-    $fd = fopen(PROJECT_ROOT ."libraries\\pedigModules\\dict_ped_util.json", "r");
-    $animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries\\pedigModules\\dict_ped_util.json")));
+    $fd = fopen(PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json", "r");
+    $animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries/pedigModules/dict_ped_util.json")));
     fclose($fd);
     return $animal_dict;
 }
