@@ -8,7 +8,7 @@ environments:
     production:
         adapter: mysql
         host: localhost
-        name: production_db
+        name: genis
         user: root
         pass: ''
         port: 3306
@@ -17,7 +17,7 @@ environments:
     development:
         adapter: mysql
         host: localhost
-        name: genis
+        name: genis_dev
         user: root
         pass: ''
         port: 3306
@@ -26,7 +26,7 @@ environments:
     testing:
         adapter: mysql
         host: localhost
-        name: testing_db
+        name: genis_test
         user: root
         pass: ''
         port: 3306
