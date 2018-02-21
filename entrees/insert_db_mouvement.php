@@ -60,7 +60,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           $con -> beginTransaction();
 
 
-          $sql1 = "UPDATE bdd_genis.periode p
+          $sql1 = "UPDATE ". DB_NAME .".periode p
                    SET p.date_sortie = '$date'
                    WHERE p.id_type = 2
                       AND p.date_sortie IS NULL
