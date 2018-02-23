@@ -31,13 +31,13 @@ class LivresGenealogiquesAddTable extends AbstractMigration
         // Add new table: livre_genealogique
         $livre_genealogique = $this->table('livre_genealogique', ['id'=>false]);
         $livre_genealogique->addColumn('id_livre', 'integer', ['limit'=>1])
-                ->addColumn('lib_livre', 'char', ['limit'=>10])
+                ->addColumn('lib_livre', 'char', ['limit'=>15])
                 ->addIndex(['id_livre'], ['unique'=>true])
                 ->create();
         
         // Add new column to table: animal
         $animal = $this->table('animal');
-        $animal->addColumn('id_livre', 'integer', ['limit'=>1, 'after'=>'date_naiss'])
+        $animal->addColumn('id_livre', 'integer', ['limit'=>1, 'null'=>true, 'after'=>'date_naiss'])
                 ->addIndex(['id_livre'])
                 ->update();
         
