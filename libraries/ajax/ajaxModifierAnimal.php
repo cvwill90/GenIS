@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
         $death_date = "alive";
     }
     
-    $sql_update_animal = "UPDATE ". DB_NAME .".animal SET nom_animal='{$data['animalName']}', sexe={$data['animalSex']}, no_identification='{$data['animalID']}', date_naiss='{$data['birthDate']}', conservatoire={$data['conserv']}, id_pere={$data['fatherId']}, id_mere={$data['motherId']} WHERE id_animal={$data['IDanimalChoisi']}";
+    $sql_update_animal = "UPDATE ". DB_NAME .".animal SET nom_animal='{$data['animalName']}', sexe={$data['animalSex']}, no_identification='{$data['animalID']}', id_livre={$data['livre_gene']}, date_naiss='{$data['birthDate']}', conservatoire={$data['conserv']}, id_pere={$data['fatherId']}, id_mere={$data['motherId']} WHERE id_animal={$data['IDanimalChoisi']}";
     $animal_history = new AnimalHistory($data['IDanimalChoisi']);
     $sql_birth_update_result = $animal_history->change_animal_birth_info($data['birthDate'], $farmId);
     $sql_death_update_result = $animal_history->change_animal_death_date($death_date);

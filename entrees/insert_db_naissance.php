@@ -60,6 +60,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           $farmID = $_GET['farmId'];
           $famille = $_GET['famille'];
           $lignee = $_GET['lignee'];
+          $livre_gene = $_GET['livre_gene'];
 
           if ($_GET['fatherId']!='') {
             $pere = $_GET['fatherId'];
@@ -80,8 +81,8 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
             //	$sql0 = "SELECT ligne_elev.id_elevage FROM ligne_elev INNER JOIN eleveur ON ligne_elev.id_eleveur = eleveur.id_eleveur WHERE eleveur.id_joomla = '487'";
 
             // 2.Insertion de l'animal né dans la table animal
-            $sql1 = "INSERT INTO animal (id_animal, nom_animal, sexe, no_identification, date_naiss, reproducteur, fecondation, coeff_consang, conservatoire, valide_animal, code_race, id_pere, id_mere)
-                                        VALUES (NULL,'{$nom}',{$sexe},'{$id}','{$date}',0,0,0,{$cra},0,{$race},{$pere},{$mere})";
+            $sql1 = "INSERT INTO animal (id_animal, nom_animal, sexe, no_identification, date_naiss, id_livre, reproducteur, fecondation, coeff_consang, conservatoire, valide_animal, code_race, id_pere, id_mere)
+                                        VALUES (NULL,'{$nom}',{$sexe},'{$id}','{$date}',{$livre_gene},0,0,0,{$cra},0,{$race},{$pere},{$mere})";
 
             // On exécute les requetes les unes après les autres
 
