@@ -21,7 +21,11 @@ function autoload_classes(){
  * @return string
  */
 function get_web_location($folder) {
-    $protocol = $_SERVER['HTTPS'] == '' ? 'http://' : 'https://';
+    if (isset($_SERVER['HTTPS'])) {
+        $protocol = $_SERVER['HTTPS'] == '' ? 'http://' : 'https://';
+    } else {
+        $protocol = 'http://';
+    }
     $location = $protocol . $_SERVER['HTTP_HOST'] . $folder;
     return $location;
 }
