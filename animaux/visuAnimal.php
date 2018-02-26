@@ -219,7 +219,8 @@ autoload_classes();
                             'coeff_consang' => 'Consanguinité',
                             'lignee' => 'Lignée',
                             'nom_pere' => 'Nom du père',
-                            'no_identification_pere' => 'No du père'
+                            'no_identification_pere' => 'No du père',
+                            'livre_gene' => 'Livre généalogique'
                         );
                         $table1_rows = '';
                         foreach ($table1_entries as $te_k => $te_v){
