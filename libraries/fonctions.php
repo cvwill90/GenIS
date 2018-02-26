@@ -308,3 +308,8 @@ function prepare_error_log($folder_name, $filename){
     ftruncate($fd, 0);
     fclose($fd);
 }
+
+function replace_sql_null_values($column, $value) {
+    $default_label = (is_null($value) && array_key_exists($column, DEFAULT_LABELS)) ? DEFAULT_LABELS[$column] : $value;
+    return $default_label;
+}
