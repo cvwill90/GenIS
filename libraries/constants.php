@@ -9,7 +9,7 @@
 define('USER_DB', 'root');
 define('HOST_DB', '127.0.0.1');
 define('PW_DB', '');
-define('DB_NAME', 'genis');
+define('DB_NAME', 'genis_dev');
 
 define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('HEAD_START', PROJECT_ROOT . '/libraries/html_head1.php');
@@ -21,8 +21,12 @@ define('IMPORT_RACES_LABEL', '["- Choisissez une race -","Vache Bordelaise","Vac
 
 define('SESSION_MAX_LIFETIME', 1800);
 
+define('DEFAULT_LABELS', array(
+    'livre_gene' => 'Non renseigné'
+));
+
 /*
- * Paramètres du conservatoire à rentrer ci-dessous
+ * Paramètres du conservatoire du fichier de configuration
  */
 
 $ini = parse_ini_file(PROJECT_ROOT .'/config/conf.ini', TRUE);
