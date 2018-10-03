@@ -356,6 +356,7 @@ function build_input_error_message($input_name, $errors) {
         $error_message .= " " . $e;
     }
     return $error_message;
+}
 
 function replace_sql_null_values($column, $value) {
     $default_label = (is_null($value) && array_key_exists($column, DEFAULT_LABELS)) ? DEFAULT_LABELS[$column] : $value;
