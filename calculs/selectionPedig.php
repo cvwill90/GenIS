@@ -125,9 +125,9 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
                       </td>
                       <td>
                         <div class="input-append input-group dtpicker datetimepicker1" style="padding-left: 15px;">
-                          <input id="minBirthDate" name="minBirthDate" data-format="yyyy-MM-dd" placeholder="AAA-MM-JJ" class="form-control" type="text">
+                            <input id="minBirthDate" name="minBirthDate" data-format="yyyy-MM-dd" placeholder="AAA-MM-JJ" class="form-control" type="text">
                           <span class="input-group-addon add-on">
-                              <i class="fa fa-calendar" data-time-icon="fa fa-times" data-date-icon="fa fa-calendar"></i>
+                            <i class="fa fa-calendar" data-time-icon="fa fa-times" data-date-icon="fa fa-calendar"></i>
                           </span>
                         </div>
                       </td>
@@ -136,9 +136,9 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
                       </td>
                       <td>
                         <div class="input-append input-group dtpicker datetimepicker1" style="padding-left: 15px;">
-                          <input id="maxBirthDate" name="maxBirthDate" data-format="yyyy-MM-dd" placeholder="AAA-MM-JJ" class="form-control" type="text">
+                            <input id="maxBirthDate" name="maxBirthDate" data-format="yyyy-MM-dd" placeholder="AAA-MM-JJ" class="form-control" type="text">
                           <span class="input-group-addon add-on">
-                              <i class="fa fa-calendar" data-time-icon="fa fa-times" data-date-icon="fa fa-calendar"></i>
+                            <i class="fa fa-calendar" data-time-icon="fa fa-times" data-date-icon="fa fa-calendar"></i>
                           </span>
                         </div>
                       </td>
@@ -156,7 +156,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
                         <tr>
                           <td style="width: 25%;">
                             <label>
-                              <input name="repro" id="repro1" value="1" type="radio">
+                                <input name="repro" id="repro1" value="1" type="radio" checked="true">
                               Oui
                             </label>
                           </td>

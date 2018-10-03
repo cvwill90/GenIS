@@ -34,7 +34,7 @@ $output = `C:\wamp64\www\genis.cra\libraries\pedigModules\ped_util.exe < C:\wamp
 $error_needle = "Message d erreur";
 $error_pos = strpos($output,$error_needle);
 
-create_pedig_dict_files($f_sortie, $race);
+store_animal_dictionary($f_sortie, $race);
 
 if ($error_pos){
     $error_message = mb_convert_encoding(substr($output,$error_pos+36),'ISO-8859-1');
@@ -45,34 +45,21 @@ if ($error_pos){
     echo '{"status":"ok"}';
 }
 
-function create_pedig_dict_files($sortie, $race){
+function store_animal_dictionary($sortie, $race){
     $pedFile = fopen(PROJECT_ROOT . "calculs\\pedigFiles\\". $sortie,"r");
-    //$pedFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\ped_animaux.csv","r");
 
-    $no_ident_table = array();
+    $no_ident_table = array(0 => ['0000000000', 'Parent Inconnu']);
 
-    while (($data = fgets($pedFile, 115)) !== false) {
-        $data =str_replace(" ",";",$data);				//Remplacement de tous les caract�res " " par des ";"
-
-        for ($i=12; $i>1; $i--) {						//On commence � $i=12 car le nombre d'espaces cons�cutifs peut aller jusqu'� 10 dans ped_...csv
-            $str = ";";									//    Je mets 12 pour etre sur
-            $j=0;
-            while ($j<$i) {
-                    $str = $str.";";
-                    $j++;									// Comme un un "\t" est fait de plusieurs espaces, on obtient des s�ries
-            }											// 		s�ries de ";" inutiles => on r�duit leur nombre
-            $data = str_replace($str,";",$data);
-        }
-        $data = substr($data,1,100);					// Il faut enleveer le ";" au d�but de la cha�ne
-        $array = explode(";",$data);					// on segmente la chaine de caract�res
-        $pedig_id = strval($array[0]);
-        $no_ident_table[$pedig_id] = array();						// on met l'id attribu� par pedig et le num�ro d'identification
-        $no_ident_table[$pedig_id][0] = $array[7];                                             // dans un m�me tableau
+    while (($data = fgets($pedFile, 115)) !== false) {	
+        $test = remove_spaces($data);
+        $clean_data = preg_replace('{(\s)\1+}', '$1', $test);
+        $array = explode(' ', $clean_data);
+        $pedig_id = $array[0];
+        $no_ident_table[$pedig_id] = array();
+        $no_ident_table[$pedig_id][0] = $array[7];
         $nom_animal = get_name_animal($array[7], $race);
         $no_ident_table[$pedig_id][1] = $nom_animal;
     }
-    
-    $no_ident_table['0'] = ['0000000000', 'Inconnu'];
     
     $fd = fopen('C:\wamp64\www\genis.cra\libraries\pedigModules\dict_ped_util.json', 'w+');
     fwrite($fd, json_encode($no_ident_table));

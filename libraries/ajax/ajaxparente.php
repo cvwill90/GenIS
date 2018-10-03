@@ -10,45 +10,94 @@ ini_set('error_log', ERROR_LOG_FOLDER .'\\'. $error_log_folder .'\\'. $error_log
 
 session_start();
 
-$race = $_GET['key1'];
-$ref = $_GET['key2'];
-$entree = $_GET['key3'];
+$input_validation_result = validate_input($_GET, ['NOT_NULL'], 'GET_INPUT');
 
-
-/*
- * ECRITURE DU FICHIER DE LANCEMENT DE PARENTE.EXE: lancement_parente.txt
- */
-
-$fp = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_parente.txt", "w+");
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $entree ."\r\n");
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ref ."\r\n");
-fclose($fp);
-
-/*
- * Vérification de l'existence du dossier de destination;
- */
-$destination_folder = PEDIG_DUMP_FOLDER . "\\parente\\";
-$destination_file = $destination_folder ."parente_". $race .".csv";
-
-if (!is_dir($destination_folder)){
-    mkdir($destination_folder, 0777, true);
+try {
+    input_validation_contains_errors($input_validation_result);
+} catch (Exception $ex) {
+    print_r($ex->getMessage());
+    exit();
 }
 
-/*
- * EXECUTION DE PARENTE.EXE
- */
+$race = $_GET['key1'];
+$reference_file = $_GET['key2'];
+$entry_file = $_GET['key3'];
+
+$launch_file = "lancement_parente.txt";
+
+create_parente_launch_file($launch_file, $entry_file, $reference_file);
+
+// Verify existance of destination folder
+$destination_folder = PEDIG_DUMP_FOLDER . "\\parente\\";
+
+if (!is_dir($destination_folder)) mkdir($destination_folder, 0777, true);
+
+// Execute parente.exe
 $parente_result = array();
 $output=exec('C:\wamp64\www\genis.cra\libraries\pedigModules\parente.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_parente.txt', $parente_result);
 
-/*
- * ECRITURE DE LA MATRICE DE SORTIE DANS UN FICHIER .CSV
- */
-    
-$resultParente = fopen($destination_file, "w+");
-fputs($resultParente, mb_convert_encoding("Matrice de parenté\r\n", 'UTF-16LE', 'UTF-8'));
-fclose($resultParente);
+// How many groups of individuals are there (Hardcoded as 1 group at the moment)
+$nb_groups = 1;
 
-extract_data($parente_result, $destination_file);
+/*
+ *  Extract data from parente output command lines
+ */
+$parente_output_csv_array = array(); // This array will contain all lines of the csv file
+
+// Add title of csv file
+$title = "Coefficients de parenté";
+
+// Extract context information from the output command lines 
+$extracted_context_info = extract_context_info($parente_result);
+
+// Write context information into output csv file
+$parenteCSVFile = fopen($destination_folder ."parente_". $race .".csv", "w+");
+$nb_semicols = '';
+for ($i=0; $i<=$GLOBALS['nb_individuals_studied']; $i++) {
+    $nb_semicols .= ';';
+}
+
+put_lines_in_output_file($parenteCSVFile, ['Coefficients de parenté'.$nb_semicols]);
+go_to_line_in_output_file($parenteCSVFile, 2);
+put_lines_in_output_file($parenteCSVFile, $extracted_context_info);
+fclose($parenteCSVFile);
+
+// Extract average and distribution statistics from the output command lines and write into output csv file
+for ($i=1; $i <= $nb_groups; $i++) {
+    $group_start_position = find_parente_group_position_in_parente_output($parente_result, $i);
+    
+    $extracted_mean_statistics = extract_mean_statistics_from_parente_output($parente_result, $i, $group_start_position);
+    $extracted_coefficient_distribution = extract_coefficients_distribution($parente_result, $i, $group_start_position);
+    $extracted_inbreeding_information = extract_inbreeding_information($parente_result, $i, $group_start_position);
+    $extracted_individual_relationships = extract_individual_relationships($parente_result, $i, $group_start_position);
+    
+    $parenteCSVFile = fopen($destination_folder ."parente_". $race .".csv", "a");
+    
+    go_to_line_in_output_file($parenteCSVFile, 2);
+    put_lines_in_output_file($parenteCSVFile, ['GROUPE ' . strval($nb_groups)]);
+    
+    go_to_line_in_output_file($parenteCSVFile, 2);
+    put_lines_in_output_file($parenteCSVFile, ['Statistiques de parenté']);
+    go_to_line_in_output_file($parenteCSVFile, 1);
+    put_lines_in_output_file($parenteCSVFile, $extracted_mean_statistics);
+    
+    go_to_line_in_output_file($parenteCSVFile, 2);
+    put_lines_in_output_file($parenteCSVFile, ['Distribution des coefficients']);
+    go_to_line_in_output_file($parenteCSVFile, 1);
+    put_lines_in_output_file($parenteCSVFile, $extracted_coefficient_distribution);
+    
+    go_to_line_in_output_file($parenteCSVFile, 2);
+    put_lines_in_output_file($parenteCSVFile, ['Consanguinité']);
+    go_to_line_in_output_file($parenteCSVFile, 1);
+    put_lines_in_output_file($parenteCSVFile, $extracted_inbreeding_information);
+    
+    go_to_line_in_output_file($parenteCSVFile, 2);
+    put_lines_in_output_file($parenteCSVFile, ['Matrice de parenté']);
+    go_to_line_in_output_file($parenteCSVFile, 1);
+    put_lines_in_output_file($parenteCSVFile, $extracted_individual_relationships);
+
+    fclose($parenteCSVFile);
+}
 
 if (!error_get_last()) {
     echo '{"status": "ok"}';
@@ -56,176 +105,226 @@ if (!error_get_last()) {
     echo '{"status": "wrong", "errorMessage": "Erreur lors de l\'exploitation des résultats de parente.exe."}';
 }
 
+
 /*
  * FUNCTIONS
  */
 
-function extract_data($array_parente, $destination_file){
-    $matrix_pos = array_search('Complete matrix', $array_parente);
-    $table_pos = array_search('Within group 1', $array_parente);
-    
-    if ($matrix_pos) {
-        $results = array_slice($array_parente, $matrix_pos+1);
-        $matrix = process_parente_matrix($results);
-    } elseif ($table_pos) {
-        $results = array_slice($array_parente, $table_pos+1);
-        $matrix = process_parente_table($results);
-    } else {
-        throw new Exception('Parente.exe n\'a pas généré de sortie exploitable');
-    }
-    write_matrix_to_file($matrix, $destination_file);
+// Create parente launch file
+function create_parente_launch_file($launch_file, $entry_file, $reference_file) {
+    $fp = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $launch_file, "w+");
+    fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $entry_file ."\r\n");
+    fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $reference_file ."\r\n");
+    fclose($fp);
 }
 
-function process_parente_matrix($results) {
-    try {
-        $tableau_parente = replace_pedig_numbers_matrix($results);
-        $matrix = build_matrix($tableau_parente);
-        return $matrix;
-    } catch (Exception $ex) {
-        throw new Exception($ex->getMessage());
+function extract_context_info($parente_exported_commandtool_lines) {
+    $context_lines = array();
+    $i = 0;
+    $exit_loop = false;
+    while (!$exit_loop) {
+        $line = $parente_exported_commandtool_lines[$i];
+        $exploded_line = explode(':', $line);
+        $str = remove_spaces($exploded_line[0], ' ');
+        switch ($str) {
+            case 'Number of individuals':
+                array_push($context_lines, 'Nombre d\'individus' .';'. remove_spaces($exploded_line[1]));
+                break;
+            case 'Number of individual studied':
+                $nb_individuals_studied = remove_spaces($exploded_line[1]);
+                array_push($context_lines, 'Nombre d\'individus étudiés' .';'. $nb_individuals_studied);
+                $GLOBALS['nb_individuals_studied'] = intval($nb_individuals_studied);
+                break;
+            case 'Maximum matrix size':
+                array_push($context_lines, 'Taille maximum de la matrice' .';'. remove_spaces($exploded_line[1]));
+                $exit_loop = true;
+                break;
+        }
+        $i++;
     }
-    
+    return $context_lines;
 }
 
-function process_parente_table($results){
-    try {
-        $tableau_parente = replace_pedig_numbers_table($results);
-        $matrix = build_matrix($tableau_parente);
-        return $matrix;
-    } catch (Exception $ex) {
-        throw new Exception($ex->getMessage());
+
+function extract_mean_statistics_from_parente_output($parente_exported_commandtool_lines, $group_number, $group_start_position) {
+    $mean_statistics_lines = array();
+    $continue_extracting_mean_statistics = true;
+    $j = $group_start_position+1;
+    while ($continue_extracting_mean_statistics) {
+        $line = $parente_exported_commandtool_lines[$j];
+        $exploded_line = explode(':', $line);
+        $str = remove_spaces($exploded_line[0], ' ');
+        $label = '';
+        switch ($str):
+            case 'Individual studied': $label = "Nombre d'individus dans le groupe $group_number"; break;
+            case 'Number of coefficients': $label = "Nombre de coefficients"; break;
+            case 'Mean coefficient': $label = "Coefficient moyen"; break;
+            case 'Standard deviation of coefficients':
+                $label = "Ecart-type des coefficients : ";
+                $continue_extracting_mean_statistics = false;
+                break;
+        endswitch;
+        if ($label != '') array_push($mean_statistics_lines, $label . ";" . remove_spaces($exploded_line[1], ' '));
+        if (!$continue_extracting_mean_statistics) break;
+        $j++;
     }
+    return $mean_statistics_lines;
 }
 
-function replace_pedig_numbers_table($results){
-    $tableau_parente = array();
-    $list_animals = array();
-    $id_pedig = '';
-    for ($i=0; $i<count($results); $i++) {
-        if ($results[$i]){
-            $parente_anim = array_slice(explode(';', preg_replace('/\s+/', ';', $results[$i])), 1);
-            if ($id_pedig != $parente_anim[0]) {
-                $line_self_parente = array($parente_anim[0], $parente_anim[0], '0.500');
-                $replaced_id_line = replace_id_line($line_self_parente);
-                array_push($tableau_parente, $replaced_id_line);
-                array_push($list_animals, array($replaced_id_line[0], $replaced_id_line[1]));
-            }
-            $line = replace_id_line($parente_anim);
-            $tableau_parente[count($tableau_parente)] = $line;
-            $id_pedig = $parente_anim[0];
+function extract_coefficients_distribution($parente_exported_commandtool_lines, $group_nb, $group_start_position) {
+    $coefficient_distribution_lines = array();
+    $coefficient_distribution_block_position = find_specific_block_in_individuals_group($group_start_position, $parente_exported_commandtool_lines, 'Distribution of coefficients');
+    $j = $coefficient_distribution_block_position + 1;
+    $continue_extracting_distribution_coefficients = true;
+    while ($continue_extracting_distribution_coefficients) {
+        $line = $parente_exported_commandtool_lines[$j];
+        if ($line == '') {
+            $continue_extracting_distribution_coefficients = false;
         } else {
-            break;
+            $exploded_line = explode(':', $line);
+            $str = preg_replace(['/\s/'], '', remove_spaces($exploded_line[0])) .';'. remove_spaces($exploded_line[1], ' ');
+            array_push($coefficient_distribution_lines, $str);
+            $j++;
         }
     }
-    $last_parente_line = $tableau_parente[count($tableau_parente)-1];
-    array_push($tableau_parente, array($last_parente_line[2], $last_parente_line[3], $last_parente_line[2], $last_parente_line[3], '0.500'));
-    array_push($list_animals, array($last_parente_line[2], $last_parente_line[3]));
-    return array(array_reverse($list_animals), array_reverse($tableau_parente));
+    return $coefficient_distribution_lines;
 }
 
-function replace_pedig_numbers_matrix($results){
-    $list_animals_pedig = array_slice(explode(';', preg_replace('/\s+/', ';', $results[0])), 1);
-    $parente_tableau = array();
-    for ($i=1; $i<count($results); $i++) {
-        if ($results[$i]) {
-            $parente_anim = array_slice(explode(';', preg_replace('/\s+/', ';', $results[$i])), 1);
-            $id_animal1 = $parente_anim[0];
-            $j = 1;
-            for ($j=1; $j<count($parente_anim); $j++) {
-                $id_animal2 = $list_animals_pedig[$j-1];
-                $parente = $parente_anim[$j];
-                array_push($parente_tableau, array($id_animal1, $id_animal2, $parente));
-            }
+/**
+ * This function reads parente file inside of the specified group and extracts
+ * global inbreeding result
+ * @param type $parente_exported_commandtool_lines : The generated content command window by parente.exe
+ * @param type $group_nb : Defines from what individuals group the algorithm should extract result data
+ */
+function extract_inbreeding_information($parente_exported_commandtool_lines, $group_nb, $group_start_position) {
+    $inbreeding_result_lines = array();
+    $inbreeding_block_position = find_specific_block_in_individuals_group($group_start_position, $parente_exported_commandtool_lines, 'Inbreeding');
+    $j = $inbreeding_block_position + 2;
+    while (true) {
+        $line = $parente_exported_commandtool_lines[$j];
+        if ($line == '') {
+            break;
         } else {
-            break;
+            $inbreeding_line = format_inbreeding_line($line);
+            array_push($inbreeding_result_lines, $inbreeding_line);
+            $j++;
         }
     }
-    $parente_tableau_replaced = array();
-    $list_animals = array();
-    $id_pedig = '';
-    for ($k=0; $k<count($parente_tableau); $k++){
-        $line = replace_id_line($parente_tableau[$k]);
-        $parente_tableau_replaced[$k] = $line;
-        if ($id_pedig != $parente_tableau[$k][0]){
-            array_push($list_animals, array($line[0], $line[1]));
-        }
-        $id_pedig = $parente_tableau[$k][0];
-    }
-    return array($list_animals, $parente_tableau_replaced);
+    return $inbreeding_result_lines;
 }
 
-function replace_id_line($line_array){
+function format_inbreeding_line($inbreeding_line) {
+    $cleaned_inbreeding_line = preg_replace('{(\s)\1+}', '$1', remove_spaces($inbreeding_line));
+    $exploded_line = explode(' ', $cleaned_inbreeding_line);
+    $animals_dict = get_animal_dict();
+    $translated_line = array(
+        $exploded_line[0],
+        strval($animals_dict[intval($exploded_line[1])][1]),
+        $exploded_line[2]
+            );
+    $formatted_inbreeding_line = implode(';', $translated_line);
+    return $formatted_inbreeding_line;
+}
+
+function extract_individual_relationships($parente_exported_commandtool_lines, $group_nb) {
+    $individual_relationship_lines = array();
+    $j = find_position_of_group_inbreeding_individual_coefficients($parente_exported_commandtool_lines, $group_nb) + 1;
+    
+    while (true) {
+        if ($parente_exported_commandtool_lines[$j] == ''){
+            break;
+        } else {
+            $clean_line = preg_replace('{(\s)\1+}', '$1', remove_spaces($parente_exported_commandtool_lines[$j]));
+            $exploded_line = explode(' ', $clean_line);
+            array_push($individual_relationship_lines, $exploded_line);
+        }
+        $j++;
+    }
+    $parente_relationships_mapping = build_relationship_mapping($individual_relationship_lines);
+    $parente_matrix = generate_relationship_matrix($parente_relationships_mapping);
+    $foramtted_matrix = format_matrix_to_csv_output($parente_matrix);
+    return $foramtted_matrix;
+}
+
+function find_parente_group_position_in_parente_output ($parente_exported_commandtool_lines, $group_number) {
+    $group_position_in_array = array_search("Group $group_number", $parente_exported_commandtool_lines);
+    return $group_position_in_array;
+}
+
+function find_specific_block_in_individuals_group($group_start_position, $parente_exported_commandtool_lines, $block_title) {
+    $j = $group_start_position;
+    while (true) {
+        $block_current = remove_spaces($parente_exported_commandtool_lines[$j]);
+        if ($block_current == $block_title) break;
+        $j++; 
+    }
+    return $j;
+}
+
+function find_position_of_group_inbreeding_individual_coefficients($parente_exported_commandtool_lines, $group_number) {
+    $group_individual_coefficients_positon = array_search("Within group ". strval($group_number), $parente_exported_commandtool_lines);
+    return $group_individual_coefficients_positon;
+}
+
+function build_relationship_mapping ($individual_relationship_lines) {
+    $mapping = array();
+    for ($i = 0; $i < count($individual_relationship_lines); $i++) {
+        $irl = $individual_relationship_lines;
+        $mapping[$irl[$i][0]][$irl[$i][1]] = $irl[$i][2];
+    }
+    return $mapping;
+}
+
+function generate_relationship_matrix($individual_relationships_mapping) {
+    $irm = $individual_relationships_mapping;
+    $final_matrix = array();
+    for ($i = 1; $i <= $GLOBALS['nb_individuals_studied']; $i++) {
+        for ($j = 1; $j <= $GLOBALS['nb_individuals_studied']; $j++) {
+            if ($i == $j) {
+                $final_matrix[$i][$j] = "0.500";
+            } elseif (isset($irm[strval($i)][strval($j)])) {
+                $final_matrix[$i][$j] = $irm[strval($i)][strval($j)];
+            } elseif ($i < $j) {
+                $final_matrix[strval($i)][strval($j)] = "0.0";
+            } else {
+                $final_matrix[strval($i)][strval($j)] = "";
+            }
+        }
+    }
+    $transposed_matrix = transpose($final_matrix);
+    return $transposed_matrix;
+}
+
+function format_matrix_to_csv_output($parente_matrix) {
+    $header_animal_names = ';Nom';
+    $header_animal_id_numbers = 'Nom;N° SIRE';
+    $formatted_matrix = array();
     $animal_dict = get_animal_dict();
-    $animal1 = $animal_dict->$line_array[0];
-    $animal2 = $animal_dict->$line_array[1];
-    $no_id1 = $animal1[0];
-    $nom1 = $animal1[1];
-    $no_id2 = $animal2[0];
-    $nom2 = $animal2[1];
-    $parente = $line_array[2];
-    $line_replaced_id = array($no_id1, $nom1, $no_id2, $nom2, $parente);
-    return $line_replaced_id;
-}
-
-function build_matrix($tableau) {
-    $matrix_header = build_matrix_header($tableau[0]);
-    $matrix_body = build_matrix_body($tableau[1]);
-    return array($matrix_header, $matrix_body);
-}
-
-function build_matrix_header($list_animals){
-    $header_line_1 = 'Nom;';
-    $header_line_2 = ';No SIRE';
-    for ($i=0; $i<count($list_animals); $i++) {
-        $header_line_1 = implode(';', array($header_line_1, $list_animals[$i][1]));
-        $header_line_2 = implode(';', array($header_line_2, $list_animals[$i][0]));
+    for ($i = 1; $i <= count($parente_matrix); $i++) {
+        $header_animal_names .= ';'. $animal_dict[$i][1];
+        $header_animal_id_numbers .= ';'. $animal_dict[$i][0];
+        $matrix_row = $animal_dict[$i][1];
+        $matrix_row .= ';' . $animal_dict[$i][0];
+        $matrix_row .= ';' .  implode(';', $parente_matrix[$i-1]);
+        array_push($formatted_matrix, $matrix_row);
     }
-    return array($header_line_1, $header_line_2);
+    $final_matrix = array_merge([$header_animal_names, $header_animal_id_numbers], $formatted_matrix);
+    return $final_matrix;
 }
 
-function build_matrix_body($table){
-    $animal_precedent = '';
-    $matrix = array();
-    $line = '';
-    for ($i=0; $i<count($table); $i++) {
-        if ($animal_precedent != $table[$i][0]){
-            array_push($matrix, $line .';0.500');
-            $line = $table[$i][1] .';'. $table[$i][0];
-            $animal_precedent = $table[$i][0];
-        } else {
-            $line .= ';'. $table[$i-1][4];
-        }
+
+
+function put_lines_in_output_file($output_resource, $array) {
+    for ($i = 0; $i < count($array); $i++) {
+        $line = $array[$i];
+        fputs($output_resource, mb_convert_encoding($line . ";\r\n", 'UTF-16LE', 'UTF-8'));
     }
-    array_push($matrix, $line .';0.500');
-    return array_slice($matrix, 1);
 }
 
-function write_matrix_to_file($matrix, $destination_file) {
-    $matrix_header_1 = $matrix[0][0];
-    $matrix_header_2 = $matrix[0][1];
-    $matrix_body = $matrix[1];
-
-    $resultParente = fopen($destination_file, "w");
-    fputs($resultParente, mb_convert_encoding($matrix_header_1, 'UTF-16LE', 'UTF-8') ."\r\n");
-    fputs($resultParente, mb_convert_encoding($matrix_header_2, 'UTF-16LE', 'UTF-8') ."\r\n");
-
-    for ($i=0; $i<count($matrix_body); $i++){
-        fputs($resultParente, mb_convert_encoding($matrix_body[$i], 'UTF-16LE', 'UTF-8') ."\r\n");
+function go_to_line_in_output_file($output_resource, $nb_lines) {
+    for ($i = 0; $i < $nb_lines; $i++) {
+        fputs($output_resource, mb_convert_encoding(";\r\n", 'UTF-16LE', 'UTF-8'));
     }
-    fclose($resultParente);
-}
-
-function add_parente_to_self($table){
-    $modified_table = array();
-    $last_pedig_id = '';
-    for ($i=0; $i<count($table); $i++) {
-        echo $table[$i];
-        if ($last_pedig_id != $table[$i][0]) {
-            array_push($modified_table, array($table[$i][0], $table[$i][0], '0.500'));
-        }
-        array_push($modified_table, $table[$i]);
-    }
-    return $modified_table;
 }
 
 function get_animal_dict(){

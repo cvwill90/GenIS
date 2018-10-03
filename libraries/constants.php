@@ -36,3 +36,21 @@ define('PEDIG_DUMP_FOLDER', $ini['paths']['pedig_dump_folder']);
 
 // Dossier de destination des messages d'erreur
 define('ERROR_LOG_FOLDER', $ini['paths']['error_log_folder']);
+
+
+/*
+ * Exceptions
+ */
+
+define("INPUT_EXCEPTIONS", array(
+        0 => "Array cannot contain an empty value.",
+        1 => "Has to be an INTEGER.",
+        2 => "Must be greater than 0."
+    )
+);
+
+
+define("GLOBAL_EXCEPTIONS", array(
+        0 => "Les données transmises sont erronées."
+    )
+);

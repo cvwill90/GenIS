@@ -284,3 +284,52 @@ function prepare_error_log($folder_name, $filename){
     ftruncate($fd, 0);
     fclose($fd);
 }
+
+function remove_spaces($string) {
+    return rtrim(ltrim($string, ' '), ' ');
+}
+
+function transpose($array) {
+    return array_map(null, ...$array);
+}
+
+/*
+ * Input validation rules
+ */
+
+function input_validation_contains_errors($input_validation) {
+    if ($input_validation) throw new Exception(GLOBAL_EXCEPTIONS[0]);
+}
+
+function validate_input($input, $filter, $input_name) {
+    $errors = array();
+    foreach ($filter as $f) {
+        switch ($f):
+            case "NOT_NULL": $validation_result = check_input_array_for_empty_values($input); break;
+            case "INTEGER": $validation_result = check_if_input_is_integer($input); break;
+            case "GT_ZERO": $validation_result = check_if_input_is_greater_than_zero($input); break;
+        endswitch;
+        if ($validation_result) array_push($errors, $validation_result);
+    }
+    return count($errors)?build_input_error_message($input_name, $errors):NULL;
+}
+
+function check_input_array_for_empty_values($input) {
+    return !in_array(NULL, $input)?false:INPUT_EXCEPTIONS[0];
+}
+
+function check_if_input_is_integer($input) {
+    return is_integer($input)?false:INPUT_EXCEPTIONS[1];
+}
+
+function check_if_input_is_greater_than_zero($input) {
+    return $input>0?false:INPUT_EXCEPTIONS[2];
+}
+
+function build_input_error_message($input_name, $errors) {
+    $error_message = "Error with passed parameter '". $input_name . "':";
+    foreach ($errors as $e) {
+        $error_message .= " " . $e;
+    }
+    return $error_message;
+}
