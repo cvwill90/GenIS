@@ -91,6 +91,8 @@ function triggerAutocompleteAnimal(event) {
             
             if (ui.item.date_mort !== '') {
                 animalDead.prop("checked", true);
+                animalDead.prop("disabled", false);
+                deathDate.prop("disabled", false);
             } else {
                 animalDead.prop("checked", false);
                 animalDead.prop("disabled", true);

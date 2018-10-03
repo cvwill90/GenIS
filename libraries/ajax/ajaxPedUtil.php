@@ -46,7 +46,7 @@ if ($error_pos){
 }
 
 function store_animal_dictionary($sortie, $race){
-    $pedFile = fopen(PROJECT_ROOT . "calculs\\pedigFiles\\". $sortie,"r");
+    $pedFile = fopen(PROJECT_ROOT . "\\calculs\\pedigFiles\\". $sortie,"r");
 
     $no_ident_table = array(0 => ['0000000000', 'Parent Inconnu']);
 
@@ -61,7 +61,7 @@ function store_animal_dictionary($sortie, $race){
         $no_ident_table[$pedig_id][1] = $nom_animal;
     }
     
-    $fd = fopen('C:\wamp64\www\genis.cra\libraries\pedigModules\dict_ped_util.json', 'w+');
+    $fd = fopen(PROJECT_ROOT .'\libraries\pedigModules\dict_ped_util.json', 'w+');
     fwrite($fd, json_encode($no_ident_table));
     fclose($fd);
 }

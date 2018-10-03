@@ -217,6 +217,7 @@ function format_inbreeding_line($inbreeding_line) {
     $cleaned_inbreeding_line = preg_replace('{(\s)\1+}', '$1', remove_spaces($inbreeding_line));
     $exploded_line = explode(' ', $cleaned_inbreeding_line);
     $animals_dict = get_animal_dict();
+    print_r($animals_dict);
     $translated_line = array(
         $exploded_line[0],
         strval($animals_dict[intval($exploded_line[1])][1]),
@@ -328,8 +329,9 @@ function go_to_line_in_output_file($output_resource, $nb_lines) {
 }
 
 function get_animal_dict(){
-    $fd = fopen(PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json", "r");
-    $animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries/pedigModules/dict_ped_util.json")));
+    $path = PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json";
+    $fd = fopen($path, "r");
+    $animal_dict = json_decode(fread($fd, filesize($path)));
     fclose($fd);
     return $animal_dict;
 }

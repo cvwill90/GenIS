@@ -68,7 +68,7 @@ while ($record = $result->fetch()) {
     
     foreach ($record as $rk => $rv){
         if (in_array(strval($rk), $story)) {
-            $rs[$i]['story'][$j][$rk] = $rk;
+            $rs[$i]['story'][$j][$rk] = $rv;
         }
     }
     $previous_animal = $record['id_animal'];
