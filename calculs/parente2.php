@@ -125,7 +125,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
       dataType: "json",
       success: function(data){
         if(data.statusMsg=='wrong'){
-         window.location.replace('postCalculs.php?race='+ race +'&errorMsg=' + data.errorMessage);
+          window.location.replace('postCalculs.php?race='+ race +'&errorMsg=' + data.errorMessage);
         } else {
           window.location.replace('postCalculs.php?race='+ race);
         }
