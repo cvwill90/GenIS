@@ -87,7 +87,7 @@ if (isset($_GET["races"])){
         $con -> beginTransaction();
 
         if ($id_commune == 1){
-            $sqlCommune = "INSERT INTO bdd_genis.commune (id_commune,lib_commune,cp_commune,no_dpt)
+            $sqlCommune = "INSERT INTO ". DB_NAME .".commune (id_commune,lib_commune,cp_commune,no_dpt)
                             VALUES (NULL,'{$townName}','{$cp}','{$dep}')";
 
             $queryCommune = $con->query($sqlCommune);
@@ -96,13 +96,13 @@ if (isset($_GET["races"])){
         }
         
         if($elev == 0){ //Si le contact n'a pas d'élevage
-            $sqlContact ="INSERT INTO bdd_genis.contact (id_contact, nom, prenom, adresse, adresse2, tel, tel2, mail, id_commune, notes)
+            $sqlContact ="INSERT INTO ". DB_NAME .".contact (id_contact, nom, prenom, adresse, adresse2, tel, tel2, mail, id_commune, notes)
 			              VALUES (NULL,'$lastName','$firstName','$addressPersoA','$addressPersoB','$tel1','$tel2','$mail','$id_commune','$notes')";
 
             $query = $con -> query($sqlContact);
         } else {    //Si le contact a un élevage
             if ($idDbElevage == ''){    //Si l'élevage est inexistant --> on en crée un nouveau
-                $sqlElevage = "INSERT INTO bdd_genis.elevage (id_elevage,nom_elevage,no_elevage)
+                $sqlElevage = "INSERT INTO ". DB_NAME .".elevage (id_elevage,nom_elevage,no_elevage)
                             VALUES (NULL,'$nomElevage','$idElevage')";
 
                 $queryElevage = $con->query($sqlElevage);
@@ -140,7 +140,7 @@ if (isset($_GET["races"])){
             }
             
             //On ajoute enfin le contact
-            $sqlContact = "INSERT INTO bdd_genis.contact 
+            $sqlContact = "INSERT INTO ". DB_NAME .".contact 
                         (id_contact, nom, prenom, adresse, adresse2, tel, tel2, mail, id_commune, notes, id_elevage)
                         VALUES (NULL,'$lastName','$firstName','$addressPersoA','$addressPersoB','$tel1','$tel2','$mail','$id_commune','$notes','$idDbElevage')";
 

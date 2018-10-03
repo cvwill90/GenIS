@@ -7,12 +7,36 @@
  * Time: 16:16
  */
 
-require 'constants.php';
+require_once 'constants.php';
 
 function autoload_classes(){
     spl_autoload_register(function ($class_name){
-        include PROJECT_ROOT . 'libraries\\classes\\' . $class_name . '.php';
+        include PROJECT_ROOT . '/libraries/classes/' . $class_name . '.php';
     });
+}
+
+/**
+ * Get the URL of the provided resource (php or html file)
+ * @param type $folder: E.g. '/path/to/resource.php
+ * @return string
+ */
+function get_web_location($folder) {
+    if (isset($_SERVER['HTTPS'])) {
+        $protocol = $_SERVER['HTTPS'] == '' ? 'http://' : 'https://';
+    } else {
+        $protocol = 'http://';
+    }
+    $location = $protocol . $_SERVER['HTTP_HOST'] . $folder;
+    return $location;
+}
+
+function invalidate_session_if_expired() {
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSION_MAX_LIFETIME)) {
+        // last request was more than 30 minutes ago
+        session_unset();     // unset $_SESSION variable for the run-time
+        session_destroy();   // destroy session data in storage
+    }
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 }
 
 function get_all_especes($con){
@@ -332,4 +356,8 @@ function build_input_error_message($input_name, $errors) {
         $error_message .= " " . $e;
     }
     return $error_message;
+
+function replace_sql_null_values($column, $value) {
+    $default_label = (is_null($value) && array_key_exists($column, DEFAULT_LABELS)) ? DEFAULT_LABELS[$column] : $value;
+    return $default_label;
 }

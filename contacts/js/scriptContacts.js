@@ -158,7 +158,6 @@ function autocompleteContact(event){
             $('#tel2').val(ui.item.tel2);
             $('#notes').val(ui.item.notes);
             $('#idVille').val(ui.item.id_commune);
-            alert('hi')
             var racesNumber = ui.item.races.length, i=0;
             console.log(ui.item.races)
             while (i < racesNumber){

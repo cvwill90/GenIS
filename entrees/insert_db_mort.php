@@ -4,7 +4,10 @@
 
   <title>GenIS</title>
 
-  <?php require '../libraries/html_head1.php';?>
+  <?php 
+  require_once '../libraries/constants.php';
+  require_once HEAD_START;
+  ?>
 
   <!--Optional sources start -->
 
@@ -19,9 +22,7 @@ session_start();
 
 $_SESSION['current_page']='mort';
 
-require '../libraries/html_bodystart1.php';
-
-include '../libraries/fonctions.php';
+require BODY_START;
 
 /*
  * Starting connection to database
@@ -60,7 +61,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
 
             //La première requete permet de mettre à jour la période dans un élevage pour lui mettre une date de fin
-            $sql1 = "UPDATE bdd_genis.periode p
+            $sql1 = "UPDATE ". DB_NAME .".periode p
                      SET p.date_sortie = '$date'
                      WHERE p.id_type = 2
                        AND p.date_sortie IS NULL
@@ -69,7 +70,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
             $sql2 = "INSERT INTO periode(date_entree, date_sortie, valide_periode, id_animal, id_elevage, id_type)
 					VALUES(NULL, '$date',1,'$id','$farmID',1)";
 
-            $sql3 = "UPDATE bdd_genis.periode p
+            $sql3 = "UPDATE ". DB_NAME .".periode p
                      SET p.date_sortie = '$date'
                      WHERE p.id_type = 4
                        AND p.date_sortie IS NULL
@@ -117,7 +118,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
   </div>
 </div>
 
-<?php require '../libraries/html_bodyend1.php';?>
+<?php require BODY_END;?>
 
 <!--Optional scripts start -->
 

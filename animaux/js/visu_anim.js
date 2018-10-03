@@ -18,7 +18,8 @@ var interest_info = {
         'no_identification_pere': 'N° d\'identitication père',
         'famille': 'Famille',
         'nom_mere': 'Nom de la mère',
-        'no_identification_mere': 'N° d\'identification mère'
+        'no_identification_mere': 'N° d\'identification mère',
+        'livre_gene': 'Livre généalogique'
     }
     
     var interest_story = {

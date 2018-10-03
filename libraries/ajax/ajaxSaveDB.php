@@ -15,9 +15,9 @@ if (!is_dir($targetfolder)){
     mkdir($targetfolder, 0777, true);
 }
 
-$filename = date('His') . '_sauvegarde.sql';
+$filename = date('jmy_His') . '_sauvegarde.sql';
 
-$cmd = MYSQLDUMP_PATH ." --user=root --host=localhost bdd_genis > \"". $targetfolder . "\\". $filename ."\"";
+$cmd = MYSQLDUMP_PATH ." --user=root --host=localhost ". DB_NAME ." > \"". $targetfolder . "\\". $filename ."\"";
 
 exec($cmd, $output, $return_var);
 

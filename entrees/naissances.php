@@ -4,7 +4,10 @@
 
   <title>GenIS</title>
 
-  <?php require '../libraries/html_head1.php';?>
+  <?php 
+  require_once '../libraries/constants.php';
+  require_once HEAD_START;
+  ?>
 
   <!--Optional sources start -->
   <script type="text/javascript" src="js/script_naissances.js"></script>
@@ -19,8 +22,7 @@ session_start();
 
 $_SESSION['current_page']='naiss';
 
-require '../libraries/html_bodystart1.php';
-require '../libraries/fonctions.php';
+require BODY_START;
 
 /*
  * Starting connection to database
@@ -140,6 +142,17 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
               </div>
             </div>
             <div class="form-group">
+                <label class="col-lg-2 control-label" for="livre_gene">Livre généalogique</label>
+                <div class="col-lg-2">
+                    <select id="livre_gene" name="livre_gene" class="form-control">
+                        <option value="NULL" selected>Non applicable</option>
+                        <option value="1">Livre principal</option>
+                        <option value="2">Livre annexe</option>
+                        <option value="3">Hors-livre</option>
+                  </select>
+                </div>
+            </div>
+            <div class="form-group">
               <label class="col-lg-2 control-label" for="birthDate">Date de naissance</label>
               <div id="datetimepicker1" class="input-append input-group dtpicker datetimepicker1" style="padding-left: 15px;">
                 <input id="birthDate" name="birthDate" data-format="yyyy-MM-dd" placeholder="AAA-MM-JJ" class="form-control" type="text" required>
@@ -196,7 +209,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
   </div>
 </div>
 
-<?php require '../libraries/html_bodyend1.php';?>
+<?php require BODY_END;?>
 
 <!--Optional scripts start -->
 <script type="text/javascript">

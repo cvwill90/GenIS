@@ -90,7 +90,7 @@ function getFarmSQL($con, $data) {
  */
 
 function createNewFarm($data) {
-    $sqlNewFarm = "INSERT INTO bdd_genis.elevage (id_elevage,nom_elevage,no_elevage) VALUES (NULL, '{$data['nomElevage']}', '{$data['idElevage']}');";   
+    $sqlNewFarm = "INSERT INTO ". DB_NAME .".elevage (id_elevage,nom_elevage,no_elevage) VALUES (NULL, '{$data['nomElevage']}', '{$data['idElevage']}');";   
     return $sqlNewFarm;
 }
 
@@ -175,6 +175,6 @@ function getTownSQL($data) {
  */
 
 function getContactSQL($data) {
-    $sqlContact = "UPDATE bdd_genis.contact SET nom='{$data['nom']}', prenom='{$data['prenom']}', adresse='{$data['adresse']}', adresse2='{$data['adresseCompl']}', tel='{$data['tel1']}', tel2='{$data['tel2']}', mail='{$data['mail']}', notes='{$data['notes']}' WHERE id_contact={$data['idDbContact']};";
+    $sqlContact = "UPDATE ". DB_NAME .".contact SET nom='{$data['nom']}', prenom='{$data['prenom']}', adresse='{$data['adresse']}', adresse2='{$data['adresseCompl']}', tel='{$data['tel1']}', tel2='{$data['tel2']}', mail='{$data['mail']}', notes='{$data['notes']}' WHERE id_contact={$data['idDbContact']};";
     return $sqlContact;
 }
