@@ -44,6 +44,15 @@ $nb_groups = 1;
  */
 $parente_output_csv_array = array(); // This array will contain all lines of the csv file
 
+// Read parente file and build parente reference array
+$ref_parente_array = array();
+$parente = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $reference_file, 'r');
+while ($line = fgets($parente)) {
+    $clean_line = preg_replace(['/\t/'], ' ', remove_spaces($line));
+    array_push($ref_parente_array, explode(' ', $clean_line)[0]);
+}
+$GLOBALS['ref_animals_parente'] = $ref_parente_array;
+
 // Add title of csv file
 $title = "Coefficients de parenté";
 
@@ -217,7 +226,6 @@ function format_inbreeding_line($inbreeding_line) {
     $cleaned_inbreeding_line = preg_replace('{(\s)\1+}', '$1', remove_spaces($inbreeding_line));
     $exploded_line = explode(' ', $cleaned_inbreeding_line);
     $animals_dict = get_animal_dict();
-    print_r($animals_dict);
     $translated_line = array(
         $exploded_line[0],
         strval($animals_dict[intval($exploded_line[1])][1]),
@@ -243,8 +251,8 @@ function extract_individual_relationships($parente_exported_commandtool_lines, $
     }
     $parente_relationships_mapping = build_relationship_mapping($individual_relationship_lines);
     $parente_matrix = generate_relationship_matrix($parente_relationships_mapping);
-    $foramtted_matrix = format_matrix_to_csv_output($parente_matrix);
-    return $foramtted_matrix;
+    $formatted_matrix = format_matrix_to_csv_output($parente_matrix);
+    return $formatted_matrix;
 }
 
 function find_parente_group_position_in_parente_output ($parente_exported_commandtool_lines, $group_number) {
@@ -278,22 +286,23 @@ function build_relationship_mapping ($individual_relationship_lines) {
 
 function generate_relationship_matrix($individual_relationships_mapping) {
     $irm = $individual_relationships_mapping;
-    $final_matrix = array();
-    for ($i = 1; $i <= $GLOBALS['nb_individuals_studied']; $i++) {
-        for ($j = 1; $j <= $GLOBALS['nb_individuals_studied']; $j++) {
-            if ($i == $j) {
-                $final_matrix[$i][$j] = "0.500";
-            } elseif (isset($irm[strval($i)][strval($j)])) {
-                $final_matrix[$i][$j] = $irm[strval($i)][strval($j)];
-            } elseif ($i < $j) {
-                $final_matrix[strval($i)][strval($j)] = "0.0";
+    $matrix = array();
+    for ($i = 0; $i < count($GLOBALS['ref_parente_array']); $i++) {
+        $animal_id_row = intval($GLOBALS['ref_parente_array'][$i]);
+        for ($j = 0; $j < count($GLOBALS['ref_parente_array']); $j++) {
+            $animal_id_col = intval($GLOBALS['ref_parente_array'][$j]);
+            if ($animal_id_row == $animal_id_col) {
+                $matrix[$i][$j] = "0.250";
+            } elseif (isset($irm[$animal_id_row][$animal_id_col])) {
+                $matrix[$i][$j] = $irm[$animal_id_row][$animal_id_col];
             } else {
-                $final_matrix[strval($i)][strval($j)] = "";
+                $matrix[$i][$j] = "";
             }
         }
     }
-    $transposed_matrix = transpose($final_matrix);
-    return $transposed_matrix;
+    $transposed_matrix = transpose($matrix);
+    $final_matrix = sum_equi_dimensional_array($matrix, $transposed_matrix);
+    return $final_matrix;
 }
 
 function format_matrix_to_csv_output($parente_matrix) {
@@ -301,12 +310,13 @@ function format_matrix_to_csv_output($parente_matrix) {
     $header_animal_id_numbers = 'Nom;N° SIRE';
     $formatted_matrix = array();
     $animal_dict = get_animal_dict();
-    for ($i = 1; $i <= count($parente_matrix); $i++) {
-        $header_animal_names .= ';'. $animal_dict[$i][1];
-        $header_animal_id_numbers .= ';'. $animal_dict[$i][0];
-        $matrix_row = $animal_dict[$i][1];
-        $matrix_row .= ';' . $animal_dict[$i][0];
-        $matrix_row .= ';' .  implode(';', $parente_matrix[$i-1]);
+    for ($i = 0; $i < count($parente_matrix); $i++) {
+        $animal_id = intval($GLOBALS['ref_parente_array'][$i]);
+        $header_animal_names .= ';'. $animal_dict[$animal_id][1];
+        $header_animal_id_numbers .= ';'. $animal_dict[$animal_id][0];
+        $matrix_row = $animal_dict[$animal_id][1];
+        $matrix_row .= ';' . $animal_dict[$animal_id][0];
+        $matrix_row .= ';' .  implode(';', $parente_matrix[$i]);
         array_push($formatted_matrix, $matrix_row);
     }
     $final_matrix = array_merge([$header_animal_names, $header_animal_id_numbers], $formatted_matrix);
