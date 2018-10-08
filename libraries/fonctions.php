@@ -362,3 +362,13 @@ function replace_sql_null_values($column, $value) {
     $default_label = (is_null($value) && array_key_exists($column, DEFAULT_LABELS)) ? DEFAULT_LABELS[$column] : $value;
     return $default_label;
 }
+
+function sum_equi_dimensional_array($array1, $array2) {
+    $array_sum = array();
+    for ($i=0; $i<count($array1); $i++) {
+        for ($j=0; $j<count($array2[$i]); $j++) {
+            $array_sum[$i][$j] = $array1[$i][$j] + $array2[$i][$j];
+        }
+    }
+    return $array_sum;
+}
