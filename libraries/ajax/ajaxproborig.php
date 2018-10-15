@@ -1,6 +1,6 @@
 <?php
 
-include '../constants.php';
+include '../fonctions.php';
 
 /*
  * Récupération des paramètres
@@ -41,7 +41,8 @@ if (!is_dir($destination)){
 /*
  * Exécution de prob_orig
  */
-$output = shell_exec('C:\\wamp64\\www\\genis.cra\\libraries\\pedigModules\\prob_orig.exe < C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_prob_orig.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
+$test = array();
+$output = exec('C:\\wamp64\\www\\genis.cra\\libraries\\pedigModules\\prob_orig.exe < C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_prob_orig.txt', $test); // lancement de ped_util � partir du fichier .txt cr�� au dessus
 
 /*
  * Dans le cas de Prob_orig.exe, on travaille à partir du fichier retourné
@@ -93,7 +94,7 @@ for ($i=0; $i<$nb_arrays; $i++) {
 
 $fd = fopen(PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json", "r");
 
-$animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."libraries/pedigModules/dict_ped_util.json")));
+$animal_dict = json_decode(fread($fd, filesize(PROJECT_ROOT ."\\libraries\\pedigModules\\dict_ped_util.json")));
 
     /*foreach ($tab2 as $t) {
      echo $t[0] .' '. $t[1] .'<br>';					// juste pour avoir un apercu
@@ -103,18 +104,20 @@ fclose($fd);
 
 foreach ($list_anc_tab as $key => &$row) {
     $pedig_id_animal = strval($row[0]);
-    $db_info_animal = $animal_dict->$pedig_id_animal;
+    $db_info_animal = $animal_dict[$pedig_id_animal];
     $row[2] = $db_info_animal[0];
     $row[3] = $db_info_animal[1];
     $pedig_id_pere = strval($row[6]);
-    $db_info_pere = $animal_dict->$pedig_id_pere;
+    $db_info_pere = $animal_dict[$pedig_id_pere];
     $row[14] = $db_info_pere[0];
     $row[15] = $db_info_pere[1];
     $pedig_id_mere = strval($row[7]);
-    $db_info_mere = $animal_dict->$pedig_id_mere;
+    $db_info_mere = $animal_dict[$pedig_id_mere];
     $row[16] = $db_info_mere[0];
     $row[17] = $db_info_mere[1];
 }
+
+unset($row);
 
 /*
  * Ecriture du contenu de la console dans un fichier
@@ -124,14 +127,15 @@ $result = fopen($destination . $sortie_list,"w+");
 fputs($result, mb_convert_encoding(";;;;;Contributions;;Pere;;Mere;;;Nb effectif d'ancêtres\r\n", 'UTF-16LE', 'UTF-8'));
 fputs($result, mb_convert_encoding("Nom;Numéro d'identification;Sexe;Année de Naissance;Totale;Marginale;Cumulée;No d'identification;Nom;No d'identification;Nom;Nb de descendants;Mini;Maxi\r\n", 'UTF-16LE', 'UTF-8'));
 
-foreach ($list_anc_tab as $row) {
+for ($i = 0; $i < count($list_anc_tab); $i++) {
+    $row = $list_anc_tab[$i];
     $line = array($row[3], $row[2], $row[4], $row[5], $row[9], $row[10], $row[11], $row[14], $row[15], $row[16], $row[17], $row[8], $row[12], $row[13]);
     fputs($result, mb_convert_encoding(implode(";", $line), 'UTF-16LE', 'UTF-8'));
-    fputs($result,"\r\n");
 }
+
 fclose($result);
 
-replace_contribution_id_numbers($destination, $sortie_contrib,$animal_dict);
+replace_contribution_id_numbers($destination, $sortie_contrib, $animal_dict);
 
 echo '{"status": "ok"}';
 
@@ -141,8 +145,8 @@ function replace_contribution_id_numbers($destination, $filename, $dict_correspo
     $fr_ressource = fopen($filepath, 'r');
     $contributions = [];
     while ($line = fgets($fr_ressource)){
-        $contribution_line = array_slice(explode(';', preg_replace('/\s+/', ';', $line)), 1);
-        $animal_info = $dict_correspondance->$contribution_line[0];
+        $contribution_line = explode(';', preg_replace('/\s+/', ';', remove_spaces($line)));
+        $animal_info = $dict_correspondance[$contribution_line[0]];
         $no_sire = $animal_info[0];
         $name = $animal_info[1];
         $final_contribution_line = [$name, $no_sire, $contribution_line[1], $contribution_line[2]];
