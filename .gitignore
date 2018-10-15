@@ -7,3 +7,4 @@ composer.phar
 phinx
 calculs/pedigFiles/*
 libraries/pedigModules/dict_ped_util.json
+libraries/ajax/list_ancestors
