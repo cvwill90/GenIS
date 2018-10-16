@@ -240,7 +240,7 @@ function modifAnimal(){
     var formContent = $('#formModif').serialize();
     if ($('#fatherId').val() !== '' && $('#motherId').val() !== '' && $('#farmId').val() !== '') {
         $.ajax({
-            method: "POST",
+            method: "GET",
             dataType: "json",
             data: formContent,
             url: "../libraries/ajax/ajaxModifierAnimal.php?type=2",
