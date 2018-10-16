@@ -7,9 +7,10 @@ $response = array();
 
 $con = pdo_connection(HOST_DB, DB_NAME, USER_DB, PW_DB);
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+$data = filter_input_array(INPUT_GET);
+
+if (intval($data['type']) == 1){
     
-    $data = filter_input_array(INPUT_GET);
     if (isset($data['race'])){
         $race = $data["race"];
     }
@@ -58,8 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 
     $trimmed = str_replace(",]", "]", $string);
     echo $trimmed;
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = filter_input_array(INPUT_POST);
+} elseif (intval($data['type']) == 2) {
     
     if ($data['farmId'] == 0) {
         $farmId = 'NULL';
@@ -83,7 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     try {
         $con->beginTransaction();
         foreach ($sql as $s) {
-            $con->query($s);
+            if ($s) {
+                $con->query($s);
+            }
         }
         $con->commit();
     } catch (Exception $ex) {
