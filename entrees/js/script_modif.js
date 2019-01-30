@@ -54,6 +54,7 @@ function triggerAutocompleteAnimal(event) {
     var pereId = $('#fatherId');
     var mereId = $('#motherId');
     var elevageId = $('#farmId');
+    var livre_gene = $('#livre_gene');
     animal.autocomplete({
         source: "../../libraries/ajax/ajaxModifierAnimal.php?type=1&race="+race,
         dataType: "json",
@@ -70,6 +71,7 @@ function triggerAutocompleteAnimal(event) {
             animalId.val(ui.item.id);
             pereId.val(ui.item.id_p);
             mereId.val(ui.item.id_m);
+            livre_gene.val(ui.item.livre === "" ? "NULL" : ui.item.livre);
             
             if (ui.item.id_elev !== '') {
                 elevageId.val(ui.item.id_elev);
@@ -97,6 +99,10 @@ function triggerAutocompleteAnimal(event) {
                 animalDead.prop("checked", false);
                 animalDead.prop("disabled", true);
                 deathDate.prop("disabled", true);
+            }
+            
+            if (livre_gene) {
+                
             }
         },
         focus: function (event,ui){
