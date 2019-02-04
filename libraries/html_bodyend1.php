@@ -94,13 +94,14 @@
         });
     });
     
-    $('#export').click(function(){
+    function export_database(evt){
+        //console.log(evt)
         $.ajax({
             method: "POST",
-            url: "../libraries/ajax/ajax_exportation.php",
+            url: "../libraries/ajax/ajax_exportation.php?type=" + evt.id,
             dataType: "html",
             error: function(data){
-                alert('Une erreur inattendue s\'est produite lors de l\'exportation de la base de données...');
+                alert(errorMsg);
             },
             success: function(data){
                 if (!data.status){
@@ -110,5 +111,9 @@
                 }
             }
         });
-    });
+    }
+    
+    // $('#export_intranet').click(function(){
+        
+    // });
 </script>
