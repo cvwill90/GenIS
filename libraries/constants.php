@@ -25,6 +25,11 @@ define('DEFAULT_LABELS', array(
     'livre_gene' => 'Non renseigné'
 ));
 
+define('EXPORT_TYPES', array(
+    'intranet' => 'intranet_export',
+    'intern' => 'intern_export'
+));
+
 /*
  * Paramètres du conservatoire du fichier de configuration
  */
