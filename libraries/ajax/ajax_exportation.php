@@ -33,7 +33,7 @@
                     AND a.id_animal NOT IN (SELECT id_animal FROM periode WHERE id_type=1) 
                     ORDER BY esp.lib_espece, nom_race, a.nom_animal";
         } elseif ($type == EXPORT_TYPES['intern']) {
-            $table_headers = "id_contact;nom;prenom;cheptel;id_animal;nom_animal;sexe;no_identification;date_naiss;livre_gene;etat;id_mere;nom_mere;identif_mere;id_pere;nom_pere;identif_pere;code_race;nom_race";
+            $table_headers = "id_contact;nom;prenom;cheptel;id_animal;nom_animal;sexe;no_identification;date_naiss;livre_gene;famille;lignee;etat;id_mere;nom_mere;identif_mere;id_pere;nom_pere;identif_pere;code_race;nom_race";
             $table_headers_array = explode(';', $table_headers);
             $filename =  EXPORT_TYPES['intern'] . ".csv";
 
@@ -72,7 +72,14 @@
         while ($rs = $result->fetch()){
             $csv_line = array();
             for ($i=0; $i<count($table_headers_array); $i++){
-                $value = $rs[$table_headers_array[$i]];
+                if ($table_headers_array[$i] == 'famille') {
+                    $value = getNomAncetre($con, $rs['id_animal'], 2);
+                } elseif ($table_headers_array[$i] == 'lignee') {
+                    $value = getNomAncetre($con, $rs['id_animal'], 1);
+                } else {
+                    $value = $rs[$table_headers_array[$i]];
+                }
+                
                 if ($value == ''){
                     $value = 'N/A';
                 }
