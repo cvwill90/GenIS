@@ -28,16 +28,16 @@
                     INNER JOIN espece esp ON esp.id_espece=r.id_espece 
                     INNER JOIN periode p ON p.id_animal=a.id_animal 
                     LEFT JOIN elevage e ON p.id_elevage=e.id_elevage 
-                    LEFT JOIN contact c ON c.id_elevage=e.id_elevage 
+                    LEFT JOIN contact c ON c.id_elevage=e.id_elevage
                     WHERE p.id_type=2 AND p.date_sortie IS NULL
                     AND a.id_animal NOT IN (SELECT id_animal FROM periode WHERE id_type=1) 
                     ORDER BY esp.lib_espece, nom_race, a.nom_animal";
         } elseif ($type == EXPORT_TYPES['intern']) {
-            $table_headers = "id_contact;nom;prenom;cheptel;id_animal;nom_animal;sexe;no_identification;date_naiss;etat;id_mere;nom_mere;identif_mere;id_pere;nom_pere;identif_pere;code_race;nom_race";
+            $table_headers = "id_contact;nom;prenom;cheptel;id_animal;nom_animal;sexe;no_identification;date_naiss;livre_gene;etat;id_mere;nom_mere;identif_mere;id_pere;nom_pere;identif_pere;code_race;nom_race";
             $table_headers_array = explode(';', $table_headers);
             $filename =  EXPORT_TYPES['intern'] . ".csv";
 
-            $sql_export = "SELECT id_contact, nom, prenom, e.nom_elevage as cheptel, a.id_animal, a.nom_animal, a.sexe, a.no_identification, a.date_naiss, IF(tp.lib_type='sejour', 'vivant', tp.lib_type) as etat, a.id_mere, mere.nom_animal AS nom_mere, mere.no_identification AS identif_mere, a.id_pere, pere.nom_animal AS nom_pere, pere.no_identification AS identif_pere, a.code_race, r.lib_race AS nom_race
+            $sql_export = "SELECT id_contact, nom, prenom, e.nom_elevage as cheptel, a.id_animal, a.nom_animal, a.sexe, a.no_identification, a.date_naiss, lg.lib_livre as livre_gene, IF(tp.lib_type='sejour', 'vivant', tp.lib_type) as etat, a.id_mere, mere.nom_animal AS nom_mere, mere.no_identification AS identif_mere, a.id_pere, pere.nom_animal AS nom_pere, pere.no_identification AS identif_pere, a.code_race, r.lib_race AS nom_race
                     FROM animal a 
                     INNER JOIN animal mere ON a.id_mere=mere.id_animal 
                     INNER JOIN animal pere ON a.id_pere=pere.id_animal 
@@ -47,6 +47,7 @@
                     LEFT JOIN elevage e ON p.id_elevage=e.id_elevage 
                     LEFT JOIN contact c ON c.id_elevage=e.id_elevage 
                     LEFT JOIN type_periode tp ON tp.id_type=p.id_type 
+                    LEFT JOIN livre_genealogique lg ON lg.id_livre=a.id_livre 
                     WHERE (p.id_type=2 AND p.date_sortie IS NULL) OR p.id_type=1 
                     ORDER BY esp.lib_espece, nom_race, a.nom_animal";
         }
