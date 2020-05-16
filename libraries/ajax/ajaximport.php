@@ -299,11 +299,9 @@ function insertIntoDatabase($con, $temp_table1, $lastId){
             }
         }
     }
-    $sqlDropKeyConstraintMom = "ALTER TABLE animal DROP FOREIGN KEY fk_mere";
-    $sqlDropKeyConstraintDad = "ALTER TABLE animal DROP FOREIGN KEY fk_pere";
+    $sqlDisableForeignKeys = "ALTER TABLE animal DISABLE KEYS";
     
-    $sqlAddConstraintMom = "ALTER TABLE `animal` ADD CONSTRAINT `fk_mere` FOREIGN KEY (`id_mere`) REFERENCES `animal`(`id_animal`) ON DELETE NO ACTION ON UPDATE NO ACTION";
-    $sqlAddConstraintDad = "ALTER TABLE `animal` ADD CONSTRAINT `fk_pere` FOREIGN KEY (`id_pere`) REFERENCES `animal`(`id_animal`) ON DELETE NO ACTION ON UPDATE NO ACTION";
+    $sqlEnableForeignKeys = "ALTER TABLE animal ENABLE KEYS";
     
     if ($valuesDeath != '') {
         $sqlAddDeathPeriods = "INSERT INTO periode VALUES ". substr($valuesDeath, 0, strlen($valuesDeath)-1);
@@ -316,11 +314,9 @@ function insertIntoDatabase($con, $temp_table1, $lastId){
 
         try {
             $con->beginTransaction();
-            $con->query($sqlDropKeyConstraintMom);
-            $con->query($sqlDropKeyConstraintDad);
+            $con->query($sqlDisableForeignKeys);
             $con->query($sql_update_animal_table);
-            $con->query($sqlAddConstraintMom);
-            $con->query($sqlAddConstraintDad);
+            $con->query($sqlEnableForeignKeys);
             $con->query($sqlAddBirthPeriods);
             $con->query($sqlAddStayPeriods);
             if (isset($sqlAddDeathPeriods)){
