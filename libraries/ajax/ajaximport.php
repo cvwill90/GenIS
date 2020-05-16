@@ -46,9 +46,10 @@ echo json_encode($response);
 function verifyAnimal($con, $data, $race){
     $response = array();
     try {
+        
         $dataArray = explode(';',$data);
         $structData = array();
-
+        
         $i=0;
         $j=0;
 
@@ -64,9 +65,9 @@ function verifyAnimal($con, $data, $race){
         $animals = array();
         $count1 = 0;
         $count2 = 0;
-
+        
         foreach ($structData as $sd){
-
+            
             $sql="Select a.id_animal from animal a WHERE a.no_identification='{$sd[0]}' AND a.code_race = {$race}";
             $recordset = $con->query($sql);
             
@@ -74,6 +75,7 @@ function verifyAnimal($con, $data, $race){
                 $animals['existing'][$count1]=array($sd[0],$sd[1]);
                 $count1++;
             } else {
+                
                 $animals['missing'][$count2]=array($sd[0],$sd[1],$sd[2],$sd[3],$sd[4],$sd[5],$sd[6]); //Array containing father $sd[3] and mother $sd[4]
                 $count2++;
             }
@@ -203,7 +205,7 @@ function create_temp_tables($con, $temp_table1, $temp_table2) {
 
 function fillOutTempTables($con,$data,$race,$table){
     $decodedData = json_decode($data);
-
+    
     $response = '';
 
     try {
@@ -252,14 +254,15 @@ function replaceAnimalIds($con, $temp_table1, $temp_table2, $race){
         $sql_get_id_mom = "UPDATE {$temp_table1} SET id_mere = (IF(((SELECT id_animal from {$temp_table2} WHERE no_identification='{$row['id_mere']}' AND sexe=2 AND (code_race = {$race} OR code_race IS NULL)) IS NOT NULL),(SELECT id_animal from {$temp_table2} WHERE no_identification='{$row['id_mere']}' AND sexe=2 AND (code_race = {$race} OR code_race IS NULL)),2)) WHERE id_animal={$row['id_animal']}";
         try {
             $con->beginTransaction();
-
-            $con->query($sql_get_id_dad);
+            $query = $sql_get_id_dad;
+            $con->query($query);
+            $query = $sql_get_id_mom;
             $con->query($sql_get_id_mom);
 
             $con->commit();
         } catch (Exception $e) {
             $con->rollBack();
-            $error = 'Error while replacing animal IDs: '. $e->getMessage();
+            $error = 'Fault at query: "'. $query .'"; Fault description: '. $e->getMessage();
             break;
         }
     }
@@ -326,7 +329,7 @@ function insertIntoDatabase($con, $temp_table1, $lastId){
             $con->commit();
         } catch (Exception $e) {
             $con->rollBack();
-            $error = 'Error while inserting into database:'. $e->getMessage();
+            $error = $e->getMessage();
         }
     }
     
