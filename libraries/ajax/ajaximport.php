@@ -299,9 +299,9 @@ function insertIntoDatabase($con, $temp_table1, $lastId){
             }
         }
     }
-    $sqlDisableForeignKeys = "ALTER TABLE animal DISABLE KEYS";
+    $sqlDisableForeignKeys = "SET foreign_key_checks = 0";
     
-    $sqlEnableForeignKeys = "ALTER TABLE animal ENABLE KEYS";
+    $sqlEnableForeignKeys = "SET foreign_key_checks = 1";
     
     if ($valuesDeath != '') {
         $sqlAddDeathPeriods = "INSERT INTO periode VALUES ". substr($valuesDeath, 0, strlen($valuesDeath)-1);
