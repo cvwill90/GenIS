@@ -303,7 +303,7 @@ function insertIntoDatabase($con, $temp_table1, $lastId){
     $sqlDropKeyConstraintDad = "ALTER TABLE animal DROP FOREIGN KEY fk_pere";
     
     $sqlAddConstraintMom = "ALTER TABLE `animal` ADD CONSTRAINT `fk_mere` FOREIGN KEY (`id_mere`) REFERENCES `animal`(`id_animal`) ON DELETE NO ACTION ON UPDATE NO ACTION";
-    $sqlAddConstraintDad = "ALTER TABLE `animal` ADD CONSTRAINT `fk_pere` FOREIGN KEY (`id_mere`) REFERENCES `animal`(`id_animal`) ON DELETE NO ACTION ON UPDATE NO ACTION";
+    $sqlAddConstraintDad = "ALTER TABLE `animal` ADD CONSTRAINT `fk_pere` FOREIGN KEY (`id_pere`) REFERENCES `animal`(`id_animal`) ON DELETE NO ACTION ON UPDATE NO ACTION";
     
     if ($valuesDeath != '') {
         $sqlAddDeathPeriods = "INSERT INTO periode VALUES ". substr($valuesDeath, 0, strlen($valuesDeath)-1);
