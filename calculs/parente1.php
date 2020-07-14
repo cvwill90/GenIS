@@ -183,8 +183,8 @@ $j=0; // réinitialisation des compteurs
 
                           // Association du nom de l'animal
 
-                          $sql = 'SELECT nom_animal FROM animal
-                          WHERE code_race = (' . $sqlRace . ') AND no_identification = ' . $t[1];
+                          $sql = "SELECT nom_animal FROM animal
+                          WHERE code_race = ({$sqlRace}) AND no_identification = '{$t[1]}'";
 
                           $query = $con->query($sql);
 
