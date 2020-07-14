@@ -68,8 +68,9 @@ function store_animal_dictionary($sortie, $race){
 
 function get_name_animal($no_id, $race){
     $con = pdo_connection(HOST_DB, DB_NAME, USER_DB, PW_DB);
+    $query = "SELECT nom_animal FROM animal WHERE no_identification='{$no_id}' AND code_race={$race}";
     
-    $result = $con->query("SELECT nom_animal FROM animal WHERE no_identification={$no_id} AND code_race={$race}");
+    $result = $con->query($query);
     
     $nom_animal = $result->fetch()[0];
     
