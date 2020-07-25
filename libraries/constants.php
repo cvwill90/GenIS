@@ -9,7 +9,7 @@
 define('USER_DB', 'root');
 define('HOST_DB', '127.0.0.1');
 define('PW_DB', '');
-define('DB_NAME', 'genis_test');
+define('DB_NAME', $ini['database']['db_name']);
 
 define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('HEAD_START', PROJECT_ROOT . '/libraries/html_head1.php');
