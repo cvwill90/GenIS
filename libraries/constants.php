@@ -1,17 +1,18 @@
 <?php
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+define('PROJECT_ROOT', dirname(dirname(__FILE__)));
+$ini = parse_ini_file(PROJECT_ROOT .'/config/conf.ini', TRUE);
+
 define('USER_DB', 'root');
 define('HOST_DB', '127.0.0.1');
 define('PW_DB', '');
 define('DB_NAME', $ini['database']['db_name']);
 
-define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('HEAD_START', PROJECT_ROOT . '/libraries/html_head1.php');
 define('BODY_START', PROJECT_ROOT . '/libraries/html_bodystart1.php');
 define('BODY_END', PROJECT_ROOT . '/libraries/html_bodyend1.php');
@@ -33,9 +34,6 @@ define('EXPORT_TYPES', array(
 /*
  * Paramètres du conservatoire du fichier de configuration
  */
-
-$ini = parse_ini_file(PROJECT_ROOT .'/config/conf.ini', TRUE);
-
 // Dossier contenant le programme "mysqldump.exe"
 define('MYSQLDUMP_PATH', $ini['paths']['mysqldump_path']);
 
