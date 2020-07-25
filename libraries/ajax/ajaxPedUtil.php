@@ -11,8 +11,8 @@ $elim_pedigree = $_GET["pedigree"]; // paramètre éliination de pedigree inutil
 
 $race = $_GET['race'];
 
-
-$fp = fopen("C:/wamp64/www/genis.cra/calculs/pedigFiles/lancement_ped_util.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations à envoyer à ped_util pour qu'il s'execute tout seul
+ensure_directory_existence(PEDIG_FILES_FOLDER);
+$fp = fopen(PEDIG_FILES_FOLDER . "lancement_ped_util.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations à envoyer à ped_util pour qu'il s'execute tout seul
 fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $req); // 1ere ligne du fichier texte
 fputs($fp,"\r\n");// on va à la ligne
 fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ref);// 2nd ligne du fichier texte
@@ -61,7 +61,9 @@ function store_animal_dictionary($sortie, $race){
         $no_ident_table[$pedig_id][1] = $nom_animal;
     }
     
-    $fd = fopen(PROJECT_ROOT .'\libraries\pedigModules\dict_ped_util.json', 'w+');
+    $dictionary_directory = PROJECT_ROOT . "/libraries/pedigModules/";
+    ensure_directory_existence($dictionary_directory);
+    $fd = fopen($dictionary_directory . 'dict_ped_util.json', 'w+');
     fwrite($fd, json_encode($no_ident_table));
     fclose($fd);
 }

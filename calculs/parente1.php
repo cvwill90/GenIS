@@ -70,7 +70,7 @@ $_SESSION['refParente'] = $refParente;
 $_SESSION['sortieParente'] = $sortieParente;
 $prog = $_SESSION['prog'];
 
-$pedFile = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\ped_". $race .".csv","r");
+$pedFile = fopen(PEDIG_FILES_FOLDER . "ped_". $race .".csv","r");
 
 $tab = array(); //Création et initialisation d'un tableau qui contiendra l'id et le no_identification
 

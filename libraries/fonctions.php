@@ -267,6 +267,16 @@ function reset_auto_increment($con, $db, $table, $field){
     return $new_AI;
 }
 
+/** 
+ * ensure_directory_existence
+ * This function checks whether a directory is existing or not. When it is not
+ * existing it creates it recursively.
+ * @param type $directory_path
+ */
+function ensure_directory_existence($directory_path) {
+    if (!is_dir($directory_path)) mkdir($directory_path, 0777, true);
+}
+
 function getNomAncetre($con, $parentID, $sexe){
     $ancestorNotFound = true;
     if ($sexe == 1){
@@ -300,10 +310,7 @@ function getNomAncetre($con, $parentID, $sexe){
 function prepare_error_log($folder_name, $filename){
     $error_log_dir = ERROR_LOG_FOLDER .'\\'. $folder_name;
     $error_log_file = $error_log_dir . '\\'. $filename;
-    if (!is_dir($error_log_dir)){
-        mkdir($error_log_dir, 0777, true);
-    }
-    
+    ensure_directory_existence($error_log_dir);
     $fd = fopen($error_log_file, 'w');
     ftruncate($fd, 0);
     fclose($fd);

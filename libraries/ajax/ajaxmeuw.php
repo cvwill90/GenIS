@@ -1,161 +1,165 @@
 <?php
+require_once '../fonctions.php';
 
 /*
- * les fichiers, meuw.php, vanrad.php, par3.php, etc. suivent tous le même schéma:
- * D'abord on récupère les paramètres spécifiés par l'utilisateur et on les écrit dans un fichier de lancement .txt
- * Ensuite on exécute le programme demandé gâce à shellexec et sur base du fichier txt sus-mentionné
+ * les fichiers, meuw.php, vanrad.php, par3.php, etc. suivent tous le mï¿½me schï¿½ma:
+ * D'abord on rï¿½cupï¿½re les paramï¿½tres spï¿½cifiï¿½s par l'utilisateur et on les ï¿½crit dans un fichier de lancement .txt
+ * Ensuite on exï¿½cute le programme demandï¿½ gï¿½ce ï¿½ shellexec et sur base du fichier txt sus-mentionnï¿½
  * 
- * Le problème des programmes de pedig étant que les fichiers de sortie ne contiennent que les id créés pour chaque animal par pedig,
- * 		il s'agit donc de créer un autre fichier (.txt ou .csv) donnant les résultats de pedig, mais associés cette fois aux numéro d'identifications des animaux
- * EDIT : LE FICHIER CRÉÉ PAR MEUW.EXE EST EN FAIT ÉCRASÉ POUR NE PAS AVOIR TROP DE FICHIERS!!
+ * Le problï¿½me des programmes de pedig ï¿½tant que les fichiers de sortie ne contiennent que les id crï¿½ï¿½s pour chaque animal par pedig,
+ * 		il s'agit donc de crï¿½er un autre fichier (.txt ou .csv) donnant les rï¿½sultats de pedig, mais associï¿½s cette fois aux numï¿½ro d'identifications des animaux
+ * EDIT : LE FICHIER CRï¿½ï¿½ PAR MEUW.EXE EST EN FAIT ï¿½CRASï¿½ POUR NE PAS AVOIR TROP DE FICHIERS!!
  * 
- * On peut imaginer à l'avenir relier les résultats au nom des animaux, ce qui faciliterait la lecture de résultats
+ * On peut imaginer ï¿½ l'avenir relier les rï¿½sultats au nom des animaux, ce qui faciliterait la lecture de rï¿½sultats
  */
 
 
-	/*
-	 * Récupération des paramètres
-	 */		
+/*
+ * Rï¿½cupï¿½ration des paramï¿½tres
+ */		
 
-		$race = $_GET['key1'];
-		$ped_util = $_GET['key2'];
-		$sortie = $_GET['key3'];
-		
-	/*
-	 * Ecriture des paramètres dans le fichier ...lancement.txt
-	 */
-		
-		$fp = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_meuw.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations à envoyer à meuw pour qu'il s'execute tout seul
-		fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util); // 1ere ligne du fichier texte
-		fputs($fp, "\r\n");
-		fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $sortie);
-		fputs($fp, "\r\n");
-		fclose($fp);
-		
-	/*
-	 * Exécution du programme (ici: meuw)
-	 */
-		
-		$output=shell_exec('C:\wamp64\www\genis.cra\libraries\pedigModules\meuw.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_meuw.txt'); // lancement de ped_util à partir du fichier .txt créé au dessus
-		//echo $output;
-		
-	/*
-	 * Un fichier a été créé avec les résultats
-	 * 
-	 * On va en écrire un autre avec les mêmes résultats reliés à l'identifiant des animaux
-	 */
-		
-		
-	/*
-	 * Ouverture du fichier ped_...txt (qui contient l'id pedig ET le numéro d'identification de chaque animal)
-	 */
-		$pedFile = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\ped_". $race .".csv","r");
-		//$pedFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\ped_animaux.csv","r");
-		
-		
-		$tab = array();										//Création et initialisation d'un tableau qui contiendra l'id et le no_identification
-		
-		$k = 0;
-		
-		while (($data = fgets($pedFile, 115)) !== false) {	// On récupère chaque ligne du fichier une par une, et elle est ensuite traitée comme une chaine de caractères
-			$data = str_replace(" ",";",$data);				// Remplacement de tous les caractères " " (espaces) par des ";"
-			for ($i=12; $i>1; $i--) {						// Cette boucle sert à créer des chaines de ";;;;;" de différentes longuers, de chercher chacune d'elle dans la ligne en cours de lecture, et de la remplacer par un point-virgule unique
-				$str = ";";									// On commence à $i=12 car le nombre d'espaces consécutifs peut aller jusqu'à 10 dans ped_...csv
-				$j=0;										// Je mets 12 pour etre sûr
-				while ($j<$i) {
-					$str = $str.";";
-					$j++;									// Explication supplémentaire: Comme un "\t" est fait de plusieurs espaces, on obtient des séries
-				}											// séries de ";" inutiles => donc on réduit leur nombre
-				$data = str_replace($str,";",$data);
-			}
-			$data = substr($data,1,100);					// Il faut enleveer le ";" au début de la chaîne
-			$array = explode(";",$data);					// on segmente la chaine de caractères
-			$tab[$k][0] = $array[0];						// on met l'id attribué par pedig et le numéro d'identification
-			$tab[$k][1] = $array[7];
-			$tab[$k][2] = 0;								// dans un même tableau
-			$k++;
-		}
-		
-		$k=0; $i=0; $j=0;									// on réinitialise les compteurs par précaution
-		
-		/*foreach ($tab as $t) {
-		 echo $t[0] .' '. $t[1] .' '. $t[2] .'<br>';					// juste pour avoir un apercu
-		 }*/
-		
-		fclose($pedFile);									// Fermeture du fichier ped_...csv
-		
-	/*
-	 * On procède à une démarche similaire pour le fichier (ici: meuw_...txt) créé par le programme
-	 */
-		
-		//$meuwFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\meuw_animaux.csv","r");
-		$meuwFile = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\meuw_". $race .".csv","r");
-		
-		$tabMeuw = array();
-		$k=0;
-		
-		while (($data = fgets($meuwFile,115)) !== false) {
-			$data = str_replace(" ",";", $data);
-			for ($i=10; $i>0; $i--) {
-				$str = ";";
-				$j = 0;
-				while ($j<$i) {
-					$str = $str .";";
-					$j++;
-				}
-				$data = str_replace($str,";",$data);
-			}
-			$data = substr($data,1,100);
-			$array = explode(";",$data);
-			$tabMeuw[$k][0] = $array[0];
-			$tabMeuw[$k][1] = $array[1];
-			$tabMeuw[$k][2] = 0;
-			$k++;
-		}
-		
-		/*foreach ($tabMeuw as $tM) {
-			echo $tM[0] .' '. $tM[1] .' '.$tM[2] .'<br>';
-		}*/
-		
-		fclose($meuwFile);
-		
-	/*
-	 * C'est ici qu'on édite le tableau approprié pour relier le numéro d'identification à l'id fourni par pedig
-	 * 
-	 * Dans le cas de meuw, j'édite le tableau créé à partir des résultats de ped_util.exew,
-	 * 			mais pour d'autres programmes, tel que prob_orig, par exemple, il est plus judicieux de modifier
-	 * 			le tableau créé à partir des résultats du sous-programme (prob_orig.exe)
-	 * 
-	 * Ici, donc, j'ajoute le coefficient de consanguinité au tableau tab
-	 */
-		
-		
-		foreach ($tab as $key => &$t) {
-			foreach ($tabMeuw as $tM) {
-				if ($t[0] == $tM[0]) {
-					$t[2] = $tM[1];
-				}
-			}
-		}
-		
-		/*foreach ($tab as $t) {
-		echo $t[0] .' '. $t[1] .' '. $t[2] .'<br>';
-		}*/
-		
-	/*
-	 * Ecriture du tableau tab dans un fichier
-	 */
-		
-			$result = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\meuw_". $race .".csv","w+");
-			//$result = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\meuw_animaux.csv","w+");
-			
-			fputs($result,"Id_Pedig;Numéro d'identification;Coeff de consanguinité\r\n");
-			
-			foreach ($tab as $row) {
-				foreach ($row as $cell) {
-					fputs($result,$cell);
-					fputs($result,";");
-				}
-				fputs($result,"\r\n");
-			}
-			fclose($result);
+        $race = $_GET['key1'];
+        $ped_util = $_GET['key2'];
+        $sortie = $_GET['key3'];
+
+/*
+ * Ecriture des paramï¿½tres dans le fichier ...lancement.txt
+ */
+        ensure_directory_existence(PEDIG_FILES_FOLDER);
+        $fp = fopen(PEDIG_FILES_FOLDER . "lancement_meuw.txt", "w+"); // crï¿½ation et/ou modification d'un fichier texte, ici le fichier .txt contient les informations ï¿½ envoyer ï¿½ meuw pour qu'il s'execute tout seul
+        fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util); // 1ere ligne du fichier texte
+        fputs($fp, "\r\n");
+        fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $sortie);
+        fputs($fp, "\r\n");
+        fclose($fp);
+
+/*
+ * Exï¿½cution du programme (ici: meuw)
+ */
+
+        $output=shell_exec('C:\wamp64\www\genis.cra\libraries\pedigModules\meuw.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_meuw.txt'); // lancement de ped_util ï¿½ partir du fichier .txt crï¿½ï¿½ au dessus
+        //echo $output;
+
+/*
+ * Un fichier a ï¿½tï¿½ crï¿½ï¿½ avec les rï¿½sultats
+ * 
+ * On va en ï¿½crire un autre avec les mï¿½mes rï¿½sultats reliï¿½s ï¿½ l'identifiant des animaux
+ */
+
+
+/*
+ * Ouverture du fichier ped_...txt (qui contient l'id pedig ET le numï¿½ro d'identification de chaque animal)
+ */
+        $pedFile = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\ped_". $race .".csv","r");
+        //$pedFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\ped_animaux.csv","r");
+
+
+        $tab = array();										//Crï¿½ation et initialisation d'un tableau qui contiendra l'id et le no_identification
+
+        $k = 0;
+
+        while (($data = fgets($pedFile, 115)) !== false) {	// On rï¿½cupï¿½re chaque ligne du fichier une par une, et elle est ensuite traitï¿½e comme une chaine de caractï¿½res
+                $data = str_replace(" ",";",$data);				// Remplacement de tous les caractï¿½res " " (espaces) par des ";"
+                for ($i=12; $i>1; $i--) {						// Cette boucle sert ï¿½ crï¿½er des chaines de ";;;;;" de diffï¿½rentes longuers, de chercher chacune d'elle dans la ligne en cours de lecture, et de la remplacer par un point-virgule unique
+                        $str = ";";									// On commence ï¿½ $i=12 car le nombre d'espaces consï¿½cutifs peut aller jusqu'ï¿½ 10 dans ped_...csv
+                        $j=0;										// Je mets 12 pour etre sï¿½r
+                        while ($j<$i) {
+                                $str = $str.";";
+                                $j++;									// Explication supplï¿½mentaire: Comme un "\t" est fait de plusieurs espaces, on obtient des sï¿½ries
+                        }											// sï¿½ries de ";" inutiles => donc on rï¿½duit leur nombre
+                        $data = str_replace($str,";",$data);
+                }
+                $data = substr($data,1,100);					// Il faut enleveer le ";" au dï¿½but de la chaï¿½ne
+                $array = explode(";",$data);					// on segmente la chaine de caractï¿½res
+                $tab[$k][0] = $array[0];						// on met l'id attribuï¿½ par pedig et le numï¿½ro d'identification
+                $tab[$k][1] = $array[7];
+                $tab[$k][2] = 0;								// dans un mï¿½me tableau
+                $k++;
+        }
+
+        $k=0; $i=0; $j=0;									// on rï¿½initialise les compteurs par prï¿½caution
+
+        /*foreach ($tab as $t) {
+         echo $t[0] .' '. $t[1] .' '. $t[2] .'<br>';					// juste pour avoir un apercu
+         }*/
+
+        fclose($pedFile);									// Fermeture du fichier ped_...csv
+
+/*
+ * On procï¿½de ï¿½ une dï¿½marche similaire pour le fichier (ici: meuw_...txt) crï¿½ï¿½ par le programme
+ */
+
+        $meuwFile = fopen(PEDIG_FILES_FOLDER . "meuw_". $race .".csv","r");
+
+        $tabMeuw = array();
+        $k=0;
+
+        while (($data = fgets($meuwFile,115)) !== false) {
+                $data = str_replace(" ",";", $data);
+                for ($i=10; $i>0; $i--) {
+                        $str = ";";
+                        $j = 0;
+                        while ($j<$i) {
+                                $str = $str .";";
+                                $j++;
+                        }
+                        $data = str_replace($str,";",$data);
+                }
+                $data = substr($data,1,100);
+                $array = explode(";",$data);
+                $tabMeuw[$k][0] = $array[0];
+                $tabMeuw[$k][1] = $array[1];
+                $tabMeuw[$k][2] = 0;
+                $k++;
+        }
+
+        /*foreach ($tabMeuw as $tM) {
+                echo $tM[0] .' '. $tM[1] .' '.$tM[2] .'<br>';
+        }*/
+
+        fclose($meuwFile);
+
+/*
+ * C'est ici qu'on ï¿½dite le tableau appropriï¿½ pour relier le numï¿½ro d'identification ï¿½ l'id fourni par pedig
+ * 
+ * Dans le cas de meuw, j'ï¿½dite le tableau crï¿½ï¿½ ï¿½ partir des rï¿½sultats de ped_util.exew,
+ * 			mais pour d'autres programmes, tel que prob_orig, par exemple, il est plus judicieux de modifier
+ * 			le tableau crï¿½ï¿½ ï¿½ partir des rï¿½sultats du sous-programme (prob_orig.exe)
+ * 
+ * Ici, donc, j'ajoute le coefficient de consanguinitï¿½ au tableau tab
+ */
+
+
+foreach ($tab as $key => &$t) {
+        foreach ($tabMeuw as $tM) {
+                if ($t[0] == $tM[0]) {
+                        $t[2] = $tM[1];
+                }
+        }
+}
+
+/*
+ * Ecriture du tableau tab dans un fichier
+ */
+
+$destination_folder= PEDIG_DUMP_FOLDER . "/meuw/";
+ensure_directory_existence($destination_folder);
+$result_file = fopen($destination_folder . "meuw_". $race .".csv","w+");
+
+fputs($result_file,"ID Pedig;NumÃ©ro d'identification;Coefficient de consanguinitÃ©\r\n");
+
+$result = '';
+foreach ($tab as $row) {
+    $line = '';
+    $i = 0;
+    foreach ($row as $cell) {
+        if ($i == 2) {
+            $cell = trim(preg_replace('/\s\s+/', '', $cell));
+        }
+        $line = $line . $cell .";";
+        $i++;
+    }
+    $result = $result . $line . "\r\n";
+}
+fputs($result_file, $result);
+fclose($result_file);

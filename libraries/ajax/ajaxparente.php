@@ -28,9 +28,8 @@ $launch_file = "lancement_parente.txt";
 create_parente_launch_file($launch_file, $entry_file, $reference_file);
 
 // Verify existance of destination folder
-$destination_folder = PEDIG_DUMP_FOLDER . "\\parente\\";
-
-if (!is_dir($destination_folder)) mkdir($destination_folder, 0777, true);
+$destination_folder = PEDIG_DUMP_FOLDER . "/parente/";
+ensure_directory_existence($destination_folder);
 
 // Execute parente.exe
 $parente_result = array();
