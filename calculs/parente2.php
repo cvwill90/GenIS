@@ -84,8 +84,10 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           }
 
           $_SESSION['cor'] = $correspond;
-
-          $refPar = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\ref_parente_". $race .".txt","w+");
+          
+          $pedig_folder = "C:/wamp64/www/genis.cra/calculs/pedigFiles/";
+          ensure_directory_existence(PEDIG_FILES_FOLDER);
+          $refPar = fopen(PEDIG_FILES_FOLDER . "ref_parente_". $race .".txt","w+");
 
           foreach ($tab as $row) {
             fputs($refPar, $row[0] ."\t". $col ."\r\n");

@@ -17,8 +17,8 @@ $year2 = $_GET['key7'];
 
 
 //Ecriture de lancement_prob_orig.txt
-
-$fp = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_prob_orig.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � prob_orig pour qu'il s'execute tout seul
+ensure_directory_existence(PEDIG_FILES_FOLDER);
+$fp = fopen(PEDIG_FILES_FOLDER . "lancement_prob_orig.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � prob_orig pour qu'il s'execute tout seul
 
 fputs($fp, "'C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util ."'\r\n"); // 1ere ligne du fichier texte
 fputs($fp, "'". PEDIG_DUMP_FOLDER ."\\prob_orig\\". $sortie_contrib ."'\r\n");
@@ -32,11 +32,9 @@ fclose($fp);
 /*
  * Vérification de l'existence du dossier de destination
  */
-$destination = PEDIG_DUMP_FOLDER . "\\prob_orig\\";
+$destination = PEDIG_DUMP_FOLDER . "/prob_orig/";
  
-if (!is_dir($destination)){
-    mkdir($destination, 0777, true);
-}
+ensure_directory_existence($destination);
 
 /*
  * Exécution de prob_orig

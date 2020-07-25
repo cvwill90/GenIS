@@ -169,9 +169,9 @@ if (!isset($e)){
     */
 
     //Ouverture/Création des fichiers de la race concernée
-
-    $fp_ped = fopen("C:/wamp64/www/genis.cra/calculs/pedigFiles/". $ped_name, "w+");
-    $fp_ref = fopen("C:/wamp64/www/genis.cra/calculs/pedigFiles/". $ref_name, "w+");
+    ensure_directory_existence(PEDIG_FILES_FOLDER);
+    $fp_ped = fopen(PEDIG_FILES_FOLDER . $ped_name, "w+");
+    $fp_ref = fopen(PEDIG_FILES_FOLDER . $ref_name, "w+");
 
     //On parcourt le recordset pour écrire chaque ligne dans les fichier txt
 

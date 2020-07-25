@@ -53,17 +53,13 @@
         }
         
         //export location
-        $target_folder = EXPORT_FOLDER;
-
-        if (!is_dir($target_folder)){
-            mkdir($target_folder, 0777, true);
-        }
+        ensure_directory_existence(EXPORT_FOLDER);
         
         $con = pdo_connection(HOST_DB, DB_NAME, USER_DB, PW_DB);
         
         $result = $con->query($sql_export);
 
-        $fp = fopen($target_folder .'\\'. $filename, 'w');
+        $fp = fopen(EXPORT_FOLDER ."/". $filename, 'w');
         fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
 
         fwrite($fp, $table_headers . "\n");
