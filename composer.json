@@ -1,0 +1,6 @@
+{
+    "name": "cvwill90/genis",
+    "require": {
+      "robmorgan/phinx": "0.12.*"
+    }
+}
