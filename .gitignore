@@ -1,9 +1,7 @@
 test.php
 nbproject/
 legacy/
-composer.json
 composer.lock
-composer.phar
 phinx
 calculs/pedigFiles/*
 libraries/pedigModules/dict_ped_util.json
