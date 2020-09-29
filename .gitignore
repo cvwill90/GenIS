@@ -6,5 +6,5 @@ phinx
 calculs/pedigFiles/*
 libraries/pedigModules/dict_ped_util.json
 libraries/ajax/list_ancestors
-config/conf.ini
+config
 vendor
