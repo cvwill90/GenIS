@@ -4,8 +4,8 @@ paths:
 
 environments:
     default_migration_table: phinxlog
-    default_database: development
-    production:
+    default_database: dev
+    prod:
         adapter: mysql
         host: '%%PHINX_DBHOST_PROD%%'
         name: '%%PHINX_DBNAME_PROD%%'
@@ -14,7 +14,7 @@ environments:
         port: 3306
         charset: utf8
 
-    development:
+    dev:
         adapter: mysql
         host: '%%PHINX_DBHOST_DEV%%'
         name: '%%PHINX_DBNAME_DEV%%'
