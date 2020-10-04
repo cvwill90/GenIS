@@ -6,21 +6,9 @@ environments:
     default_migration_table: phinxlog
     default_database: dev
     prod:
-        adapter: mysql
-        host: '%%PHINX_DBHOST_PROD%%'
-        name: '%%PHINX_DBNAME_PROD%%'
-        user: '%%PHINX_DBUSER_PROD%%'
-        pass: '%%PHINX_DBPASS_PROD%%'
-        port: 3306
-        charset: utf8
+        dsn: '%%PHINX_DSN_PROD%%'
 
     dev:
-        adapter: mysql
-        host: '%%PHINX_DBHOST_DEV%%'
-        name: '%%PHINX_DBNAME_DEV%%'
-        user: '%%PHINX_DBUSER_DEV%%'
-        pass: '%%PHINX_DBPASS_DEV%%'
-        port: 3306
-        charset: utf8
+        dsn: '%%PHINX_DSN_DEV%%'
 
 version_order: creation
