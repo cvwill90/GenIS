@@ -7,7 +7,7 @@
 
 define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 define('PEDIG_FILES_FOLDER', PROJECT_ROOT . '\\calculs\\pedigFiles\\');
-$ini = parse_ini_file(PROJECT_ROOT .'/config/conf.ini', TRUE);
+$ini = parse_ini_file(PROJECT_ROOT .'\\config\\config.ini', TRUE);
 
 define('USER_DB', 'root');
 define('HOST_DB', '127.0.0.1');
