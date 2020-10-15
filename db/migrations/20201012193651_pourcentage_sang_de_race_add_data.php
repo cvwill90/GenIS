@@ -16,7 +16,7 @@ final class PourcentageSangDeRaceAddData extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function up()
+    public function up(): void
     {
         $builder = $this->getQueryBuilder();
         $statement_bordelaise = $builder->update('animal')
@@ -65,7 +65,8 @@ final class PourcentageSangDeRaceAddData extends AbstractMigration
         //var_dump($statement_marine->fetchAll());
     }
 
-    public function down() {
+    public function down(): void
+    {
       $builder = $this->getQueryBuilder();
       $statement = $builder->update('animal')
         ->set('fondateur', 0)
