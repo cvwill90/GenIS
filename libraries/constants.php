@@ -29,7 +29,7 @@ define('DEFAULT_LABELS', array(
 
 define('EXPORT_TYPES', array(
     'intranet' => 'intranet_export',
-    'intern' => 'intern_export'
+    'internal' => 'export_internal'
 ));
 
 /*
