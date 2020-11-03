@@ -66,7 +66,7 @@ if (isset($_SESSION['compte'])){
                     <ul class="dropdown-menu">
                         <!--<li><a href="../mac_bootstrap/macadmin/theme/#"><i class="fa fa-user"></i> Profile</a></li>-->
                         <li><a id="<?php echo EXPORT_TYPES['intranet']?>" onclick="export_database(this)"><i class="fa fa-cloud-upload"></i> Exportation Intranet</a></li>
-                        <li><a id="<?php echo EXPORT_TYPES['intern']?>" onclick="export_database(this)"><i class="fa fa-cloud-upload"></i> Exportation pour usage interne</a></li>
+                        <li><a id="<?php echo EXPORT_TYPES['internal']?>" onclick="export_database(this)"><i class="fa fa-cloud-upload"></i> Exportation pour usage interne</a></li>
                         <li><a id="save"><i class="fa fa-floppy-o"></i> Sauvegarde base de données</a></li>
                         <li><a href="../connexion/deconnexion.php"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 

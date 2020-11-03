@@ -6,9 +6,9 @@ environments:
     default_migration_table: phinxlog
     default_database: dev
     prod:
-        dsn: '%%PHINX_DSN_PROD%%'
+        dsn: '%%PHINX_DSN%%'
 
     dev:
-        dsn: '%%PHINX_DSN_DEV%%'
+        dsn: '%%PHINX_DSN%%'
 
 version_order: creation

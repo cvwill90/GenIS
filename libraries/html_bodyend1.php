@@ -95,25 +95,20 @@
     });
     
     function export_database(evt){
-        //console.log(evt)
         $.ajax({
             method: "POST",
-            url: "../libraries/ajax/ajax_exportation.php?type=" + evt.id,
-            dataType: "html",
+            url: "http://genisquery.cra/export/" + evt.id,
+            dataType: "json",
             error: function(data){
                 alert(errorMsg);
             },
             success: function(data){
-                if (!data.status){
+                if (data.success == true){
                     alert('La base de données a bien été exportée.');
                 } else {
-                    alert('L\'exportation de la base de données a échoué !');
+                    alert('L\'export de la base de données a échoué !');
                 }
             }
         });
     }
-    
-    // $('#export_intranet').click(function(){
-        
-    // });
 </script>
