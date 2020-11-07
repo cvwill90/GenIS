@@ -53,16 +53,16 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
           
           if ($code == 'meuw'){
-            echo 'Les résultats de meuw.exe se trouvent dans le fichier suivant : <b>C:/wamp64/www/genis.cra/calculs/pedigFiles/meuw_'. $race .'.csv</b>';
+            echo 'Les résultats de meuw.exe se trouvent dans le fichier suivant : <b>' . PEDIG_FILES_FOLDER. 'meuw_' . $race . '.csv</b>';
           } elseif ($code == 'vanrad') {
-            echo 'Les résultats de vanrad.exe se trouvent dans le fichier suivant : <b>C:/wamp64/www/genis.cra/calculs/pedigFiles/vanrad_'. $race .'.csv</b>';
+            echo 'Les résultats de vanrad.exe se trouvent dans le fichier suivant : <b>' . PEDIG_FILES_FOLDER. 'vanrad_' . $race . '.csv</b>';
           } elseif ($code == 'orig') {
-            echo 'Les fichiers de sortie de prob_orig.exe se trouvent dans le dossier <b>'. PEDIG_DUMP_FOLDER .'\\prob_orig' .'</b><br><br>';
+            echo 'Les fichiers de sortie de prob_orig.exe se trouvent dans le dossier <b>'. PEDIG_DUMP_FOLDER .'\\prob_orig' . '</b><br><br>';
           } else {
             if (isset($_GET['errorMsg'])) {
               echo '<div class="alert alert-danger">';
               echo $_GET['errorMsg'] . '<br>';
-              echo 'Vous pouvez consulter les erreurs dans le dossier suivant :<br><br><b>C:/wamp64/www/genis.cra/calculs/error_log/error_log.txt</b> ';
+              echo 'Vous pouvez consulter les erreurs dans le dossier suivant :<br><br><b>' . PEDIG_ERROR_LOG_FILE . '</b> ';
               echo '</div>';
             } else {
               echo '<div class="alert alert-success">';

@@ -10,13 +10,13 @@ $sortie = $_GET['key3'];
 
 ensure_directory_existence(PEDIG_FILES_FOLDER);
 $fp = fopen(PEDIG_FILES_FOLDER . "lancement_vanrad.txt", "w+"); // cr�ation et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � vanrad pour qu'il s'execute tout seul
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util); // 1ere ligne du fichier texte
+fputs($fp, PEDIG_FILES_FOLDER . $ped_util); // 1ere ligne du fichier texte
 fputs($fp, "\r\n");
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $sortie);
+fputs($fp, PEDIG_FILES_FOLDER . $sortie);
 fputs($fp, "\r\n");
 fclose($fp);
 
-$output=shell_exec('C:\wamp64\www\genis.cra\libraries\pedigModules\vanrad.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_vanrad.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
+$output=shell_exec(PEDIG_MODULES_FOLDER . 'vanrad.exe < ' . PEDIG_FILES_FOLDER . 'lancement_vanrad.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
 
 
 $pedFile = fopen(PEDIG_FILES_FOLDER . "ped_". $race .".csv","r");
