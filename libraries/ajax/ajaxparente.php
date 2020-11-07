@@ -33,7 +33,7 @@ ensure_directory_existence($destination_folder);
 
 // Execute parente.exe
 $parente_result = array();
-$output=exec('C:\wamp64\www\genis.cra\libraries\pedigModules\parente.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_parente.txt', $parente_result);
+$output = shell_exec(PEDIG_MODULES_FOLDER . 'parente.exe < ' . PEDIG_FILES_FOLDER . 'lancement_parente.txt', $parente_result);
 
 // How many groups of individuals are there (Hardcoded as 1 group at the moment)
 $nb_groups = 1;
@@ -45,7 +45,7 @@ $parente_output_csv_array = array(); // This array will contain all lines of the
 
 // Read parente file and build parente reference array
 $ref_parente_array = array();
-$parente = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $reference_file, 'r');
+$parente = fopen(PEDIG_FILES_FOLDER . $reference_file, 'r');
 while ($line = fgets($parente)) {
     $clean_line = preg_replace(['/\t/'], ' ', remove_spaces($line));
     array_push($ref_parente_array, explode(' ', $clean_line)[0]);
@@ -120,9 +120,9 @@ if (!error_get_last()) {
 
 // Create parente launch file
 function create_parente_launch_file($launch_file, $entry_file, $reference_file) {
-    $fp = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $launch_file, "w+");
-    fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $entry_file ."\r\n");
-    fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $reference_file ."\r\n");
+    $fp = fopen(PEDIG_FILES_FOLDER . $launch_file, "w+");
+    fputs($fp, PEDIG_FILES_FOLDER . $entry_file ."\r\n");
+    fputs($fp, PEDIG_FILES_FOLDER . $reference_file ."\r\n");
     fclose($fp);
 }
 
@@ -338,7 +338,7 @@ function go_to_line_in_output_file($output_resource, $nb_lines) {
 }
 
 function get_animal_dict(){
-    $path = PROJECT_ROOT ."/libraries/pedigModules/dict_ped_util.json";
+    $path = PEDIG_MODULES_FOLDER ."dict_ped_util.json";
     $fd = fopen($path, "r");
     $animal_dict = json_decode(fread($fd, filesize($path)));
     fclose($fd);

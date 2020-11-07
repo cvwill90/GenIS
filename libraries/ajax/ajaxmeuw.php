@@ -26,10 +26,10 @@ require_once '../fonctions.php';
  * Ecriture des param�tres dans le fichier ...lancement.txt
  */
         ensure_directory_existence(PEDIG_FILES_FOLDER);
-        $fp = fopen(PEDIG_FILES_FOLDER . "lancement_meuw.txt", "w+"); // cr�ation et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � meuw pour qu'il s'execute tout seul
-        fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util); // 1ere ligne du fichier texte
+        $fp = fopen(PEDIG_FILES_FOLDER . "lancement_meuw.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � meuw pour qu'il s'execute tout seul
+        fputs($fp, PEDIG_FILES_FOLDER . $ped_util); // 1ere ligne du fichier texte
         fputs($fp, "\r\n");
-        fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $sortie);
+        fputs($fp, PEDIG_FILES_FOLDER . $sortie);
         fputs($fp, "\r\n");
         fclose($fp);
 
@@ -37,7 +37,7 @@ require_once '../fonctions.php';
  * Ex�cution du programme (ici: meuw)
  */
 
-        $output=shell_exec('C:\wamp64\www\genis.cra\libraries\pedigModules\meuw.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_meuw.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
+        $output=shell_exec(PEDIG_MODULES_FOLDER . 'meuw.exe < ' . PEDIG_FILES_FOLDER . 'lancement_meuw.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
         //echo $output;
 
 /*
@@ -50,7 +50,7 @@ require_once '../fonctions.php';
 /*
  * Ouverture du fichier ped_...txt (qui contient l'id pedig ET le num�ro d'identification de chaque animal)
  */
-        $pedFile = fopen("C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\ped_". $race .".csv","r");
+        $pedFile = fopen(PEDIG_FILES_FOLDER . "ped_". $race .".csv","r");
         //$pedFile = fopen("C:\wamp\www\Genis\SiteWeb\Calculs\Pedig\ped_animaux.csv","r");
 
 

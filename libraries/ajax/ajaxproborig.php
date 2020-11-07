@@ -20,8 +20,8 @@ $year2 = $_GET['key7'];
 ensure_directory_existence(PEDIG_FILES_FOLDER);
 $fp = fopen(PEDIG_FILES_FOLDER . "lancement_prob_orig.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations � envoyer � prob_orig pour qu'il s'execute tout seul
 
-fputs($fp, "'C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ped_util ."'\r\n"); // 1ere ligne du fichier texte
-fputs($fp, "'". PEDIG_DUMP_FOLDER ."\\prob_orig\\". $sortie_contrib ."'\r\n");
+fputs($fp, PEDIG_FILES_FOLDER . $ped_util . "\r\n"); // 1ere ligne du fichier texte
+fputs($fp, PEDIG_DUMP_FOLDER ."\prob_orig\\". $sortie_contrib ."\r\n");
 fputs($fp, $nb_anc ."\r\n");
 fputs($fp, $sex ."\r\n");
 fputs($fp, $year1 ."\r\n");
@@ -32,7 +32,7 @@ fclose($fp);
 /*
  * Vérification de l'existence du dossier de destination
  */
-$destination = PEDIG_DUMP_FOLDER . "/prob_orig/";
+$destination = PEDIG_DUMP_FOLDER . "\prob_orig\\";
  
 ensure_directory_existence($destination);
 
@@ -40,7 +40,7 @@ ensure_directory_existence($destination);
  * Exécution de prob_orig
  */
 $test = array();
-$output = exec('C:\\wamp64\\www\\genis.cra\\libraries\\pedigModules\\prob_orig.exe < C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\lancement_prob_orig.txt', $test); // lancement de ped_util � partir du fichier .txt cr�� au dessus
+$output = shell_exec(PEDIG_MODULES_FOLDER . 'prob_orig.exe < ' . PEDIG_FILES_FOLDER . 'lancement_prob_orig.txt', $test); // lancement de ped_util � partir du fichier .txt cr�� au dessus
 
 /*
  * Dans le cas de Prob_orig.exe, on travaille à partir du fichier retourné

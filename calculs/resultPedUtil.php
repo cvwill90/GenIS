@@ -53,7 +53,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           ?>
 
           <p>
-          Le fichier <b>ped_<?php echo $race; ?>.csv</b> a été créé/édité.<br><br>Vous pouvez changer son contenu en l'ouvrant dans le répertoire suivant :<br><b>C:\wamp64\www\genis.cra\calculs\pedigFiles\ped_<?php echo $race; ?>.csv</b>
+          Le fichier <b>ped_<?php echo $race; ?>.csv</b> a été créé/édité.<br><br>Vous pouvez changer son contenu en l'ouvrant dans le répertoire suivant :<br><b><?php echo PEDIG_FILES_FOLDER . 'ped_' . $race . '.csv'; ?></b>
 
           <br><br>
 

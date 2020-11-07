@@ -13,11 +13,11 @@ $race = $_GET['race'];
 
 ensure_directory_existence(PEDIG_FILES_FOLDER);
 $fp = fopen(PEDIG_FILES_FOLDER . "lancement_ped_util.txt", "w+"); // création et/ou modification d'un fichier texte, ici le fichier .txt contient les informations à envoyer à ped_util pour qu'il s'execute tout seul
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $req); // 1ere ligne du fichier texte
+fputs($fp, PEDIG_FILES_FOLDER . $req); // 1ere ligne du fichier texte
 fputs($fp,"\r\n");// on va à la ligne
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $ref);// 2nd ligne du fichier texte
+fputs($fp, PEDIG_FILES_FOLDER . $ref);// 2nd ligne du fichier texte
 fputs($fp,"\r\n");
-fputs($fp, "C:\\wamp64\\www\\genis.cra\\calculs\\pedigFiles\\". $f_sortie);
+fputs($fp, PEDIG_FILES_FOLDER . $f_sortie);
 fputs($fp,"\r\n");
 fputs($fp, $nb_gen);
 fputs($fp, "\r\n");
@@ -27,7 +27,7 @@ fputs($fp, $elim_pedigree); // dernière ligne du fichier texte
 fputs($fp, "\r\n");
 fclose($fp); //on ferme le fichier et on l'enregistre
 
-$output = `C:\wamp64\www\genis.cra\libraries\pedigModules\ped_util.exe < C:\wamp64\www\genis.cra\calculs\pedigFiles\lancement_ped_util.txt`; // lancement de ped_util à partir du fichier .txt créé au dessus
+$output = shell_exec(PEDIG_MODULES_FOLDER . "ped_util.exe < " . PEDIG_FILES_FOLDER . "lancement_ped_util.txt"); // lancement de ped_util à partir du fichier .txt créé au dessus
 
 //Teste si une erreur est survenue
 
@@ -46,7 +46,7 @@ if ($error_pos){
 }
 
 function store_animal_dictionary($sortie, $race){
-    $pedFile = fopen(PROJECT_ROOT . "\\calculs\\pedigFiles\\". $sortie,"r");
+    $pedFile = fopen(PEDIG_FILES_FOLDER . $sortie,"r");
 
     $no_ident_table = array(0 => ['0000000000', 'Parent Inconnu']);
 
@@ -61,7 +61,7 @@ function store_animal_dictionary($sortie, $race){
         $no_ident_table[$pedig_id][1] = $nom_animal;
     }
     
-    $dictionary_directory = PROJECT_ROOT . "/libraries/pedigModules/";
+    $dictionary_directory = PEDIG_MODULES_FOLDER;
     ensure_directory_existence($dictionary_directory);
     $fd = fopen($dictionary_directory . 'dict_ped_util.json', 'w+');
     fwrite($fd, json_encode($no_ident_table));

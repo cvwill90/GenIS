@@ -50,9 +50,7 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
             Calculs en cours...
           </p>
           <?php
-
-          //header("Location: http://localhost/Genis/SiteWeb/Calculs/Pedig/postCalculs.php");
-
+          
           $entreeParente = $_SESSION['entreeParente'];
           $refParente = $_SESSION['refParente'];
           $sortieParente = $_SESSION['sortieParente'];
@@ -62,9 +60,6 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           /*
            * ECRITURE DU FICHIER REF_PARENTE.TXT
            */
-          //if (isset($_POST['secondColumn']) && $_POST['secondColumn'] != '') {
-          //  $col = $_POST["secondColumn"];
-          //}
           $col = 1;
 
           $i = 0;
@@ -85,7 +80,6 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
           $_SESSION['cor'] = $correspond;
           
-          $pedig_folder = "C:/wamp64/www/genis.cra/calculs/pedigFiles/";
           ensure_directory_existence(PEDIG_FILES_FOLDER);
           $refPar = fopen(PEDIG_FILES_FOLDER . "ref_parente_". $race .".txt","w+");
 
