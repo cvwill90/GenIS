@@ -37,8 +37,7 @@ require_once '../fonctions.php';
  * Ex�cution du programme (ici: meuw)
  */
 
-        $output=shell_exec(PEDIG_MODULES_FOLDER . 'meuw.exe < ' . PEDIG_FILES_FOLDER . 'lancement_meuw.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
-        //echo $output;
+        $output = shell_exec(PEDIG_MODULES_FOLDER . 'meuw.exe < ' . PEDIG_FILES_FOLDER . 'lancement_meuw.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
 
 /*
  * Un fichier a �t� cr�� avec les r�sultats

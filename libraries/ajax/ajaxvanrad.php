@@ -20,7 +20,7 @@ $output=shell_exec(PEDIG_MODULES_FOLDER . 'vanrad.exe < ' . PEDIG_FILES_FOLDER .
 
 
 $pedFile = fopen(PEDIG_FILES_FOLDER . "ped_". $race .".csv","r");
-//$pedFile = fopen("C:/wamp/www/Genis/SiteWeb/Calculs/Pedig/ped_animaux.csv","r");
+
 $tab = array();										//initialisation d'un tableau qui contiendra l'id et le no_identification
 
 $k = 0;

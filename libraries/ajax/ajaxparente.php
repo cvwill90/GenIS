@@ -28,12 +28,12 @@ $launch_file = "lancement_parente.txt";
 create_parente_launch_file($launch_file, $entry_file, $reference_file);
 
 // Verify existance of destination folder
-$destination_folder = PEDIG_DUMP_FOLDER . "/parente/";
+$destination_folder = PEDIG_DUMP_FOLDER . "\parente\\";
 ensure_directory_existence($destination_folder);
 
 // Execute parente.exe
 $parente_result = array();
-$output = shell_exec(PEDIG_MODULES_FOLDER . 'parente.exe < ' . PEDIG_FILES_FOLDER . 'lancement_parente.txt', $parente_result);
+$output = exec(PEDIG_MODULES_FOLDER . 'parente.exe < ' . PEDIG_FILES_FOLDER . 'lancement_parente.txt', $parente_result);
 
 // How many groups of individuals are there (Hardcoded as 1 group at the moment)
 $nb_groups = 1;
@@ -110,6 +110,7 @@ for ($i=1; $i <= $nb_groups; $i++) {
 if (!error_get_last()) {
     echo '{"status": "ok"}';
 } else {
+    print_r(error_get_last());
     echo '{"status": "wrong", "errorMessage": "Erreur lors de l\'exploitation des résultats de parente.exe."}';
 }
 
@@ -291,15 +292,17 @@ function generate_relationship_matrix($individual_relationships_mapping) {
         for ($j = 0; $j < count($GLOBALS['ref_parente_array']); $j++) {
             $animal_id_col = intval($GLOBALS['ref_parente_array'][$j]);
             if ($animal_id_row == $animal_id_col) {
-                $matrix[$i][$j] = "0.250";
+                $matrix[$i][$j] = 0.250;
             } elseif (isset($irm[$animal_id_row][$animal_id_col])) {
-                $matrix[$i][$j] = $irm[$animal_id_row][$animal_id_col];
+                $matrix[$i][$j] = floatval($irm[$animal_id_row][$animal_id_col]);
             } else {
-                $matrix[$i][$j] = "";
+                $matrix[$i][$j] = 0;
             }
         }
     }
+    
     $transposed_matrix = transpose($matrix);
+    
     $final_matrix = sum_equi_dimensional_array($matrix, $transposed_matrix);
     return $final_matrix;
 }
