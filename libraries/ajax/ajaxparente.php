@@ -110,7 +110,6 @@ for ($i=1; $i <= $nb_groups; $i++) {
 if (!error_get_last()) {
     echo '{"status": "ok"}';
 } else {
-    print_r(error_get_last());
     echo '{"status": "wrong", "errorMessage": "Erreur lors de l\'exploitation des résultats de parente.exe."}';
 }
 
