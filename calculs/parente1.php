@@ -260,22 +260,6 @@ $j=0; // réinitialisation des compteurs
               </table>
               <div id="tempDiv" style="display: block;" class="col-md-12" ><p style="text-align: center"><br><i>Veuillez sélectionner des animaux dans la liste ci-contre</i></p><br></div>
             </div>
-            <!--<div>
-              <label class="customLabel" for="one"><span class="customSpan">Valeur de la 2e colonne &nbsp;</span></label>
-              <label class="radioLabel" for="one"> 1
-                <input 	type="radio"
-                          name="secondColumn"
-                          id="one"
-                          value = "1"
-                          checked/>
-              </label>
-              <label class="radioLabel" for="two"> 2
-                <input 	type="radio"
-                          name="secondColumn"
-                          id="two"
-                          value = "2"/>
-              </label>
-            </div>-->
             <div>
               <input type="submit" name="launchParente" id="launchParente">
             </div>
