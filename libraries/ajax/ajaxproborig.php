@@ -39,8 +39,7 @@ ensure_directory_existence($destination);
 /*
  * Exécution de prob_orig
  */
-$test = array();
-$output = shell_exec(PEDIG_MODULES_FOLDER . 'prob_orig.exe < ' . PEDIG_FILES_FOLDER . 'lancement_prob_orig.txt', $test); // lancement de ped_util � partir du fichier .txt cr�� au dessus
+exec(PEDIG_MODULES_FOLDER . 'prob_orig.exe < ' . PEDIG_FILES_FOLDER . 'lancement_prob_orig.txt'); // lancement de ped_util � partir du fichier .txt cr�� au dessus
 
 /*
  * Dans le cas de Prob_orig.exe, on travaille à partir du fichier retourné
