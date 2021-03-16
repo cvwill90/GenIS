@@ -74,6 +74,7 @@ function triggerAutocompleteMale(event) {
     var fatherID = $("#fatherID" );
     var target1 = $('#fatherId');
     var target2 = $('#lignee');
+    var pourcent_sang = $('#pourcentage_sang_pere');
     fatherID.autocomplete({
         source: "../../libraries/ajax/suggestAnimal.php?sex=1&race="+Race,
         dataType: "json",
@@ -82,6 +83,7 @@ function triggerAutocompleteMale(event) {
             fatherID.val(ui.item.value);
             target1.val(ui.item.id);         //on injecte bien la valeur de la bdd dans le champ fatherId
             target2.val(ui.item.ancetre);
+            pourcent_sang.val(ui.item.pourcent_sang);
         },
         focus: function (event,ui){
             event.preventDefault();
@@ -109,6 +111,7 @@ function triggerAutocompleteFemale(event) {
     var motherID = $('#motherID');
     var target1 = $('#motherId');
     var target2 = $('#famille');
+    var pourcent_sang = $('#pourcentage_sang_mere');
     motherID.autocomplete({
         source: "../../libraries/ajax/suggestAnimal.php?sex=2&race="+Race,
         dataType: "json",
@@ -117,6 +120,7 @@ function triggerAutocompleteFemale(event) {
             motherID.val(ui.item.value);
             target1.val(ui.item.id);
             target2.val(ui.item.ancetre);
+            pourcent_sang.val(ui.item.pourcent_sang);
         },
         focus: function (event,ui){
             event.preventDefault();
