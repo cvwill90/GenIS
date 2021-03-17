@@ -159,7 +159,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="animalID">Pourcentage de sang</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Pourcentage de sang" type="number" step="0.01" name="pourcentage_sang_animal" id="pourcentage_sang_animal" required>
+                                            <input class="form-control" placeholder="Valeur calculée à partir des pourcentages parents" type="number" step="0.01" name="pourcentage_sang_animal" id="pourcentage_sang_animal" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">

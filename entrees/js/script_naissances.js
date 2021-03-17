@@ -12,25 +12,25 @@
  */
 
 function fillup_race() {
-    var str='';
+    var str = '';
     var specie = $("#espece").find(":selected").val();
     $.ajax({
         method: 'GET',
-        url: '../../libraries/ajax/getRaces.php?espece='+specie,
+        url: '../../libraries/ajax/getRaces.php?espece=' + specie,
         dataType: "json",
-        success : function(data, status){
-            $.each(data, function (i,espece) {
-                str = str + '<option value="'+ espece.value +'">'+ espece.label +'</option>';
+        success: function (data, status) {
+            $.each(data, function (i, espece) {
+                str = str + '<option value="' + espece.value + '">' + espece.label + '</option>';
             });
             $('#race').html(str);
-            $('#race').prop("disabled",false);
-            $('#fatherID').prop("disabled",false);
-            $('#motherID').prop("disabled",false);
+            $('#race').prop("disabled", false);
+            $('#fatherID').prop("disabled", false);
+            $('#motherID').prop("disabled", false);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Le serveur a rencontré l\'erreur suivante : '+xhr.status + " "+ thrownError);
+            alert('Le serveur a rencontré l\'erreur suivante : ' + xhr.status + " " + thrownError);
         },
-        complete : function(data, status){
+        complete: function (data, status) {
         }
     });
 }
@@ -44,22 +44,41 @@ function triggerAutoCompleteFarm(event) {
     $('#birthFarm').autocomplete({
         source: "../../libraries/ajax/suggestFarm.php?",
         dataType: "json",
-        select: function(event,ui){
+        select: function (event, ui) {
             event.preventDefault();
             $('#birthFarm').val(ui.item.nom_elevage);
             $('#farmId').val(ui.item.id);
         },
-        focus: function(event,ui){
+        focus: function (event, ui) {
             event.preventDefault();
         },
         minLength: 2
     });
-    if (event.which !== 13 && event.which !== 9 && event.which !== 16){
-        if (document.getElementById('birthFarm').value === ''){
-            document.getElementById('farmId').value='1';
+    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
+        if (document.getElementById('birthFarm').value === '') {
+            document.getElementById('farmId').value = '1';
         } else {
-            document.getElementById('farmId').value='';
+            document.getElementById('farmId').value = '';
         }
+    }
+}
+
+/**
+ * Fonction calculant à la volée le pourcentage de race du nouvel animal en fonction
+ * du pourcentage de race des deux parents
+ * @param {type} event
+ * @returns {undefined}
+ */
+
+function calculate_pourcentage_sang() {
+    var father_id = document.getElementById('fatherId').value;
+    var mother_id = document.getElementById('motherId').value;
+    if (father_id !== null && father_id != 1 && father_id != "" && mother_id !== null && mother_id != 2 && mother_id != "") {
+        var pourcentage_sang_pere = parseFloat(document.getElementById('pourcentage_sang_pere').value);
+        var pourcentage_sang_mere = parseFloat(document.getElementById('pourcentage_sang_mere').value);
+        var pourcentage_sang_animal = (pourcentage_sang_pere + pourcentage_sang_mere) / 2;
+
+        $("#pourcentage_sang_animal").val(pourcentage_sang_animal);
     }
 }
 
@@ -71,31 +90,34 @@ function triggerAutoCompleteFarm(event) {
 
 function triggerAutocompleteMale(event) {
     var Race = $('#race').val();
-    var fatherID = $("#fatherID" );
+    var fatherID = $("#fatherID");
     var target1 = $('#fatherId');
     var target2 = $('#lignee');
     var pourcent_sang = $('#pourcentage_sang_pere');
     fatherID.autocomplete({
-        source: "../../libraries/ajax/suggestAnimal.php?sex=1&race="+Race,
+        source: "../../libraries/ajax/suggestAnimal.php?sex=1&race=" + Race,
         dataType: "json",
-        select: function (event,ui){
+        select: function (event, ui) {
             event.preventDefault();
             fatherID.val(ui.item.value);
             target1.val(ui.item.id);         //on injecte bien la valeur de la bdd dans le champ fatherId
             target2.val(ui.item.ancetre);
             pourcent_sang.val(ui.item.pourcent_sang);
+            calculate_pourcentage_sang();
         },
-        focus: function (event,ui){
+        focus: function (event, ui) {
             event.preventDefault();
         },
         minLength: 2
     });
-    if (event.which !== 13 && event.which !== 9 && event.which !== 16){
-        if (document.getElementById('fatherID').value === ''){
+    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
+        if (document.getElementById('fatherID').value === '') {
             document.getElementById('fatherId').value = '1';
         } else {
-            document.getElementById('fatherId').value='';
-            document.getElementById('lignee').value='';
+            document.getElementById('fatherId').value = '';
+            document.getElementById('lignee').value = '';
+            document.getElementById('pourcentage_sang_pere').value = '';
+            document.getElementById('pourcentage_sang_animal').value = '';
         }
     }
 }
@@ -107,33 +129,36 @@ function triggerAutocompleteMale(event) {
  */
 
 function triggerAutocompleteFemale(event) {
-    var Race=$('#race').val();
+    var Race = $('#race').val();
     var motherID = $('#motherID');
     var target1 = $('#motherId');
     var target2 = $('#famille');
     var pourcent_sang = $('#pourcentage_sang_mere');
     motherID.autocomplete({
-        source: "../../libraries/ajax/suggestAnimal.php?sex=2&race="+Race,
+        source: "../../libraries/ajax/suggestAnimal.php?sex=2&race=" + Race,
         dataType: "json",
-        select: function (event,ui){
+        select: function (event, ui) {
             event.preventDefault();
             motherID.val(ui.item.value);
             target1.val(ui.item.id);
             target2.val(ui.item.ancetre);
             pourcent_sang.val(ui.item.pourcent_sang);
+            calculate_pourcentage_sang();
         },
-        focus: function (event,ui){
+        focus: function (event, ui) {
             event.preventDefault();
         },
         minLength: 2
     });
-    if (event.which!==13 && event.which!==9 && event.which!==16){
-       if (document.getElementById('motherID').value === ''){
-           document.getElementById('motherId').value='2';
-       } else {
-           document.getElementById('motherId').value='';
-           document.getElementById('famille').value='';
-       }
+    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
+        if (document.getElementById('motherID').value === '') {
+            document.getElementById('motherId').value = '2';
+        } else {
+            document.getElementById('motherId').value = '';
+            document.getElementById('famille').value = '';
+            document.getElementById('pourcentage_sang_mere').value = '';
+            document.getElementById('pourcentage_sang_animal').value = '';
+        }
     }
 }
 
@@ -143,27 +168,25 @@ function triggerAutocompleteFemale(event) {
  * @param target
  */
 
-function check_if_empty(this_element,target){
+function check_if_empty(this_element, target) {
     if (document.getElementById(this_element).value === '') {
         document.getElementById(target).value = 1;
     }
 }
 
-function checkForm(){
-    if (document.getElementById('fatherID').value !=='' && document.getElementById('fatherId').value ===''){
+function checkForm() {
+    if (document.getElementById('fatherID').value !== '' && document.getElementById('fatherId').value === '') {
         alert('Le nom du père est invalide.');
         return false;
-    }
-    else if (document.getElementById('motherID').value !=='' && document.getElementById('motherId').value ===''){
+    } else if (document.getElementById('motherID').value !== '' && document.getElementById('motherId').value === '') {
         alert('Le nom de la mère est invalide.');
         return false;
-    }
-    else{
+    } else {
         return true;
     }
 }
 
-$().ready(function() {
+$().ready(function () {
     $('#naissance').validate({
         rules: {
             animalID: {
