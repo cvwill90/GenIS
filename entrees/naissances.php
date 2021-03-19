@@ -49,7 +49,7 @@
 
                             <!-- Début de formulaire pour la naissance d'un animal -->
 
-                            <form onsubmit="return checkForm()" class="form-horizontal" id="naissance" role="form" action="insert_db_naissance.php" method="GET" name="naissance">
+                            <form class="form-horizontal" id="naissance" role="form" action="insert_db_naissance.php" method="GET" name="naissance">
 
                                 <fieldset>
 
@@ -81,25 +81,18 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="state">N° d'identification/Nom du père</label>
+                                        <label class="col-lg-2 control-label" for="fatherId">N° d'identification/Nom du père</label>
                                         <div class="col-lg-5">
-                                            <select class="js-example-basic-single form-control" name="state">
-                                                <option>Inconnu</option>
+                                            <select class="parent form-control" name="fatherId" id="fatherId" disabled>
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- Hide legacy father input field
+                                    
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="fatherID">N° d'identification/Nom du père</label>
+                                        <label class="col-lg-2 control-label" for="motherId">N° d'identification/Nom de la mère</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="fatherID" id="fatherID" onkeyup="triggerAutocompleteMale(event)" onblur="check_if_empty('fatherID', 'fatherId')" disabled>
-                                        </div>
-                                    </div>-->
-
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="motherID">N° d'identification/Nom de la mère</label>
-                                        <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="motherID" id="motherID" onkeyup="triggerAutocompleteFemale(event)" onblur="check_if_empty('motherID', 'motherId')" disabled>
+                                            <select class="parent form-control" name="motherId" id="motherId" disabled>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -193,8 +186,8 @@
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <input type="text" class="" id="fatherId" name="fatherId" value="1" style="display:none">
-                                    <input type="text" class="" id="motherId" name="motherId" value="2" style="display:none">
+                                    <!-- <input type="text" class="" id="fatherId" name="fatherId" value="1" style="display:none">
+                                    <input type="text" class="" id="motherId" name="motherId" value="2" style="display:none">-->
                                     <input type="text" class="" id="farmId" name="farmId" style="display:none">
 
                                     <div class="col-lg-offset-2 col-lg-6">

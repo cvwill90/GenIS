@@ -24,8 +24,8 @@ function fillup_race() {
             });
             $('#race').html(str);
             $('#race').prop("disabled",false);
-            $('#fatherID').prop("disabled",false);
-            $('#motherID').prop("disabled",false);
+            $('#fatherId').prop("disabled",false);
+            $('#motherId').prop("disabled",false);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Le serveur a rencontré l\'erreur suivante : '+xhr.status + " "+ thrownError);
@@ -145,7 +145,7 @@ function check_if_empty(this_element,target){
     }
 }
 
-function checkForm(){
+/*function checkForm(){
     if (document.getElementById('fatherID').value !=='' && document.getElementById('fatherId').value ===''){
         alert('Le nom du père est invalide.');
         return false;
@@ -157,9 +157,10 @@ function checkForm(){
     else{
         return true;
     }
-}
+    return true;
+}*/
 
-$().ready(function() {
+$(document).ready(function() {
     $('#naissance').validate({
         rules: {
             animalID: {
@@ -170,5 +171,65 @@ $().ready(function() {
                 }
             }
         }
-    })
+    });
+    
+    $('.parent').select2({
+        ajax: {
+            url: function(){
+                var race = 6;
+                var gender = 1;
+                return '../../libraries/ajax/suggestAnimal.php?sex=' + gender + '&race=' + race;
+            },
+            data: function (params) {
+                var gender = (this[0].id === "fatherId" ? 1 : 2);
+                var query = {
+                    term: params.term,
+                    race: $('#race').val(),
+                    sex: gender,
+                };
+                return query;
+            },
+            dataType: 'json',
+            processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+                var options = {
+                    "results": []
+                }
+                $.each(data, function (i) {
+                    options.results[i] = {
+                        "id": data[i].id,
+                        "text": data[i].label,
+                        "ancetre": data[i].ancetre
+                    }
+                });
+                return options;
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: "Rechercher un parent",
+        templateSelection: function (data) {
+            $(data.element).attr('data-ancetre', data.ancetre);
+            return data.text;
+        },
+        allowClear: true,
+        language: "fr"
+    });
+    
+    $('.parent').on('select2:select', function(event) {
+        var parentGender = event.target.id;
+        if (parentGender === 'fatherId') {
+            $('#lignee').val($('#fatherId').find(':selected').data('ancetre'));
+        } else if (parentGender === 'motherId') {
+            $('#famille').val($('#motherId').find(':selected').data('ancetre'));
+        }
+    });
+    
+    $('.parent').on('select2:clear', function(event) {
+        var parentGender = event.target.id;
+        if (parentGender === 'fatherId') {
+            $('#lignee').val("");
+        } else if (parentGender === 'motherId') {
+            $('#famille').val("");
+        }
+    });
 });
