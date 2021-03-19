@@ -186,8 +186,6 @@
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <!-- <input type="text" class="" id="fatherId" name="fatherId" value="1" style="display:none">
-                                    <input type="text" class="" id="motherId" name="motherId" value="2" style="display:none">-->
                                     <input type="text" class="" id="farmId" name="farmId" style="display:none">
 
                                     <div class="col-lg-offset-2 col-lg-6">
