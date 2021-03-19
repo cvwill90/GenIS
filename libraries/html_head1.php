@@ -43,10 +43,16 @@
 <link href="../mac_bootstrap/macadmin/theme/css/widgets.css" rel="stylesheet">
 <!-- Errors styles -->
 <link href="../libraries/css/errors.styles.css" rel="stylesheet">
+<!-- Select2 styles -->
+<link href="../libraries/css/select2.min.css" rel="stylesheet" />
 
+<!-- JS scripts -->
 <script src="../mac_bootstrap/macadmin/theme/js/respond.min.js"></script>
-<!-- JS -->
-<script src="../mac_bootstrap/macadmin/theme/js/jquery.js"></script> <!-- jQuery -->
+<!-- jQuery -->
+<script src="../mac_bootstrap/macadmin/theme/js/jquery.js"></script> 
+<!-- Select2 script -->
+<script src="../libraries/js/select2.min.js"></script>
+<script src="../libraries/js/fr.js"></script>
 
 
 <!--[if lt IE 9]>
