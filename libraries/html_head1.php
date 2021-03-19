@@ -52,6 +52,7 @@
 <script src="../mac_bootstrap/macadmin/theme/js/jquery.js"></script> 
 <!-- Select2 script -->
 <script src="../libraries/js/select2.min.js"></script>
+<script src="../libraries/js/fr.js"></script>
 
 
 <!--[if lt IE 9]>
