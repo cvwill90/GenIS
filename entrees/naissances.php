@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="race">Race</label>
                                     <div class="col-lg-3">
-                                        <select name="race" id="race" size="1" class="form-control" disabled required>
+                                        <select name="race" id="race" size="1" class="form-control" onchange="switchFocusToNextFormElement('fatherID')" disabled required>
                                         </select>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="fatherID">N° d'identification/Nom</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="fatherID" id="fatherID" onkeyup="triggerAutocompleteMale(event)" onblur="check_if_empty('fatherID', 'fatherId')" disabled>
+                                            <input class="form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="fatherID" id="fatherID" onkeyup="triggerAutocompleteMale(event)" onblur="checkIfElementIsEmpty('fatherID', 'fatherId', 1)" disabled>
                                         </div>
                                     </div>
 
@@ -106,7 +106,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="motherID">N° d'identification/Nom</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="motherID" id="motherID" onkeyup="triggerAutocompleteFemale(event)" onblur="check_if_empty('motherID', 'motherId')" disabled>
+                                            <input class="form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="motherID" id="motherID" onkeyup="triggerAutocompleteFemale(event)" onblur="checkIfElementIsEmpty('motherID', 'motherId', 2)" disabled>
                                         </div>
                                     </div>
 
@@ -157,7 +157,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="animalID">Pourcentage de sang</label>
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_animal">Pourcentage de sang</label>
                                         <div class="col-lg-5">
                                             <input class="form-control" placeholder="Valeur calculée à partir des pourcentages parents" type="number" step="0.01" name="pourcentage_sang_animal" id="pourcentage_sang_animal" disabled>
                                         </div>
@@ -207,9 +207,9 @@
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <input type="text" class="" id="fatherId" name="fatherId" value="1" style="display:none">
-                                    <input type="text" class="" id="motherId" name="motherId" value="2" style="display:none">
-                                    <input type="text" class="" id="farmId" name="farmId" style="display:none">
+                                    <input type="text" class="" id="fatherId" name="fatherId" value="1" >
+                                    <input type="text" class="" id="motherId" name="motherId" value="2" >
+                                    <input type="text" class="" id="farmId" name="farmId" style="display: none">
 
                                     <div class="col-lg-offset-2 col-lg-6">
                                         <button id="birthValid" type="button" class="btn btn-sm btn-success">Valider</button>
