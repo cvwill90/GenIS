@@ -48,8 +48,7 @@
                             <!-- Content goes here -->
 
                             <!-- Début de formulaire pour la naissance d'un animal -->
-
-                            <form onsubmit="return checkForm()" class="form-horizontal" id="naissance" role="form" action="insert_db_naissance.php" method="GET" name="naissance">
+                            <form class="form-horizontal" id="naissance" role="form" action="insert_db_naissance.php" method="GET" name="naissance">
 
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="espece">Espèce</label>
@@ -73,16 +72,17 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="race">Race</label>
                                     <div class="col-lg-3">
-                                        <select name="race" id="race" size="1" class="form-control" onchange="switchFocusToNextFormElement('fatherID')" disabled required>
+                                        <select name="race" id="race" size="1" class="form-control" disabled required>
                                         </select>
                                     </div>
                                 </div>
                                 <fieldset>
                                     <legend>Informations du père</legend>
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="fatherID">N° d'identification/Nom</label>
+                                        <label class="col-lg-2 control-label" for="fatherId">N° d'identification/Nom du père</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="fatherID" id="fatherID" onkeyup="triggerAutocompleteMale(event)" onblur="checkIfElementIsEmpty('fatherID', 'fatherId', 1)" disabled>
+                                            <select class="parent form-control" name="fatherId" id="fatherId" disabled>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -104,9 +104,10 @@
                                 <fieldset>
                                     <legend>Informations de la mère</legend>
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="motherID">N° d'identification/Nom</label>
+                                        <label class="col-lg-2 control-label" for="motherId">N° d'identification/Nom de la mère</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="motherID" id="motherID" onkeyup="triggerAutocompleteFemale(event)" onblur="checkIfElementIsEmpty('motherID', 'motherId', 2)" disabled>
+                                            <select class="parent form-control" name="motherId" id="motherId" disabled>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -207,9 +208,7 @@
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <input type="text" class="" id="fatherId" name="fatherId" value="1" >
-                                    <input type="text" class="" id="motherId" name="motherId" value="2" >
-                                    <input type="text" class="" id="farmId" name="farmId" style="display: none">
+                                    <input type="text" class="" id="farmId" name="farmId" style="display:none">
 
                                     <div class="col-lg-offset-2 col-lg-6">
                                         <button id="birthValid" type="button" class="btn btn-sm btn-success">Valider</button>

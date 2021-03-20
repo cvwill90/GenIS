@@ -6,7 +6,7 @@
 //var selected = specie.options[specie.selectedIndex].value;
 //alert(specie.value);
 
-var unknownFatherId = 1;
+/*var unknownFatherId = 1;
 var unknownMotherId = 2;
 var unknownParentName = "";
 var unknownParentAncestor = "";
@@ -19,7 +19,8 @@ var family = {
         id: window.unknownFatherId,
         name: window.unknownParentName,
         lignee: window.unknownParentAncestor,
-        pourcentageSangRace: window.unknownParentBloodPercentage
+        pourcentageSangRace: window.unknownParentBloodPercentage,
+        livreGenealogique:window.
     },
     motherInternal: {
         id: window.unknownMotherId,
@@ -68,7 +69,7 @@ var family = {
         this.motherInternal.pourcentageSangRace = mother.pourcent_sang;
         this.updateMotherInformationInForm();
     },
-    updateFatherInformationInForm: function(){
+    /*updateFatherInformationInForm: function(){
         if (this.fatherInternal.id !== 1) {
             $("#fatherID").val(this.fatherInternal.name);
             $('#fatherId').val(this.fatherInternal.id);
@@ -119,11 +120,11 @@ var family = {
     get getMother(){
         return this.motherInternal;
     }
-}
+}*/
 
-function switchFocusToNextFormElement(targetFormElement) {
+/*function switchFocusToNextFormElement(targetFormElement) {
     document.getElementById(targetFormElement).focus();
-}
+}*/
 
 /**
  * Fonction remplissant la liste de sélection des races en fonction de ce qui est choisi comme espèce
@@ -131,19 +132,19 @@ function switchFocusToNextFormElement(targetFormElement) {
 
 function fillup_race() {
     var str = '';
-    var specie = $("#espece").find(":selected").val();
+    var espece = $("#espece").find(":selected").val();
     $.ajax({
         method: 'GET',
-        url: '../../libraries/ajax/getRaces.php?espece=' + specie,
+        url: '../../libraries/ajax/getRaces.php?espece=' + espece,
         dataType: "json",
-        success: function (data, status) {
+        success: function (data) {
             $.each(data, function (i, espece) {
                 str = str + '<option value="' + espece.value + '">' + espece.label + '</option>';
             });
             $('#race').html(str);
-            $('#race').prop("disabled", false);
-            $('#fatherID').prop("disabled", false);
-            $('#motherID').prop("disabled", false);
+            $('#race').prop("disabled",false);
+            $('#fatherId').prop("disabled",false);
+            $('#motherId').prop("disabled",false);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('Le serveur a rencontré l\'erreur suivante : ' + xhr.status + " " + thrownError);
@@ -162,10 +163,10 @@ function triggerAutoCompleteFarm(event) {
     $('#birthFarm').autocomplete({
         source: "../../libraries/ajax/suggestFarm.php?",
         dataType: "json",
-        select: function (event, ui) {
+        select: function (event, farm) {
             event.preventDefault();
-            $('#birthFarm').val(ui.item.nom_elevage);
-            $('#farmId').val(ui.item.id);
+            $('#birthFarm').val(farm.item.nom_elevage);
+            $('#farmId').val(farm.item.id);
         },
         focus: function (event, ui) {
             event.preventDefault();
@@ -188,7 +189,9 @@ function triggerAutoCompleteFarm(event) {
  * @returns {undefined}
  */
 
-function get_pourcentage_sang() {
+function getNewAnimalGeneticInformation() {
+    var info = {fatherId: 1, motherId: 2};
+    return $.get('../../libraries/ajax/calculate_genetic_information.php', info);
     /*var father_id = document.getElementById('fatherId').value;
     var mother_id = document.getElementById('motherId').value;
     if (father_id !== null && father_id != 1 && father_id != "" && mother_id !== null && mother_id != 2 && mother_id != "") {
@@ -202,93 +205,7 @@ function get_pourcentage_sang() {
     // Request pourcentage de sang over ajax to backend
 }
 
-/**
- * Fonction d'autocomplétion proposant les mâles existants dans la bdd
- * gère également l'autoremplissage du champ "lignee"
- * @param event
- */
-
-function triggerAutocompleteMale(event) {
-    var race = $('#race').val();
-    $("#fatherID").autocomplete({
-        source: "../../libraries/ajax/suggestAnimal.php?sex=1&race=" + race,
-        dataType: "json",
-        select: function (event, selectedOption) {
-            event.preventDefault();
-            window.family.father = selectedOption.item;
-            window.switchFocusToNextFormElement('motherID');
-        },
-        focus: function (event, focusedOption) {
-            event.preventDefault();
-        },
-        minLength: 2
-    });
-    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
-        var currentFatherIdInput = document.getElementById('fatherID').value;
-        window.family.father = {
-            id: 1,
-            value: currentFatherIdInput,
-            ancetre: window.unknownParentAncestor,
-            pourcent_sang: window.unknownParentBloodPercentage
-        };
-    }
-}
-
-/**
- * Fonction d'autocomplétion proposant les femelles existantes dans la bdd
- * gère également l'autoremplissage du champ "famille"
- * @param event
- */
-
-function triggerAutocompleteFemale(event) {
-    var race = $('#race').val();
-    $('#motherID').autocomplete({
-        source: "../../libraries/ajax/suggestAnimal.php?sex=2&race=" + race,
-        dataType: "json",
-        select: function (event, selectedOption) {
-            event.preventDefault();
-            window.family.mother = selectedOption.item;
-            window.switchFocusToNextFormElement('animalID');
-        },
-        focus: function (event, focusedOption) {
-            event.preventDefault();
-        },
-        minLength: 2
-    });
-    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
-        if (document.getElementById('motherID').value === '') {
-            window.family.resetMotherInformationInForm();
-        } else {
-            window.family.eraseMotherInformationInForm();
-        }
-    }
-}
-
-/**
- * Lorsqu'on quitte un champ d'autocomplétion (onblur),
- * @param this_element
- * @param target
- */
-
-function checkIfElementIsEmpty(thisElement, targetElement, defaultValue) {
-    if (document.getElementById(thisElement).value === '') {
-        document.getElementById(targetElement).value = defaultValue;
-    }
-}
-
-function checkForm() {
-    if (document.getElementById('fatherID').value !== '' && document.getElementById('fatherId').value === '') {
-        alert('Le nom du père est invalide.');
-        return false;
-    } else if (document.getElementById('motherID').value !== '' && document.getElementById('motherId').value === '') {
-        alert('Le nom de la mère est invalide.');
-        return false;
-    } else {
-        return true;
-    }
-}
-
-$().ready(function () {
+$(document).ready(function() {
     $('#naissance').validate({
         rules: {
             animalID: {
@@ -299,5 +216,73 @@ $().ready(function () {
                 }
             }
         }
-    })
+    });
+    
+    $('.parent').select2({
+        ajax: {
+            url: function(){
+                var race = 6;
+                var gender = 1;
+                return '../../libraries/ajax/suggestAnimal.php?sex=' + gender + '&race=' + race;
+            },
+            data: function (params) {
+                var gender = (this[0].id === "fatherId" ? 1 : 2);
+                var query = {
+                    term: params.term,
+                    race: $('#race').val(),
+                    sex: gender,
+                };
+                return query;
+            },
+            dataType: 'json',
+            processResults: function (data) {
+            // Transforms the top-level key of the response object from 'items' to 'results'
+                var options = {
+                    "results": []
+                }
+                $.each(data, function (i) {
+                    options.results[i] = {
+                        "id": data[i].id,
+                        "text": data[i].label,
+                        "ancetre": data[i].ancetre
+                    }
+                });
+                return options;
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: "Rechercher un parent",
+        templateSelection: function (data) {
+            $(data.element).attr('data-ancetre', data.ancetre);
+            return data.text;
+        },
+        allowClear: true,
+        language: "fr"
+    });
+    
+    $('.parent').on('select2:select', function(event) {
+        var parentGender = event.target.id;
+        if (parentGender === 'fatherId') {
+            $('#lignee').val($('#fatherId').find(':selected').data('ancetre'));
+        } else if (parentGender === 'motherId') {
+            $('#famille').val($('#motherId').find(':selected').data('ancetre'));
+        }
+        /*var childGeneticInformation = window.getNewAnimalGeneticInformation().done(function (data) {return data});
+        });*/
+        window.getNewAnimalGeneticInformation().done(function (data) {
+            var parsedGeneticInformation = JSON.parse(data);
+            $('#pourcentage_sang_animal').val(parsedGeneticInformation.pourcentage_sang_race);
+        });
+        //$('#pourcentage_sang_animal').val(childGeneticInformation.pourcentage_sang_race);
+    });
+    
+    $('.parent').on('select2:clear', function(event) {
+        var parentGender = event.target.id;
+        if (parentGender === 'fatherId') {
+            $('#lignee').val("");
+        } else if (parentGender === 'motherId') {
+            $('#famille').val("");
+        }
+        $('#pourcentage_sang_animal').val("");
+    });
 });

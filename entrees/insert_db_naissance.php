@@ -62,12 +62,12 @@ $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
           $lignee = $_GET['lignee'];
           $livre_gene = $_GET['livre_gene'];
 
-          if ($_GET['fatherId']!='') {
+          if (isset($_GET['fatherId'])) {
             $pere = $_GET['fatherId'];
-          }else {
+          } else {
             $pere = 1;
           }
-          if ($_GET['motherId']!='') {
+          if (isset($_GET['motherId'])) {
             $mere = $_GET['motherId'];
           }else{
             $mere = 2;
