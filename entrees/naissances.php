@@ -89,14 +89,14 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="lignee">Lignée</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="lignee" id="lignee" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="lignee" id="lignee" disabled readonly>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="pourcentage_sang_pere">Pourcentage de sang</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="pourcentage_sang_pere" id="pourcentage_sang_pere" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="pourcentage_sang_pere" id="pourcentage_sang_pere" disabled readonly>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -114,14 +114,14 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="famille">Famille</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="famille" id="famille" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="famille" id="famille" readonly disabled>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="pourcentage_sang_mere">Pourcentage de sang</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="pourcentage_sang_mere" id="pourcentage_sang_mere" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="pourcentage_sang_mere" id="pourcentage_sang_mere" disabled readonly>
                                         </div>
                                     </div>
                                 </fieldset>
