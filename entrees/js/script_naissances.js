@@ -139,6 +139,7 @@ $(document).ready(function() {
         if ($('#fatherId').find(':selected')[0] !== undefined && $('#motherId').find(':selected')[0] !== undefined) {
             window.getNewAnimalGeneticInformation().done(function (data) {
                 var parsedGeneticInformation = JSON.parse(data);
+                $('#pourcentage_sang_animal').prop('disabled', true);
                 $('#pourcentage_sang_animal').val(parsedGeneticInformation.blood_percentage);
             });
         }
@@ -152,5 +153,6 @@ $(document).ready(function() {
             $('#famille').val("");
         }
         $('#pourcentage_sang_animal').val("");
+        $('#pourcentage_sang_animal').prop('disabled', false);
     });
 });
