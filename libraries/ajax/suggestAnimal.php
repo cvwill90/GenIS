@@ -1,6 +1,6 @@
 <?php
 /*
- * Meme fichier pour l'autocompl�tion m�le eet femelle
+ * Même fichier pour l'autocomplétion mâle et femelle
  */
 
 require_once '../fonctions.php';
@@ -25,11 +25,13 @@ if (isset($_GET["term"])) {
 
 $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
-
-$sqlselect = "SELECT no_identification, nom_animal, id_animal FROM animal WHERE sexe IN ({$sex}) AND (no_identification LIKE \"%". $animal ."%\" OR nom_animal LIKE \"%". $animal ."%\") ";
+$sqlselect = "SELECT no_identification, nom_animal, id_animal, pourcentage_sang_race FROM animal "
+        . "WHERE sexe IN ({$sex}) AND (no_identification LIKE \"%". $animal ."%\" OR nom_animal LIKE \"%". $animal ."%\") ";
+        
 if ($race) {
     $sqlselect .= "AND code_race = {$race} ";
 }
+
 $sqlselect .= "ORDER BY nom_animal ASC LIMIT 0, 10";
 
 $query = $con -> query($sqlselect);
@@ -44,13 +46,25 @@ while ($list = $query->fetch()) {
     if (isset($_GET['max'])){
             $max = $_GET['max'];
             if ($i < $max) {
-                    $string = $string . "{\"label\": \"" . $list['no_identification'] . ' - ' . $list['nom_animal'] . "\", \"value\": \"" . $list['nom_animal'] . "\", \"id\": \"" . $list['id_animal'] . "\", \"ancetre\": \"" . $ancetre . "\"},";
+                    $string .= '{'
+                            . '"label": "' . $list['no_identification'] . ' - ' . $list['nom_animal'] . '",'
+                            . '"value": "' . $list['nom_animal'] . '",'
+                            . '"id": "' . $list['id_animal'] . '",'
+                            . '"ancetre": "' . $ancetre . '",'
+                            . '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
+                            . '},';
                     $i++;
             } else {
                     break;
             }
     } else {
-            $string = $string . "{\"label\": \"" . $list['no_identification'] . ' - ' . $list['nom_animal'] . "\", \"value\": \"" . $list['nom_animal'] . "\", \"id\": \"" . $list['id_animal'] . "\", \"ancetre\": \"" . $ancetre . "\"},";
+            $string .= "{"
+                    . '"label": "' . $list['no_identification'] . ' - ' . $list['nom_animal'] . '",'
+                    . '"value": "' . $list['nom_animal'] . '",'
+                    . '"id": "' . $list['id_animal'] . '",'
+                    . '"ancetre": "' . $ancetre . '",'
+                    . '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
+                    . '},';
     }
 }
 

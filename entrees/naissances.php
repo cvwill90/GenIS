@@ -48,38 +48,36 @@
                             <!-- Content goes here -->
 
                             <!-- Début de formulaire pour la naissance d'un animal -->
-
                             <form class="form-horizontal" id="naissance" role="form" action="insert_db_naissance.php" method="GET" name="naissance">
 
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="espece">Espèce</label>
+                                    <div class="col-lg-3">
+                                        <?php
+                                        $sql_especes = "SELECT id_espece, lib_espece FROM espece ORDER BY lib_espece";
+
+                                        $query = pdo_sql_query($con, $sql_especes);
+
+                                        $array_code_espece = array();
+                                        $array_label_espece = array();
+                                        while ($result_especes = $query->fetch()) {
+                                            array_push($array_code_espece, $result_especes[0]);
+                                            array_push($array_label_espece, $result_especes[1]);
+                                        }
+
+                                        tableau_choix($array_code_espece, $array_label_espece, 'espece', 1, 'onchange="fillup_race()" id="espece" required');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="race">Race</label>
+                                    <div class="col-lg-3">
+                                        <select name="race" id="race" size="1" class="form-control" disabled required>
+                                        </select>
+                                    </div>
+                                </div>
                                 <fieldset>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="espece">Espèce</label>
-                                        <div class="col-lg-3">
-                                            <?php
-                                            $sql_especes = "SELECT id_espece, lib_espece FROM espece ORDER BY lib_espece";
-
-                                            $query = pdo_sql_query($con, $sql_especes);
-
-                                            $array_code_espece = array();
-                                            $array_label_espece = array();
-                                            while ($result_especes = $query->fetch()) {
-                                                array_push($array_code_espece, $result_especes[0]);
-                                                array_push($array_label_espece, $result_especes[1]);
-                                            }
-
-                                            tableau_choix($array_code_espece, $array_label_espece, 'espece', 1, 'onchange="fillup_race()" id="espece" required');
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="race">Race</label>
-                                        <div class="col-lg-3">
-                                            <select name="race" id="race" size="1" class="form-control" disabled required>
-                                            </select>
-                                        </div>
-                                    </div>
-
+                                    <legend>Informations du père</legend>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="fatherId">N° d'identification/Nom du père</label>
                                         <div class="col-lg-5">
@@ -87,7 +85,24 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="lignee">Lignée</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="lignee" id="lignee" disabled readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_pere">Pourcentage de sang</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="pourcentage_sang_pere" id="pourcentage_sang_pere" disabled readonly>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Informations de la mère</legend>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="motherId">N° d'identification/Nom de la mère</label>
                                         <div class="col-lg-5">
@@ -97,21 +112,22 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="lignee">Lignée</label>
+                                        <label class="col-lg-2 control-label" for="famille">Famille</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Lignée" type="text" name="lignee" id="lignee" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="famille" id="famille" readonly disabled>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="famille">Famille</label>
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_mere">Pourcentage de sang</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Famille" type="text" name="famille" id="famille" readonly>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="pourcentage_sang_mere" id="pourcentage_sang_mere" disabled readonly>
                                         </div>
                                     </div>
-
                                 </fieldset>
+                                
                                 <fieldset>
+                                    <legend>Informations du nouvel animal</legend>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="animalID">N° d'identification de l'animal</label>
                                         <div class="col-lg-5">
@@ -139,6 +155,12 @@
                                                     Femelle
                                                 </label>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_animal">Pourcentage de sang</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" placeholder="Valeur calculée à partir des pourcentages parents" type="number" step="0.01" name="pourcentage_sang_animal" id="pourcentage_sang_animal" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">

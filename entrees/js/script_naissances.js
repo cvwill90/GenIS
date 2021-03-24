@@ -2,25 +2,20 @@
  * Created by Christophe_2 on 01/03/2016.
  */
 
-//var specie = document.getElementById('espece');
-//var selected = specie.options[specie.selectedIndex].value;
-//alert(specie.value);
-
-
 /**
  * Fonction remplissant la liste de sélection des races en fonction de ce qui est choisi comme espèce
  */
 
 function fillup_race() {
-    var str='';
-    var specie = $("#espece").find(":selected").val();
+    var str = '';
+    var espece = $("#espece").find(":selected").val();
     $.ajax({
         method: 'GET',
-        url: '../../libraries/ajax/getRaces.php?espece='+specie,
+        url: '../../libraries/ajax/getRaces.php?espece=' + espece,
         dataType: "json",
-        success : function(data, status){
-            $.each(data, function (i,espece) {
-                str = str + '<option value="'+ espece.value +'">'+ espece.label +'</option>';
+        success: function (data) {
+            $.each(data, function (i, espece) {
+                str = str + '<option value="' + espece.value + '">' + espece.label + '</option>';
             });
             $('#race').html(str);
             $('#race').prop("disabled",false);
@@ -28,9 +23,9 @@ function fillup_race() {
             $('#motherId').prop("disabled",false);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('Le serveur a rencontré l\'erreur suivante : '+xhr.status + " "+ thrownError);
+            alert('Le serveur a rencontré l\'erreur suivante : ' + xhr.status + " " + thrownError);
         },
-        complete : function(data, status){
+        complete: function (data, status) {
         }
     });
 }
@@ -44,23 +39,38 @@ function triggerAutoCompleteFarm(event) {
     $('#birthFarm').autocomplete({
         source: "../../libraries/ajax/suggestFarm.php?",
         dataType: "json",
-        select: function(event,ui){
+        select: function (event, farm) {
             event.preventDefault();
-            $('#birthFarm').val(ui.item.nom_elevage);
-            $('#farmId').val(ui.item.id);
+            $('#birthFarm').val(farm.item.nom_elevage);
+            $('#farmId').val(farm.item.id);
         },
-        focus: function(event,ui){
+        focus: function (event, ui) {
             event.preventDefault();
         },
         minLength: 2
     });
-    if (event.which !== 13 && event.which !== 9 && event.which !== 16){
-        if (document.getElementById('birthFarm').value === ''){
-            document.getElementById('farmId').value='1';
+    if (event.which !== 13 && event.which !== 9 && event.which !== 16) {
+        if (document.getElementById('birthFarm').value === '') {
+            document.getElementById('farmId').value = '1';
         } else {
-            document.getElementById('farmId').value='';
+            document.getElementById('farmId').value = '';
         }
     }
+}
+
+/**
+ * Fonction calculant à la volée le pourcentage de race du nouvel animal en fonction
+ * du pourcentage de race des deux parents
+ * @param {type} event
+ * @returns {undefined}
+ */
+
+function getNewAnimalGeneticInformation() {
+    var fatherId = $('#fatherId').find(':selected').val();
+    var motherId = $('#motherId').find(':selected').val();
+    var parents = {fatherId: fatherId, motherId: motherId};
+    console.log(parents);
+    return $.get('../../libraries/ajax/calculate_genetic_information.php', parents);
 }
 
 $(document).ready(function() {
@@ -125,6 +135,13 @@ $(document).ready(function() {
         } else if (parentGender === 'motherId') {
             $('#famille').val($('#motherId').find(':selected').data('ancetre'));
         }
+        
+        if ($('#fatherId').find(':selected')[0] !== undefined && $('#motherId').find(':selected')[0] !== undefined) {
+            window.getNewAnimalGeneticInformation().done(function (data) {
+                var parsedGeneticInformation = JSON.parse(data);
+                $('#pourcentage_sang_animal').val(parsedGeneticInformation.blood_percentage);
+            });
+        }
     });
     
     $('.parent').on('select2:clear', function(event) {
@@ -134,5 +151,6 @@ $(document).ready(function() {
         } else if (parentGender === 'motherId') {
             $('#famille').val("");
         }
+        $('#pourcentage_sang_animal').val("");
     });
 });

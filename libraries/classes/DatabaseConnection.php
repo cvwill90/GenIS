@@ -18,7 +18,7 @@ class DatabaseConnection {
     private $host;
     private $con;
     
-    public function select($sql) {
+    public function select($sql): PDOStatement {
         $con = $this->con;
         try {
             $con->beginTransaction();
@@ -31,7 +31,7 @@ class DatabaseConnection {
         return $result;
     }
     
-    public function execute($sql) {
+    public function execute($sql): array {
         $con = $this->con;
         try {
             $con->beginTransaction();
@@ -50,7 +50,7 @@ class DatabaseConnection {
         return $return;
     }
     
-    private function handle_sql_error($error_code, $error_msg) {
+    private function handle_sql_error($error_code, $error_msg): array {
         $response = array();
         $response['error'] = True;
         $response['error_msg'] = $error_msg;
