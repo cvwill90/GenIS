@@ -167,7 +167,7 @@
                                         <label class="col-lg-2 control-label" for="livre_gene">Livre généalogique</label>
                                         <div class="col-lg-2">
                                             <select id="livre_gene" name="livre_gene" class="form-control">
-                                                <option value="NULL" selected>Non applicable</option>
+                                                <option value="0" selected>Non applicable</option>
                                                 <option value="1">Livre principal</option>
                                                 <option value="2">Livre annexe</option>
                                                 <option value="3">Hors-livre</option>

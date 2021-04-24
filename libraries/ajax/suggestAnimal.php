@@ -25,7 +25,8 @@ if (isset($_GET["term"])) {
 
 $con = pdo_connection(HOST_DB,DB_NAME,USER_DB,PW_DB);
 
-$sqlselect = "SELECT no_identification, nom_animal, id_animal, pourcentage_sang_race FROM animal "
+//$sqlselect = "SELECT no_identification, nom_animal, id_animal, pourcentage_sang_race FROM animal "
+$sqlselect = "SELECT no_identification, nom_animal, id_animal FROM animal "
         . "WHERE sexe IN ({$sex}) AND (no_identification LIKE \"%". $animal ."%\" OR nom_animal LIKE \"%". $animal ."%\") ";
         
 if ($race) {
@@ -42,16 +43,17 @@ $string = "[";
 $i=0;
 
 while ($list = $query->fetch()) {
-    $ancetre = getNomAncetre($con, intval($list[2]), $sex);
+    //$ancetre = getNomAncetre($con, intval($list[2]), $sex);
     if (isset($_GET['max'])){
             $max = $_GET['max'];
             if ($i < $max) {
                     $string .= '{'
                             . '"label": "' . $list['no_identification'] . ' - ' . $list['nom_animal'] . '",'
-                            . '"value": "' . $list['nom_animal'] . '",'
-                            . '"id": "' . $list['id_animal'] . '",'
-                            . '"ancetre": "' . $ancetre . '",'
-                            . '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
+                            //. '"value": "' . $list['nom_animal'] . '",'
+                            . '"id": "' . $list['id_animal'] . '"'
+                            //. '"id": "' . $list['id_animal'] . '",'
+                            //. '"ancetre": "' . $ancetre . '",'
+                            //. '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
                             . '},';
                     $i++;
             } else {
@@ -60,10 +62,11 @@ while ($list = $query->fetch()) {
     } else {
             $string .= "{"
                     . '"label": "' . $list['no_identification'] . ' - ' . $list['nom_animal'] . '",'
-                    . '"value": "' . $list['nom_animal'] . '",'
-                    . '"id": "' . $list['id_animal'] . '",'
-                    . '"ancetre": "' . $ancetre . '",'
-                    . '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
+                    //. '"value": "' . $list['nom_animal'] . '",'
+                    . '"id": "' . $list['id_animal'] . '"'
+                    //. '"id": "' . $list['id_animal'] . '",'
+                    // '"ancetre": "' . $ancetre . '",'
+                    //. '"pourcent_sang": "' . $list['pourcentage_sang_race'] . '"'
                     . '},';
     }
 }
