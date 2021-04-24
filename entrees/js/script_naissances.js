@@ -69,8 +69,22 @@ function getNewAnimalGeneticInformation() {
     var fatherId = $('#fatherId').find(':selected').val();
     var motherId = $('#motherId').find(':selected').val();
     var parents = {fatherId: fatherId, motherId: motherId};
-    console.log(parents);
+    //console.log(parents);
     return $.get('../../libraries/ajax/calculate_genetic_information.php', parents);
+}
+
+function getAnimalGeneticInformation(animalId) {
+    return $.ajax({
+        method: 'GET',
+        url: 'http://genisquery.cra/animalInformation/' + animalId,
+        data: {
+            include_genetic_information: 1
+        },
+        dataType: "json",
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert('Le serveur a rencontré l\'erreur suivante : ' + xhr.status + " " + thrownError);
+        }
+    });
 }
 
 $(document).ready(function() {
@@ -79,7 +93,7 @@ $(document).ready(function() {
             animalID: {
                 required: true,
                 remote: {
-                    url: "../libraries/ajax/check_id_number.php",
+                    url: "../../libraries/ajax/check_id_number.php",
                     method: "POST"
                 }
             }
@@ -88,11 +102,7 @@ $(document).ready(function() {
     
     $('.parent').select2({
         ajax: {
-            url: function(){
-                var race = 6;
-                var gender = 1;
-                return '../../libraries/ajax/suggestAnimal.php?sex=' + gender + '&race=' + race;
-            },
+            url: "../../libraries/ajax/suggestAnimal.php",
             data: function (params) {
                 var gender = (this[0].id === "fatherId" ? 1 : 2);
                 var query = {
@@ -104,15 +114,13 @@ $(document).ready(function() {
             },
             dataType: 'json',
             processResults: function (data) {
-            // Transforms the top-level key of the response object from 'items' to 'results'
                 var options = {
                     "results": []
                 }
                 $.each(data, function (i) {
                     options.results[i] = {
                         "id": data[i].id,
-                        "text": data[i].label,
-                        "ancetre": data[i].ancetre
+                        "text": data[i].label
                     }
                 });
                 return options;
@@ -120,37 +128,42 @@ $(document).ready(function() {
         },
         minimumInputLength: 2,
         placeholder: "Rechercher un parent",
-        templateSelection: function (data) {
-            $(data.element).attr('data-ancetre', data.ancetre);
-            return data.text;
-        },
         allowClear: true,
         language: "fr"
     });
     
     $('.parent').on('select2:select', function(event) {
-        var parentGender = event.target.id;
-        if (parentGender === 'fatherId') {
-            $('#lignee').val($('#fatherId').find(':selected').data('ancetre'));
-        } else if (parentGender === 'motherId') {
-            $('#famille').val($('#motherId').find(':selected').data('ancetre'));
-        }
-        
-        if ($('#fatherId').find(':selected')[0] !== undefined && $('#motherId').find(':selected')[0] !== undefined) {
-            window.getNewAnimalGeneticInformation().done(function (data) {
-                var parsedGeneticInformation = JSON.parse(data);
-                $('#pourcentage_sang_animal').val(parsedGeneticInformation.blood_percentage);
-            });
-        }
+        var animalGeneticInformationRequest = getAnimalGeneticInformation(event.params.data.id);
+        animalGeneticInformationRequest.done(function(animalGeneticInformation) {
+            var parentGender = event.target.id;
+            if (parentGender === 'fatherId') {
+                $('#lignee').val(animalGeneticInformation.lignee);
+                $('#pourcentage_sang_pere').val(animalGeneticInformation.pourcentage_sang_race);
+            } else if (parentGender === 'motherId') {
+                $('#famille').val(animalGeneticInformation.famille);
+                $('#pourcentage_sang_mere').val(animalGeneticInformation.pourcentage_sang_race);
+            }
+            
+            if ($('#fatherId').find(':selected')[0] !== undefined && $('#motherId').find(':selected')[0] !== undefined) {
+                var pourcentageSangPere = parseFloat($('#pourcentage_sang_pere').val());
+                var pourcentageSangMere = parseFloat($('#pourcentage_sang_mere').val());
+                $('#pourcentage_sang_animal').prop('disabled', true);
+                $('#pourcentage_sang_animal').val((pourcentageSangPere + pourcentageSangMere)/ 2);
+            }
+            
+        });
     });
     
     $('.parent').on('select2:clear', function(event) {
         var parentGender = event.target.id;
         if (parentGender === 'fatherId') {
             $('#lignee').val("");
+            $('#pourcentage_sang_pere').val(null);
         } else if (parentGender === 'motherId') {
             $('#famille').val("");
+            $('#pourcentage_sang_mere').val(null);
         }
         $('#pourcentage_sang_animal').val("");
+        $('#pourcentage_sang_animal').prop('disabled', false);
     });
 });

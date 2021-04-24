@@ -34,6 +34,8 @@ define('EXPORT_TYPES', array(
     'internal' => 'export_internal'
 ));
 
+define('RACES_SOUMISES_A_GESTION_GENETIQUES', array(2, 7, 8, 21, 3, 4, 5, 6, 19, 20));
+
 /*
  * Paramètres du conservatoire du fichier de configuration
  */
