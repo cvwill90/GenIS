@@ -80,7 +80,8 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="chooseAnimal">N°/Nom de l'animal à modifier</label>
                                     <div class="col-lg-5">
-                                        <input class="form-control" placeholder="Sélectionner un animal de la liste" type="text" name="chooseAnimal" id="chooseAnimal" onkeyup="triggerAutocompleteAnimal(event)" onblur="check_if_empty('chooseAnimal', 'IDanimalChoisi')" disabled required>
+                                        <select class="form-control" placeholder="Sélectionner un animal de la liste" name="chooseAnimal" id="chooseAnimal" onblur="check_if_empty('chooseAnimal', 'IDanimalChoisi')" disabled required>
+                                        </select>
                                     </div>
                                 </div>
 
