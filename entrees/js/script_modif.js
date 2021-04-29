@@ -287,7 +287,19 @@ $(document).ready(function (){
                 $.each(data, function (i) {
                     options.results[i] = {
                         "id": data[i].id,
-                        "text": data[i].label
+                        "text": data[i].label,
+                        "animalName": data[i].value,
+                        "sex": data[i].sexe,
+                        "identificationNumber": data[i].no,
+                        "birthDate": data[i].date_naiss,
+                        "deathDate": data[i].date_mort,
+                        "conservatoire": data[i].cons,
+                        "fatherId": data[i].id_p,
+                        "motherId": data[i].id_m,
+                        "fatherName": data[i].nom_p,
+                        "motherName": data[i].nom_m,
+                        "farmName": data[i].nom_elev,
+                        "farmId": data[i].id_elev
                     };
                 });
                 return options;
@@ -297,5 +309,43 @@ $(document).ready(function (){
         placeholder: "Rechercher un parent",
         allowClear: true,
         language: "fr"
+    });
+    
+    $('#chooseAnimal').on('select2:select', function(event) {
+        $('#father').val(event.params.data.fatherName);
+        $('#mother').val(event.params.data.motherName);
+        $('#animalID').val(event.params.data.identificationNumber);
+        $('#animalName').val(event.params.data.animalName);
+        $('#birthDate').val(event.params.data.birthDate);
+        $('#deathDate').val(event.params.data.deathDate);
+        $('#birthFarm').val(event.params.data.farmName);
+        $("#IDanimalChoisi").val(event.params.data.id);
+        $('#fatherId').val(event.params.data.fatherId);
+        $('#motherId').val(event.params.data.motherId);
+        $('#farmId').val(event.params.data.farmId);
+        
+        if (event.params.data.sex === 1){
+            $('#animalMale').prop("checked", true);
+        } else if (event.params.data.sex === 3) {
+            $('#animalCastre').prop("checked", true);
+        } else {
+            $('#animalFemale').prop("checked", true);
+        }
+        
+        if (event.params.data.cons) {
+            $('#conserv2').prop("checked", true);
+        } else {
+            $('#conserv1').prop("checked", true);
+        }
+        
+        if (event.params.data.deathDate !== '') {
+            $('#animal_dead').prop("checked", true);
+            $('#animal_dead').prop("disabled", false);
+            $('#deathDate').prop("disabled", false);
+        } else {
+            $('#animal_dead').prop("checked", false);
+            $('#animal_dead').prop("disabled", true);
+            $('#deathDate').prop("disabled", true);
+        }
     });
 });
