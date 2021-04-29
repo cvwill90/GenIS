@@ -251,7 +251,7 @@ function modifAnimal(){
             data: formContent,
             url: "../libraries/ajax/ajaxModifierAnimal.php?type=2",
             success: function (data) {
-              if (data.status == 'ok'){
+              if (data.status === 'ok'){
                 window.location.replace('resultModif.php');
               } else {
                 alert(data.statusMsg);
@@ -266,3 +266,36 @@ function modifAnimal(){
     }
     
 }
+
+$(document).ready(function (){
+    $('#chooseAnimal').select2({
+        ajax: {
+            url: "../../libraries/ajax/ajaxModifierAnimal.php",
+            data: function (params) {
+                var query = {
+                    term: params.term,
+                    race: $('#race').val(),
+                    type: 1
+                };
+                return query;
+            },
+            dataType: 'json',
+            processResults: function (data) {
+                var options = {
+                    "results": []
+                };
+                $.each(data, function (i) {
+                    options.results[i] = {
+                        "id": data[i].id,
+                        "text": data[i].label
+                    };
+                });
+                return options;
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: "Rechercher un parent",
+        allowClear: true,
+        language: "fr"
+    });
+});
