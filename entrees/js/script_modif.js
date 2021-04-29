@@ -348,4 +348,20 @@ $(document).ready(function (){
             $('#deathDate').prop("disabled", true);
         }
     });
+    
+    $('#chooseAnimal').on('select2:clear', function() {
+        $('#father').val('');
+        $('#mother').val('');
+        $('#animalID').val('');
+        $('#animalName').val('');
+        $('#birthDate').val('');
+        $('#deathDate').val('');
+        $('#birthFarm').val('');
+        $("#IDanimalChoisi").val('');
+        $('#fatherId').val(1);
+        $('#motherId').val(2);
+        $('#farmId').val(0);
+        $(':radio').prop("checked",false);
+        $(':checkbox').prop("checked",false);
+    });
 });
