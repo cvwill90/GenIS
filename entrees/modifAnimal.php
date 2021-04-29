@@ -107,14 +107,14 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="father">N°/Nom du père</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="father" id="father" onkeyup="triggerAutocompleteMale(event)" onblur="check_if_empty('father', 'fatherId')" required>
+                                            <input class="parent form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="father" id="father" onkeyup="triggerAutocompleteMale(event)" onblur="check_if_empty('father', 'fatherId')" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="mother">N°/Nom de la mère</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="mother" id="mother" onkeyup="triggerAutocompleteFemale(event)" onblur="check_if_empty('mother', 'motherId')" required>
+                                            <input class="parent form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="mother" id="mother" onkeyup="triggerAutocompleteFemale(event)" onblur="check_if_empty('mother', 'motherId')" required>
                                         </div>
                                     </div>
 
