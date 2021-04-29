@@ -148,7 +148,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="animalMale">Mâle</label>
+                                        <label class="col-lg-2 control-label" for="animalMale">Sexe</label>
                                         <div class="col-lg-5">
                                             <div class="radio">
                                                 <label>
