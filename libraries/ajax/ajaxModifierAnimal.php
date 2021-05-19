@@ -60,7 +60,10 @@ if (intval($data['type']) == 1) {
     $trimmed = str_replace(",]", "]", $string);
     echo $trimmed;
 } elseif (intval($data['type']) == 2) {
-
+    
+    $pere = (isset($data['father'])) ? $data['father'] : 1;
+    $mere = (isset($data['mother'])) ? $data['mother'] : 2;
+    
     if ($data['farmId'] == 0) {
         $farmId = 'NULL';
     } else {
@@ -77,17 +80,25 @@ if (intval($data['type']) == 1) {
             . "SET nom_animal='{$data['animalName']}', "
                 . "sexe={$data['animalSex']}, "
                 . "no_identification='{$data['animalID']}', "
-                . "id_livre={$data['livre_gene']}, "
+                //. "id_livre={$data['livre_gene']}, "
                 . "date_naiss='{$data['birthDate']}', "
                 . "conservatoire={$data['conserv']}, "
-                . "id_pere={$data['fatherId']}, "
-                . "id_mere={$data['motherId']} "
+                . "id_pere=$pere, "
+                . "id_mere=$mere "
             . "WHERE id_animal={$data['IDanimalChoisi']}";
     $animal_history = new AnimalHistory($data['IDanimalChoisi']);
     $sql_birth_update_result = $animal_history->change_animal_birth_info($data['birthDate'], $farmId);
     $sql_death_update_result = $animal_history->change_animal_death_date($death_date);
-
-    $sql = array($sql_update_animal, $sql_birth_update_result, $sql_death_update_result);
+    
+    if ($pere == 1 && $mere == 2) {
+        $sql_ancetre_update_result = $animal_history->change_ancetre_information(true, 'fondateur', $data['pourcentage_sang_animal']);
+    } elseif ($pere == 1 || $mere == 2) {
+        $sql_ancetre_update_result = $animal_history->change_ancetre_information(true, 'titre_initial', $data['pourcentage_sang_animal']);
+    } else {
+        $sql_ancetre_update_result = $animal_history->change_ancetre_information(false, null, null);
+    }
+    
+    $sql = array($sql_update_animal, $sql_birth_update_result, $sql_death_update_result, $sql_ancetre_update_result);
 
     try {
         $con->beginTransaction();
