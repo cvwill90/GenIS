@@ -10,6 +10,7 @@
         ?>
 
         <!--Optional sources start -->
+        <script type="text/javascript" src="js/mainEntrees.js"></script>
         <script type="text/javascript" src="js/script_modif.js"></script>
         <!-- Optional sources end -->
 
@@ -32,7 +33,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form class="form-horizontal" id="formModif" role="form" action="insert_db_mort.php" method="GET" name="mort">
+                <form class="form-horizontal" id="formModif" role="form" method="GET" name="formModif">
 
                     <div class="widget">
                         <div class="widget-head">
@@ -102,42 +103,64 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="widget-content">
-                            <div class="padd">        
+                            <div class="padd">
                                 <fieldset>
+                                    <legend>Informations du père</legend>
+                                    
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="father">N°/Nom du père</label>
+                                        <label class="col-lg-2 control-label" for="father">N° d'identification/Nom du père</label>
                                         <div class="col-lg-5">
-                                            <input class="parent form-control" placeholder="Sélectionner un mâle de la liste" type="text" name="father" id="father" onkeyup="triggerAutocompleteMale(event)" onblur="check_if_empty('father', 'fatherId')" required>
+                                            <select class="parent form-control" name="father" id="father" required>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="mother">N°/Nom de la mère</label>
+                                        <label class="col-lg-2 control-label" for="lignee">Lignée</label>
                                         <div class="col-lg-5">
-                                            <input class="parent form-control" placeholder="Sélectionner une femelle de la liste" type="text" name="mother" id="mother" onkeyup="triggerAutocompleteFemale(event)" onblur="check_if_empty('mother', 'motherId')" required>
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="lignee" id="lignee" disabled readonly>
                                         </div>
                                     </div>
 
-                                    <!--<div class="form-group">
-                                      <label class="col-lg-2 control-label" for="lignee">Lignée</label>
-                                      <div class="col-lg-5">
-                                        <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Lignée" type="text" name="lignee" id="lignee" readonly>
-                                      </div>
-                                    </div>
-            
                                     <div class="form-group">
-                                      <label class="col-lg-2 control-label" for="famille">Famille</label>
-                                      <div class="col-lg-5">
-                                        <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Famille" type="text" name="famille" id="famille" readonly>
-                                      </div>
-                                    </div>-->
-
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_pere">Pourcentage de sang</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner un mâle de la liste" type="text" name="pourcentage_sang_pere" id="pourcentage_sang_pere" disabled readonly>
+                                        </div>
+                                    </div>
                                 </fieldset>
+
                                 <fieldset>
+                                    <legend>Informations de la mère</legend>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="mother">N° d'identification/Nom de la mère</label>
+                                        <div class="col-lg-5">
+                                            <select class="parent form-control" name="mother" id="mother" required>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="famille">Famille</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="famille" id="famille" readonly disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_mere">Pourcentage de sang</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" style="font-style: italic; color: slategrey" placeholder="Sélectionner une femelle de la liste" type="text" name="pourcentage_sang_mere" id="pourcentage_sang_mere" disabled readonly>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                    
+                                <fieldset>
+                                    <legend>Informations de l'animal</legend>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="animalID">N° d'identification de l'animal</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="exemple : 3365982645" type="number" name="animalID" id="animalID" maxlength="10" required>
+                                            <input class="form-control" placeholder="exemple : 3365982645" type="text" name="animalID" id="animalID" maxlength="10" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -168,6 +191,12 @@
                                                     Femelle
                                                 </label>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="pourcentage_sang_animal">Pourcentage de sang</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" placeholder="Sélectionner deux parents connus ou entrer la valeur manuellement (exemple: 0.254)" type="number" step="0.001" name="pourcentage_sang_animal" id="pourcentage_sang_animal" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
