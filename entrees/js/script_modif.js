@@ -150,10 +150,10 @@ function modifAnimal(){
     var formContent = $('#formModif').serialize();
     if ($('#pourcentage_sang_animal').val() !== '' && $('#farmId').val() !== '') {
         $.ajax({
-            method: "GET",
+            method: "POST",
             dataType: "json",
             data: formContent,
-            url: "../libraries/ajax/ajaxModifierAnimal.php?type=2",
+            url: "../libraries/ajax/ajaxModifierAnimal.php",
             success: function (data) {
               if (data.status === 'ok'){
                 window.location.replace('resultModif.php');
