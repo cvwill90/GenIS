@@ -148,7 +148,7 @@ function check_if_empty(this_element,target){
 
 function modifAnimal(){
     var formContent = $('#formModif').serialize();
-    if ($('#fatherId').val() !== '' && $('#motherId').val() !== '' && $('#farmId').val() !== '') {
+    if ($('#pourcentage_sang_animal').val() !== '' && $('#farmId').val() !== '') {
         $.ajax({
             method: "GET",
             dataType: "json",
@@ -174,7 +174,7 @@ function modifAnimal(){
 $(document).ready(function (){
     $('#chooseAnimal').select2({
         ajax: {
-            url: "../../libraries/ajax/ajaxModifierAnimal.php",
+            url: "../../libraries/ajax/suggestAnimal.php",
             data: function (params) {
                 var query = {
                     term: params.term,
@@ -191,19 +191,7 @@ $(document).ready(function (){
                 $.each(data, function (i) {
                     options.results[i] = {
                         "id": data[i].id,
-                        "text": data[i].label,
-                        "animalName": data[i].value,
-                        "sex": data[i].sexe,
-                        "identificationNumber": data[i].no,
-                        "birthDate": data[i].date_naiss,
-                        "deathDate": data[i].date_mort,
-                        "conservatoire": data[i].cons,
-                        "fatherId": data[i].id_p,
-                        "motherId": data[i].id_m,
-                        "fatherName": data[i].nom_p,
-                        "motherName": data[i].nom_m,
-                        "farmName": data[i].nom_elev,
-                        "farmId": data[i].id_elev
+                        "text": data[i].label
                     };
                 });
                 return options;
@@ -216,56 +204,160 @@ $(document).ready(function (){
     });
     
     $('#chooseAnimal').on('select2:select', function(event) {
-        $('#father').val(event.params.data.fatherName);
-        $('#mother').val(event.params.data.motherName);
-        $('#animalID').val(event.params.data.identificationNumber);
-        $('#animalName').val(event.params.data.animalName);
-        $('#birthDate').val(event.params.data.birthDate);
-        $('#deathDate').val(event.params.data.deathDate);
-        $('#birthFarm').val(event.params.data.farmName);
-        $("#IDanimalChoisi").val(event.params.data.id);
-        $('#fatherId').val(event.params.data.fatherId);
-        $('#motherId').val(event.params.data.motherId);
-        $('#farmId').val(event.params.data.farmId);
         
-        if (event.params.data.sex === 1){
-            $('#animalMale').prop("checked", true);
-        } else if (event.params.data.sex === 3) {
-            $('#animalCastre').prop("checked", true);
-        } else {
-            $('#animalFemale').prop("checked", true);
-        }
+        var animalAndParentsInformationRequest = getAnimalAnimalAndParentsInformation(event.params.data.id);
         
-        if (event.params.data.cons) {
-            $('#conserv2').prop("checked", true);
-        } else {
-            $('#conserv1').prop("checked", true);
-        }
-        
-        if (event.params.data.deathDate !== '') {
-            $('#animal_dead').prop("checked", true);
-            $('#animal_dead').prop("disabled", false);
-            $('#deathDate').prop("disabled", false);
-        } else {
-            $('#animal_dead').prop("checked", false);
-            $('#animal_dead').prop("disabled", true);
-            $('#deathDate').prop("disabled", true);
-        }
+        animalAndParentsInformationRequest.done(function(animalAndParentsInformation) {
+            
+            if (animalAndParentsInformation.father_information !== null) {
+                var father_data = {
+                    id: animalAndParentsInformation.id_pere,
+                    text: animalAndParentsInformation.father_information.no_identification + ' - ' + animalAndParentsInformation.nom_pere
+                };
+
+                var newFatherOption = new Option(father_data.text, father_data.id, false, false);
+                $('#father').append(newFatherOption).trigger('change');
+                $('#father').val(animalAndParentsInformation.id_pere);
+                $('#lignee').val(animalAndParentsInformation.lignee);
+                $('#pourcentage_sang_pere').val(animalAndParentsInformation.father_information.pourcentage_sang_race);
+            }
+            
+            if (animalAndParentsInformation.mother_information !== null) {
+                var mother_data = {
+                    id: animalAndParentsInformation.id_mere,
+                    text: animalAndParentsInformation.mother_information.no_identification + ' - ' + animalAndParentsInformation.nom_mere
+                };
+
+                var newMotherOption = new Option(mother_data.text, mother_data.id, false, false);
+                $('#mother').append(newMotherOption).trigger('change');
+                $('#mother').val(animalAndParentsInformation.id_mere);
+                $('#famille').val(animalAndParentsInformation.famille);
+                $('#pourcentage_sang_mere').val(animalAndParentsInformation.mother_information.pourcentage_sang_race);
+            }
+            
+            
+            $('#animalID').val(animalAndParentsInformation.no_identification);
+            $('#animalName').val(animalAndParentsInformation.nom_animal);
+            $('#birthDate').val(animalAndParentsInformation.date_naiss);
+            if (animalAndParentsInformation.father_information !== null && animalAndParentsInformation.mother_information !== null) {
+                $('#pourcentage_sang_animal').val(animalAndParentsInformation.pourcentage_sang_race);
+                $('#pourcentage_sang_animal').prop('disabled', true);
+            }
+            $('#deathDate').val(animalAndParentsInformation.date_mort);
+            $('#birthFarm').val(animalAndParentsInformation.nom_elevage_naiss);
+            $("#IDanimalChoisi").val(animalAndParentsInformation.id_animal);
+            $('#fatherId').val(animalAndParentsInformation.id_pere);
+            $('#motherId').val(animalAndParentsInformation.id_mere);
+            $('#farmId').val(animalAndParentsInformation.id_elevage_naiss);
+            
+            if (animalAndParentsInformation.sexe === 1){
+                $('#animalMale').prop("checked", true);
+            } else if (animalAndParentsInformation.sex === 3) {
+                $('#animalCastre').prop("checked", true);
+            } else {
+                $('#animalFemale').prop("checked", true);
+            }
+            
+            if (animalAndParentsInformation.conservatoire) {
+                $('#conserv2').prop("checked", true);
+            } else {
+                $('#conserv1').prop("checked", true);
+            }
+
+            if (animalAndParentsInformation.date_mort !== null) {
+                $('#animal_dead').prop("checked", true);
+                $('#animal_dead').prop("disabled", false);
+                $('#deathDate').prop("disabled", false);
+            } else {
+                $('#animal_dead').prop("checked", false);
+                $('#animal_dead').prop("disabled", true);
+                $('#deathDate').prop("disabled", true);
+            }
+        });
     });
     
     $('#chooseAnimal').on('select2:clear', function() {
-        $('#father').val('');
-        $('#mother').val('');
+        $('#father').val(null).trigger('change');
+        $('#lignee').val('');
+        $('#pourcentage_sang_pere').val('');
+        $('#mother').val(null).trigger('change');
+        $('#famille').val('');
+        $('#pourcentage_sang_mere').val('');
         $('#animalID').val('');
         $('#animalName').val('');
         $('#birthDate').val('');
         $('#deathDate').val('');
         $('#birthFarm').val('');
         $("#IDanimalChoisi").val('');
-        $('#fatherId').val(1);
-        $('#motherId').val(2);
         $('#farmId').val(0);
         $(':radio').prop("checked",false);
         $(':checkbox').prop("checked",false);
+    });
+    
+    $('.parent').select2({
+        ajax: {
+            url: "../../libraries/ajax/suggestAnimal.php",
+            data: function (params) {
+                var gender = (this[0].id === "father" ? 1 : 2);
+                var query = {
+                    term: params.term,
+                    race: $('#race').val(),
+                    sex: gender,
+                };
+                return query;
+            },
+            dataType: 'json',
+            processResults: function (data) {
+                var options = {
+                    "results": []
+                }
+                $.each(data, function (i) {
+                    options.results[i] = {
+                        "id": data[i].id,
+                        "text": data[i].label
+                    }
+                });
+                return options;
+            }
+        },
+        minimumInputLength: 2,
+        placeholder: "Rechercher un parent",
+        allowClear: true,
+        language: "fr"
+    });
+    
+    $('.parent').on('select2:select', function(event) {
+        var animalGeneticInformationRequest = getAnimalGeneticInformation(event.params.data.id);
+        animalGeneticInformationRequest.done(function(animalGeneticInformation) {
+            var parentGender = event.target.id;
+            if (parentGender === 'father') {
+                $('#lignee').val(animalGeneticInformation.lignee);
+                $('#pourcentage_sang_pere').val(animalGeneticInformation.pourcentage_sang_race);
+            } else if (parentGender === 'mother') {
+                $('#famille').val(animalGeneticInformation.famille);
+                $('#pourcentage_sang_mere').val(animalGeneticInformation.pourcentage_sang_race);
+            }
+            
+            if ($('#father').find(':selected')[0] !== undefined && $('#mother').find(':selected')[0] !== undefined) {
+                var pourcentageSangPere = parseFloat($('#pourcentage_sang_pere').val());
+                var pourcentageSangMere = parseFloat($('#pourcentage_sang_mere').val());
+                $('#pourcentage_sang_animal').prop('disabled', true);
+                $('#pourcentage_sang_animal').val((pourcentageSangPere + pourcentageSangMere)/ 2);
+            }
+            
+        });
+    });
+    
+    $('.parent').on('select2:clear', function(event) {
+        var parentGender = event.target.id;
+        if (parentGender === 'father') {
+            $('#lignee').val("");
+            $('#pourcentage_sang_pere').val(null);
+        } else if (parentGender === 'mother') {
+            $('#famille').val("");
+            $('#pourcentage_sang_mere').val(null);
+        }
+        $('#pourcentage_sang_animal').val("");
+        $('#pourcentage_sang_animal').prop('disabled', false);
     });
 });
