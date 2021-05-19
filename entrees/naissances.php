@@ -10,6 +10,7 @@
         ?>
 
         <!--Optional sources start -->
+        <script type="text/javascript" src="js/mainEntrees.js"></script>
         <script type="text/javascript" src="js/script_naissances.js"></script>
         <!-- Optional sources end -->
 
@@ -131,7 +132,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="animalID">N° d'identification de l'animal</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="exemple : 3365982645" type="number" name="animalID" id="animalID" maxlength="12" required>
+                                            <input class="form-control" placeholder="exemple : 3365982645" type="text" name="animalID" id="animalID" maxlength="12" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
