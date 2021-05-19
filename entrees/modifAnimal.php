@@ -160,7 +160,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label" for="animalID">N° d'identification de l'animal</label>
                                         <div class="col-lg-5">
-                                            <input class="form-control" placeholder="exemple : 3365982645" type="text" name="animalID" id="animalID" maxlength="10" required>
+                                            <input class="form-control" placeholder="exemple : 3365982645" type="text" name="animalID" id="animalID" maxlength="12" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
