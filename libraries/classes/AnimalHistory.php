@@ -75,6 +75,19 @@ class AnimalHistory {
         return $sql_undo_death;
     }
     
+    
+    
+    public function change_ancetre_information($shall_be_ancestor, $type_ancestor, $pourcentage_sang_race) {
+        if ($shall_be_ancestor) {
+            $sql_update_ancetre = "INSERT INTO ancetre (id_ancetre, type_ancetre, pourcentage_sang_race, id_livre) "
+                    . "VALUES ($this->id_animal, '$type_ancestor', $pourcentage_sang_race, 3) "
+                    . "ON DUPLICATE KEY UPDATE type_ancetre = '$type_ancestor', pourcentage_sang_race = $pourcentage_sang_race";
+        } else {
+            $sql_update_ancetre = "DELETE FROM ancetre WHERE id_ancetre = $this->id_animal";
+        }
+        return $sql_update_ancetre;
+    }
+    
     public function get_animal_history() {
         $sql_get_animal_history = "SELECT * FROM periode where id_animal = {$this->id_animal}";
         $animal_history = $this->db_con->select($sql_get_animal_history);

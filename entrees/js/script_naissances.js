@@ -58,35 +58,6 @@ function triggerAutoCompleteFarm(event) {
     }
 }
 
-/**
- * Fonction calculant à la volée le pourcentage de race du nouvel animal en fonction
- * du pourcentage de race des deux parents
- * @param {type} event
- * @returns {undefined}
- */
-
-function getNewAnimalGeneticInformation() {
-    var fatherId = $('#fatherId').find(':selected').val();
-    var motherId = $('#motherId').find(':selected').val();
-    var parents = {fatherId: fatherId, motherId: motherId};
-    //console.log(parents);
-    return $.get('../../libraries/ajax/calculate_genetic_information.php', parents);
-}
-
-function getAnimalGeneticInformation(animalId) {
-    return $.ajax({
-        method: 'GET',
-        url: 'http://genisquery.cra/animalInformation/' + animalId,
-        data: {
-            include_genetic_information: 1
-        },
-        dataType: "json",
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert('Le serveur a rencontré l\'erreur suivante : ' + xhr.status + " " + thrownError);
-        }
-    });
-}
-
 $(document).ready(function() {
     $('#naissance').validate({
         rules: {
